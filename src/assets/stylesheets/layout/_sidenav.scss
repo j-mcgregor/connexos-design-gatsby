@@ -1,0 +1,90 @@
+.sidenav {
+    padding: 2em 40px 0 2em;
+    overflow: hidden;
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    flex-direction: column;
+    background: $white-color;
+    z-index: 10;
+    font-size: $h5-size;
+    border-right: 1px solid $light-grey-20;
+    max-width: $sidenavWidth;
+
+    a {
+        color: $dark-grey-20;
+        margin: 10px 0;
+        text-transform: uppercase;
+        font-size: 0.8em;
+
+        &:hover {
+            color: $red;
+            text-decoration: none;
+        }
+        img.logo {
+            width: 100px;
+            margin-bottom: 3em;
+        }
+    }
+
+    .subnav-1 {
+        list-style: none;
+        padding: 10px 10px;
+        font-size: $h6-size;
+
+        a {
+            color: $light-grey-20;
+
+            &:hover {
+                color: $light-grey-50;
+            }
+        }
+    }
+
+    .sidenav-footer {
+        position: absolute;
+        bottom: 2em;
+        right: 50%;
+        transform: translateX(50%);
+
+        .social-icons {
+            a {
+                width: 40px;
+                height: 40px;
+                line-height: 40px;
+                text-align: center;
+
+                .social-icons a:active,
+                .social-icons a:focus,
+                .social-icons a:hover {
+                    color: #29aafe;
+                }
+
+                .social-icons a {
+                    line-height: 34px;
+                    height: 34px;
+                    width: 34px;
+                    font-size: 14px;
+
+                    &.facebook:hover {
+                        color: $facebook-color;
+                    }
+
+                    &.twitter:hover {
+                        color: $twitter-color;
+                    }
+
+                    &.linkedin:hover {
+                        color: $linkedin-color;
+                    }
+
+                    &.instagram:hover {
+                        color: $instagram-color;
+                    }
+                }
+            }
+        }
+    }
+}

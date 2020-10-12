@@ -1,0 +1,17 @@
+.about,
+.portfolio {
+    overflow-x: hidden;
+    padding: 2em;
+    padding-left: 6em;
+
+    .description {
+        font-size: 0.8em;
+        width: 60%;
+    }
+
+    img {
+        border-style: double;
+        border-width: 6px;
+        border-color: $light-grey-20;
+    }
+}

@@ -1,0 +1,57 @@
+{
+    "Main": {
+        "uid": {
+            "type": "UID",
+            "config": {
+                "label": "contact",
+                "placeholder": "contact"
+            }
+        },
+        "title": {
+            "type": "StructuredText",
+            "config": {
+                "single": "heading3",
+                "label": "title",
+                "placeholder": "title"
+            }
+        },
+        "subtitle": {
+            "type": "StructuredText",
+            "config": {
+                "single": "heading6",
+                "label": "subtitle",
+                "placeholder": "subtitle"
+            }
+        },
+        "social_links": {
+            "type": "Group",
+            "config": {
+                "fields": {
+                    "name": {
+                        "type": "Text",
+                        "config": {
+                            "label": "name",
+                            "placeholder": "name"
+                        }
+                    },
+                    "url": {
+                        "type": "Link",
+                        "config": {
+                            "allowTargetBlank": true,
+                            "label": "url",
+                            "placeholder": "url"
+                        }
+                    },
+                    "text": {
+                        "type": "Text",
+                        "config": {
+                            "label": "text",
+                            "placeholder": "text"
+                        }
+                    }
+                },
+                "label": "social links"
+            }
+        }
+    }
+}

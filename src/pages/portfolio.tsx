@@ -97,8 +97,8 @@ const PortfolioPage: React.FC<PortfolioPageProps> = ({ data: { prismicGallery } 
                         <RichText render={description.raw} />
                     </div>
                 )}
+                {allImages?.length && <GalleryContainer images={allImages} />}
             </div>
-            {allImages?.length && <GalleryContainer images={allImages} />}
         </Layout>
     )
 }

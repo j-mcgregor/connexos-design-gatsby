@@ -45,6 +45,7 @@
 // 6. Page-specific styles
 @import 'pages/about';
 @import 'pages/contact';
+@import 'pages/portfolio';
 
 // 7. Themes
 @import 'themes/default';
@@ -62,4 +63,8 @@
 @font-face {
     font-family: 'Raleway-Thin';
     src: url(../fonts/Raleway/Raleway-Thin.ttf) format('truetype');
+}
+
+body {
+    background: $grey;
 }

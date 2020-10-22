@@ -8,7 +8,7 @@
     padding-left: $font-size;
     padding-right: $font-size;
 
-    @include button($brand-color);
+    @include button($brand-color, true);
 
     // BOLD
     &.btn-primary {

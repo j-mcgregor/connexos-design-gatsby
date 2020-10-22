@@ -56,9 +56,11 @@ const AboutPage: React.FC<AboutPageProps> = ({ data }) => {
             <div className="about flex flex-column">
                 {title?.raw && <RichText render={title.raw} />}
                 {description?.raw && (
-                    <div className="description text-justify">
+                    <div className="description text-justify my3">
+                        {main_image && (
+                            <img src={main_image.url} alt="Logo" style={{ width: '100%' }} className="my3" />
+                        )}
                         <RichText render={description.raw} />
-                        {main_image && <img src={main_image.url} alt="Logo" style={{ width: '100%' }} />}
                     </div>
                 )}
             </div>

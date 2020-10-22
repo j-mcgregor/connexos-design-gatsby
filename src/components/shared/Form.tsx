@@ -53,7 +53,7 @@ const Form = () => {
         try {
             const res = await axios({
                 method: 'POST',
-                url: 'https://folk-photography.netlify.app/',
+                url: 'https://connexos-design.netlify.app/',
                 data: encode(data),
                 headers,
             })

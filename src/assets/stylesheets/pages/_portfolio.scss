@@ -1,0 +1,11 @@
+.portfolio {
+    background: darken($black, 5%);
+    color: $white;
+    overflow-x: hidden;
+    padding: 4em 2em 4em 3em;
+    min-height: 100vh;
+
+    .description {
+        font-size: 0.8em;
+    }
+}

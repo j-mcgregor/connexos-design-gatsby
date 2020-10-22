@@ -63,15 +63,16 @@ const Iconised = ({ name, url }: { name: string; url: string }) => {
     }
 }
 
-const SideNav: React.FC<SideNavProps> = ({ logo, title, options, links }) => {
+const SideNav: React.FC<SideNavProps> = ({ logo, options, links }) => {
     const [showSubNav, setShowSubNav] = React.useState<boolean>(false)
 
     return (
         <div className="sidenav">
-            {logo && <img src={logo} alt="logo" style={{ width: '100%' }} />}
-            <h4>
-                <Link to="/">{title}</Link>
-            </h4>
+            {logo && (
+                <Link to="/">
+                    <img src={logo} alt="logo" />
+                </Link>
+            )}
             {options.map(nav => (
                 <>
                     <span

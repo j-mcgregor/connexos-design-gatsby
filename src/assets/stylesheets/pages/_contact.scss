@@ -1,4 +1,7 @@
 .contact {
+    background: darken($black, 5%);
+    min-height: 100vh;
+
     .jumbotron {
         .description {
             width: 300px;

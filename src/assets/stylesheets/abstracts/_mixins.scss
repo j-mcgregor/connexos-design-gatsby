@@ -72,7 +72,7 @@
         color: $white-color;
 
         &:hover:not(.disabled) {
-            background: $white-color;
+            background: transparent;
             color: $color;
         }
     } @else {

@@ -27,16 +27,8 @@ export const query = graphql`
             }
         }
 
-        file(sourceInstanceName: { eq: "images" }, relativePath: { eq: "folk-photography-logo-white.png" }) {
-            childImageSharp {
-                fixed(width: 600, height: 600) {
-                    base64
-                    width
-                    height
-                    src
-                    srcSet
-                }
-            }
+        file(sourceInstanceName: { eq: "images" }, relativePath: { eq: "connexos-design-logo-light.png" }) {
+            publicURL
         }
     }
 `
@@ -60,15 +52,7 @@ interface IndexPageProps {
             }
         }
         file: {
-            childImageSharp: {
-                fixed: {
-                    height: number
-                    width: number
-                    base64: string
-                    src: string
-                    srcSet: string
-                }
-            }
+            publicURL: string
         }
     }
 }
@@ -76,7 +60,7 @@ interface IndexPageProps {
 const IndexPage: React.FC<IndexPageProps> = ({ data: { prismicLanding, file } }) => {
     const { primary_text, secondary_text, about, background_image } = prismicLanding.data
 
-    const logo = file?.childImageSharp.fixed && <Img fixed={file.childImageSharp.fixed} alt="Logo" />
+    const logo = file?.publicURL && <img src={file.publicURL} alt="Logo" />
 
     return (
         <Layout>

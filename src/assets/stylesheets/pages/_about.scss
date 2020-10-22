@@ -1,12 +1,12 @@
-.about,
-.portfolio {
+.about {
+    background: darken($black, 5%);
+    color: $white;
     overflow-x: hidden;
-    padding: 2em;
-    padding-left: 6em;
+    padding: 4em 2em 4em 6em;
 
     .description {
         font-size: 0.8em;
-        width: 60%;
+        width: 80%;
     }
 
     img {

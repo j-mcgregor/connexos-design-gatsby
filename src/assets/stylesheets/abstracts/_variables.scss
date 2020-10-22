@@ -9,9 +9,9 @@
 // >>>>>>>>>>>>>>>>>>>> GREYSCALE
 // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
-$white: #ffffff;
-$grey: #a6a6a8;
-$black: #272635;
+$white: #e8e9eb;
+$grey: #e0dfd5;
+$black: #313638;
 
 $light-grey-10: lighten($grey, 10);
 $light-grey-20: lighten($grey, 20);
@@ -29,11 +29,11 @@ $dark-grey-50: darken($grey, 50);
 // >>>>>>>>>>>>>>>>>> MAIN COLORS
 // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
-$red: #6e0d25;
-$orange: #cd533b;
+$red: #ef6461;
+$orange: #e4b363;
 $yellow: #f8eaa6;
-$green: #297045;
-$blue: #b1e5f2;
+$green: #386641;
+$blue: #1e91d6;
 $indigo: #9d44b5;
 $violet: #ed217c;
 
@@ -132,7 +132,7 @@ $width-lg: 992px;
 $width-md: 768px;
 $width-sm: 576px;
 
-$sidenavWidth: 250px;
+$sidenavWidth: 300px;
 
 $nav-height: 60px;
 $file-upload: 50px;

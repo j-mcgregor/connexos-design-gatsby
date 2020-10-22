@@ -7,11 +7,17 @@
     left: 0;
     bottom: 0;
     flex-direction: column;
-    background: $white-color;
+    background: $black;
     z-index: 10;
     font-size: $h5-size;
-    border-right: 1px solid $light-grey-20;
+    font-weight: bold;
+    border-right: 1px solid $black;
     max-width: $sidenavWidth;
+
+    img {
+        width: 100%;
+        margin-bottom: 3em;
+    }
 
     a {
         color: $dark-grey-20;
@@ -23,10 +29,10 @@
             color: $red;
             text-decoration: none;
         }
-        img.logo {
-            width: 100px;
-            margin-bottom: 3em;
-        }
+    }
+
+    svg {
+        color: $white;
     }
 
     .subnav-1 {

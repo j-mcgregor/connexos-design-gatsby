@@ -53,17 +53,9 @@ const Layout = (props: LayoutProps) => (
                 }
                 file(
                     sourceInstanceName: { eq: "images" }
-                    relativePath: { eq: "folk-photography-logo.png" }
+                    relativePath: { eq: "connexos-design-logo-light.png" }
                 ) {
-                    childImageSharp {
-                        fixed(width: 600, height: 600) {
-                            base64
-                            width
-                            height
-                            src
-                            srcSet
-                        }
-                    }
+                    publicURL
                 }
             }
         `}
@@ -79,7 +71,7 @@ const Layout = (props: LayoutProps) => (
             return (
                 <div className="main-container">
                     <SideNav
-                        logo={data.file?.childImageSharp.fixed.src}
+                        logo={data.file?.publicURL}
                         title={data.site.siteMetadata.title}
                         options={[
                             {

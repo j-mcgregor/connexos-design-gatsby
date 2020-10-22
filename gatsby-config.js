@@ -1,10 +1,10 @@
 /* eslint-disable @typescript-eslint/camelcase */
 module.exports = {
     siteMetadata: {
-        title: `Folk Photography`,
+        title: `Connexos Design`,
         description: `Real people. Real photos.`,
         author: `@jmcgregor`,
-        siteUrl: 'https://folk-photography.netlify.app/',
+        siteUrl: 'https://connexos-design.netlify.app/',
     },
     plugins: [
         `gatsby-plugin-react-helmet`,
@@ -34,13 +34,13 @@ module.exports = {
                 background_color: `#663399`,
                 theme_color: `#663399`,
                 display: `minimal-ui`,
-                icon: `src/images/folk-photography-logo.png`, // This path is relative to the root of the site.
+                icon: `src/images/connexos-design-logo-dark.png`, // This path is relative to the root of the site.
             },
         },
         {
             resolve: 'gatsby-source-prismic',
             options: {
-                repositoryName: 'folk-photography',
+                repositoryName: 'connexosdesign',
                 schemas: {
                     landing: require('./src/schemas/landing.json'),
                     contact: require('./src/schemas/contact.json'),

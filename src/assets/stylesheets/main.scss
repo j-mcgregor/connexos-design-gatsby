@@ -11,7 +11,6 @@
 
 // 3. Base stuff
 @import 'base/base';
-@import 'base/blocks';
 @import 'base/borders';
 @import 'base/flex';
 @import 'base/padding';
@@ -20,11 +19,11 @@
 @import 'base/helpers';
 
 // 4. Layout-related sections
-@import 'layout/navbar';
+// @import 'layout/navbar';
 @import 'layout/header';
 // @import 'layout/footer';
 @import 'layout/gallery';
-@import 'layout/sidenav';
+// @import 'layout/sidenav';
 @import 'layout/main';
 
 // 5. Components
@@ -47,9 +46,6 @@
 @import 'pages/contact';
 @import 'pages/portfolio';
 
-// 7. Themes
-@import 'themes/default';
-
 @font-face {
     font-family: 'Raleway-Light';
     src: url(../fonts/Raleway/Raleway-Light.ttf) format('truetype');
@@ -65,6 +61,7 @@
     src: url(../fonts/Raleway/Raleway-Thin.ttf) format('truetype');
 }
 
-body {
-    background: $grey;
+@font-face {
+    font-family: 'CormorantGaramond-Light';
+    src: url(../fonts/CormorantGaramond-Light.ttf) format('truetype');
 }

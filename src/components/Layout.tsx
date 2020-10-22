@@ -1,16 +1,25 @@
-/**
- * Layout component that queries for data
- * with Gatsby's StaticQuery component
- *
- * See: https://www.gatsbyjs.org/docs/static-query/
- */
 import '../assets/stylesheets/main.scss'
 import 'flexboxgrid2/flexboxgrid2.css'
 
 import { graphql, StaticQuery } from 'gatsby'
 import * as React from 'react'
+import { ThemeProvider } from 'styled-components'
 
-import SideNav, { LinkProps } from './SideNav'
+import Navbar from './shared/Navbar'
+
+export const theme = {
+    palette: {
+        black: '#111',
+        dark: '#1A1423',
+        dark_1: '#372549',
+        dark_2: '#372549',
+        center: '#B75D69',
+        light_2: '#EACDC2',
+        light_1: '#FFBCB5',
+        light: '#f5f3f0',
+        white: '#eee',
+    },
+}
 
 const Layout = (props: LayoutProps) => (
     <StaticQuery
@@ -53,45 +62,18 @@ const Layout = (props: LayoutProps) => (
                 }
                 file(
                     sourceInstanceName: { eq: "images" }
-                    relativePath: { eq: "connexos-design-logo-light.png" }
+                    relativePath: { eq: "connexos-design-logo-dark.png" }
                 ) {
                     publicURL
                 }
             }
         `}
         render={data => {
-            const subnav: LinkProps[] = data.prismicGallery.data.body?.map((s: any) => {
-                const nav: LinkProps = {
-                    to: `/portfolio/${s.id}`,
-                    content: s.primary.album.text,
-                }
-                return nav
-            })
-
             return (
-                <div className="main-container">
-                    <SideNav
-                        logo={data.file?.publicURL}
-                        title={data.site.siteMetadata.title}
-                        options={[
-                            {
-                                to: '/about',
-                                content: 'About',
-                            },
-                            {
-                                to: '/portfolio',
-                                content: 'Portfolio',
-                                subnav,
-                            },
-                            {
-                                to: '/contact',
-                                content: 'Get in touch',
-                            },
-                        ]}
-                        links={data.prismicContact.data.social_links}
-                    />
+                <ThemeProvider theme={theme}>
+                    <Navbar icon={data.file.publicURL} />
                     <main>{props.children}</main>
-                </div>
+                </ThemeProvider>
             )
         }}
     />

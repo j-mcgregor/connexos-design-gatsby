@@ -1,20 +1,80 @@
 import * as React from 'react'
+import styled, { withTheme } from 'styled-components'
 
-import { HeroProps } from '../../../types/enums'
+import { theme } from '../../Layout'
 
-const Hero: React.FC<HeroProps> = ({ logo, backgroundImage }) => {
+export interface HeroProps {
+    backgroundImage?: string
+    logo?: JSX.Element
+    theme: typeof theme
+}
+const StyledHero = styled.div<HeroProps>`
+    background: ${({ theme }) => theme.palette.white};
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+
+    .container-fluid {
+        padding: 0 5em;
+
+        .row {
+            > div {
+                height: 70vh;
+                padding: 0;
+
+                &.left {
+                    background: ${({ theme }) => theme.palette.light_2};
+                    padding: 0 6em;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    flex-direction: column;
+
+                    h2 {
+                        color: ${({ theme }) => theme.palette.center};
+                        font-family: 'CormorantGaramond-Light', Times, serif;
+                        font-size: 3em;
+                    }
+
+                    h3 {
+                        color: ${({ theme }) => theme.palette.dark_1};
+                        font-family: 'Raleway-Light';
+                    }
+
+                    p {
+                        font-size: 1.2em;
+                        line-height: 3em;
+                        letter-spacing: 1.1px;
+                    }
+                }
+
+                &.right {
+                    img {
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                    }
+                }
+            }
+        }
+    }
+`
+
+const Hero: React.FC<HeroProps> = ({ logo, backgroundImage, children }) => {
     return (
-        backgroundImage && (
-            <div
-                className="flex flex-column flex-center hero"
-                style={{
-                    backgroundImage: `url(${backgroundImage})`,
-                }}
-            >
-                {logo}
+        <StyledHero>
+            <div className="container-fluid">
+                <div className="row">
+                    <div className="col-md-6 left text-center">{children}</div>
+                    <div className="col-md-6 right">
+                        <img src={backgroundImage} alt="" />
+                    </div>
+                </div>
             </div>
-        )
+        </StyledHero>
     )
 }
 
-export default Hero
+// @ts-ignore
+export default withTheme(Hero)

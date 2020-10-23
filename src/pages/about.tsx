@@ -1,8 +1,9 @@
 import { graphql } from 'gatsby'
 import { RichText, RichTextBlock } from 'prismic-reactjs'
 import * as React from 'react'
+import styled, { withTheme } from 'styled-components'
 
-import Layout from '../components/Layout'
+import Layout, { theme } from '../components/Layout'
 import SEO from '../components/SEO'
 
 export const query = graphql`
@@ -47,25 +48,50 @@ interface AboutPageProps {
     }
 }
 
+interface StyledAboutProps {
+    theme: typeof theme
+}
+const StyledAbout = styled.div<StyledAboutProps>`
+    background: ${({ theme }) => theme.palette.white};
+
+    h1 {
+        color: ${({ theme }) => theme.palette.center};
+        font-family: 'CormorantGaramond-Light', Times, serif;
+        font-size: 3em;
+    }
+
+    .description {
+        width: 700px;
+        margin: auto;
+
+        p {
+            line-height: 2.5em;
+        }
+
+        img {
+            width: 100%;
+        }
+    }
+`
+
 const AboutPage: React.FC<AboutPageProps> = ({ data }) => {
     const { title, description, main_image } = data.prismicAbout.data
 
     return (
         <Layout>
             <SEO title="About" />
-            <div className="about flex flex-column">
+            <StyledAbout className="container text-center">
                 {title?.raw && <RichText render={title.raw} />}
                 {description?.raw && (
                     <div className="description text-justify my3">
-                        {main_image && (
-                            <img src={main_image.url} alt="Logo" style={{ width: '100%' }} className="my3" />
-                        )}
                         <RichText render={description.raw} />
+                        {main_image && <img src={main_image.url} alt="Logo" className="my3" />}
                     </div>
                 )}
-            </div>
+            </StyledAbout>
         </Layout>
     )
 }
 
-export default AboutPage
+// @ts-ignore
+export default withTheme(AboutPage)

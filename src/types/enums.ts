@@ -15,11 +15,6 @@ export enum GridStyle {
 // >>>>>>>>>>>>>>>>  COMPONENTS   >>>>>>>>>>>>>>>>>
 // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
-export interface HeroProps {
-    backgroundImage?: string
-    logo?: JSX.Element
-}
-
 export interface StyledHeroProps {
     bgImageUrl?: string
 }

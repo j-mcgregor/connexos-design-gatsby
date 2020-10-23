@@ -17,7 +17,7 @@ export const theme = {
         light_2: '#EACDC2',
         light_1: '#FFBCB5',
         light: '#f5f3f0',
-        white: '#eee',
+        white: '#fff',
     },
 }
 

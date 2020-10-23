@@ -1,5 +1,5 @@
 import * as React from 'react'
-import styled from 'styled-components'
+import styled, { withTheme } from 'styled-components'
 import axios from 'axios'
 
 import TextArea from '../form/TextArea'
@@ -74,7 +74,7 @@ const Form = () => {
 
     return (
         <StyledForm
-            className="container pb2"
+            className="container"
             onSubmit={handleSubmit}
             name={formName}
             data-netlify="true"
@@ -121,4 +121,4 @@ const Form = () => {
     )
 }
 
-export default Form
+export default withTheme(Form)

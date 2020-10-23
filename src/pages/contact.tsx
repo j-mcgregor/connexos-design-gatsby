@@ -2,6 +2,7 @@ import { graphql } from 'gatsby'
 import { RichText, RichTextBlock } from 'prismic-reactjs'
 import * as React from 'react'
 import Form from '../components/shared/Form'
+import styled from 'styled-components'
 
 import Layout from '../components/Layout'
 import SEO from '../components/SEO'
@@ -36,14 +37,33 @@ interface ContactPageProps {
     }
 }
 
+const StyledContact = styled.div`
+    background: ${({ theme }) => theme.palette.white};
+
+    h3,
+    h6 {
+        margin: auto;
+        width: 400px;
+        color: ${({ theme }) => theme.palette.dark_1};
+    }
+
+    h3 {
+        padding: 1em 0;
+    }
+
+    h6 {
+        padding: 3em 0;
+    }
+`
+
 const ContactPage: React.FC<ContactPageProps> = ({ data }) => {
     const { title, subtitle } = data.prismicContact.data
 
     return (
         <Layout>
             <SEO title="Contact" />
-            <div className="contact flex flex-column">
-                <div className="jumbotron pt7 pb3 text-center">
+            <StyledContact className="contact flex flex-column">
+                <div className="jumbotron text-center">
                     {title?.raw && <RichText render={title.raw} />}
                     {subtitle?.raw && (
                         <div className="description">
@@ -52,7 +72,7 @@ const ContactPage: React.FC<ContactPageProps> = ({ data }) => {
                     )}
                 </div>
                 <Form />
-            </div>
+            </StyledContact>
         </Layout>
     )
 }

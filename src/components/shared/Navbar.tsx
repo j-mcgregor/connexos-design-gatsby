@@ -9,7 +9,7 @@ import { theme } from '../Layout'
 
 const Nav = styled.nav`
     max-width: 100%;
-    border-bottom: 2px solid ${({ theme }) => theme.palette.white};
+    border-bottom: 2px solid ${({ theme }) => theme.palette.light};
     padding: 0 2em;
     display: flex;
     flex-direction: column;

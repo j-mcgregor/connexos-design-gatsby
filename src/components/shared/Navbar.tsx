@@ -36,7 +36,7 @@ const SubNav = styled.nav<SubNavProps>`
     color: ${({ theme }) => theme.palette.white};
     width: 100%;
     border-bottom: 2px solid ${({ theme }) => theme.palette.white};
-    padding: 4px 8px;
+    padding: 0.6em 1em;
     display: flex;
     justify-content: space-between;
     align-items: center;

@@ -1,0 +1,211 @@
+{
+    "Main": {
+        "uid": {
+            "type": "UID",
+            "config": {
+                "label": "uid"
+            }
+        },
+        "title": {
+            "type": "StructuredText",
+            "config": {
+                "single": "heading1",
+                "label": "title"
+            }
+        },
+        "background_image": {
+            "type": "Image",
+            "config": {
+                "constraint": {},
+                "thumbnails": [],
+                "label": "background image"
+            }
+        },
+        "body": {
+            "type": "Slices",
+            "fieldset": "Slice zone",
+            "config": {
+                "labels": {
+                    "hero_section": [],
+                    "call_to_action": [],
+                    "products": []
+                },
+                "choices": {
+                    "hero_section": {
+                        "type": "Slice",
+                        "fieldset": "Hero Section",
+                        "description": "Hero with buttons",
+                        "icon": "check_box",
+                        "display": "grid",
+                        "non-repeat": {
+                            "title1": {
+                                "type": "StructuredText",
+                                "config": {
+                                    "single": "heading1",
+                                    "label": "Title",
+                                    "placeholder": "Enter title"
+                                }
+                            },
+                            "paragraph": {
+                                "type": "StructuredText",
+                                "config": {
+                                    "multi": "paragraph",
+                                    "label": "Paragraph",
+                                    "placeholder": "Enter text here"
+                                }
+                            }
+                        },
+                        "repeat": {
+                            "button_link": {
+                                "type": "Link",
+                                "config": {
+                                    "label": "Button Link",
+                                    "placeholder": "Enter URL"
+                                }
+                            },
+                            "button_label": {
+                                "type": "Text",
+                                "config": {
+                                    "label": "Button label"
+                                }
+                            },
+                            "color": {
+                                "type": "Select",
+                                "config": {
+                                    "options": ["Primary", "Secondary"],
+                                    "default_value": "Primary",
+                                    "label": "Color",
+                                    "placeholder": "Define color"
+                                }
+                            }
+                        }
+                    },
+                    "image_gallery": {
+                        "type": "Slice",
+                        "fieldset": "Image Gallery",
+                        "description": "Image Gallery with a title and a caption for each image",
+                        "icon": "photo_library",
+                        "non-repeat": {
+                            "name_of_the_gallery": {
+                                "type": "StructuredText",
+                                "config": {
+                                    "single": "heading2",
+                                    "label": "Name of the gallery",
+                                    "placeholder": "Featured"
+                                }
+                            }
+                        },
+                        "repeat": {
+                            "image_captions": {
+                                "type": "StructuredText",
+                                "config": {
+                                    "multi": "paragraph",
+                                    "label": "Image captions",
+                                    "placeholder": "Images captions"
+                                }
+                            },
+                            "gallery_image": {
+                                "type": "Image",
+                                "config": {
+                                    "constraint": {
+                                        "width": null,
+                                        "height": null
+                                    },
+                                    "thumbnails": [],
+                                    "label": "Gallery Image"
+                                }
+                            }
+                        }
+                    },
+                    "call_to_action": {
+                        "type": "Slice",
+                        "fieldset": "Call to Action",
+                        "description": "Direct Users to store",
+                        "icon": "shopping_cart",
+                        "display": "list",
+                        "non-repeat": {
+                            "title1": {
+                                "type": "StructuredText",
+                                "config": {
+                                    "single": "heading2",
+                                    "label": "Title",
+                                    "placeholder": "What's your mission"
+                                }
+                            },
+                            "subtitle": {
+                                "type": "StructuredText",
+                                "config": {
+                                    "multi": "paragraph",
+                                    "label": "subtitle",
+                                    "placeholder": "Draw them in"
+                                }
+                            }
+                        },
+                        "repeat": {
+                            "page": {
+                                "type": "Text",
+                                "config": {
+                                    "label": "page"
+                                }
+                            },
+                            "call_to_action": {
+                                "type": "Link",
+                                "config": {
+                                    "label": "Call to Action",
+                                    "placeholder": "Where to take them"
+                                }
+                            }
+                        }
+                    },
+                    "products": {
+                        "type": "Slice",
+                        "fieldset": "Products",
+                        "description": "Products",
+                        "icon": "shopping_cart",
+                        "display": "grid",
+                        "non-repeat": {
+                            "title1": {
+                                "type": "StructuredText",
+                                "config": {
+                                    "single": "heading2",
+                                    "label": "title",
+                                    "placeholder": "Title"
+                                }
+                            },
+                            "description": {
+                                "type": "StructuredText",
+                                "config": {
+                                    "multi": "paragraph",
+                                    "label": "Description",
+                                    "placeholder": "What do we offer"
+                                }
+                            }
+                        },
+                        "repeat": {
+                            "product_image": {
+                                "type": "Image",
+                                "config": {
+                                    "constraint": {},
+                                    "thumbnails": [],
+                                    "label": "Product Image"
+                                }
+                            },
+                            "label": {
+                                "type": "Text",
+                                "config": {
+                                    "label": "Label"
+                                }
+                            },
+                            "product_link": {
+                                "type": "Link",
+                                "config": {
+                                    "label": "product link"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

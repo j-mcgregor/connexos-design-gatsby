@@ -10,6 +10,7 @@ export interface HeroProps {
 }
 const StyledHero = styled.div<HeroProps>`
     background: ${({ theme }) => theme.palette.white};
+    padding: 5em 0;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -31,10 +32,15 @@ const StyledHero = styled.div<HeroProps>`
                     justify-content: center;
                     flex-direction: column;
 
+                    h1 {
+                        color: ${({ theme }) => theme.palette.dark_2};
+                        text-transform: uppercase;
+                        font-size: 3em;
+                    }
                     h2 {
                         color: ${({ theme }) => theme.palette.center};
                         font-family: 'CormorantGaramond-Light', Times, serif;
-                        font-size: 3em;
+                        font-size: 2.1em;
                     }
 
                     h3 {
@@ -43,8 +49,8 @@ const StyledHero = styled.div<HeroProps>`
                     }
 
                     p {
-                        font-size: 1.2em;
-                        line-height: 3em;
+                        font-size: 0.9em;
+                        line-height: 2em;
                         letter-spacing: 1.1px;
                     }
                 }
@@ -61,7 +67,7 @@ const StyledHero = styled.div<HeroProps>`
     }
 `
 
-const Hero: React.FC<HeroProps> = ({ logo, backgroundImage, children }) => {
+const Hero: React.FC<HeroProps> = ({ backgroundImage, children }) => {
     return (
         <StyledHero>
             <div className="container-fluid">

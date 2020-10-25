@@ -9,10 +9,16 @@ export const Card = styled.div`
     width: 300px;
     margin: 2em;
     padding: 0 1em;
-    border: 1px solid #ccc;
+    border: 1px solid #e4e4e4;
+    transition: 0.3s;
+    box-shadow: 0px 4px 7px -7px black;
+
+    :hover {
+        cursor: pointer;
+        box-shadow: 0px 5px 9px -7px black;
+    }
 
     img {
-        border: 1px solid #ccc;
         height: 300px;
         width: 300px;
         object-fit: cover;

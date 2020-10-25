@@ -6,18 +6,30 @@ import * as React from 'react'
 import { ThemeProvider } from 'styled-components'
 
 import Navbar from './shared/Navbar'
+import Footer from './shared/Footer'
 
 export const theme = {
     palette: {
-        black: '#111',
-        dark: '#1A1423',
-        dark_1: '#372549',
-        dark_2: '#372549',
-        center: '#B75D69',
-        light_2: '#EACDC2',
-        light_1: '#FFBCB5',
-        light: '#f5f3f0',
-        white: '#fff',
+        black: 'rgb(17, 17, 17)',
+        dark: 'rgb(26, 20, 35)',
+        dark_1: 'rgb(55, 37, 73)',
+        dark_2: 'rgb(55, 37, 73)',
+        center: 'rgb(183, 93, 105)',
+        light_2: 'rgb(234, 205, 194)',
+        light_1: 'rgb(255, 188, 181)',
+        light: 'rgb(245, 243, 240)',
+        white: 'rgb(255, 255, 255)',
+    },
+    paletteOpacity: {
+        black: (a: string) => `rgba(17, 17, 17, ${a})`,
+        dark: (a: string) => `rgba(26, 20, 35, ${a})`,
+        dark_1: (a: string) => `rgba(55, 37, 73, ${a})`,
+        dark_2: (a: string) => `rgba(55, 37, 73, ${a})`,
+        center: (a: string) => `rgba(183, 93, 105, ${a})`,
+        light_2: (a: string) => `rgba(234, 205, 194, ${a})`,
+        light_1: (a: string) => `rgba(255, 188, 181, ${a})`,
+        light: (a: string) => `rgba(245, 243, 240, ${a})`,
+        white: (a: string) => `rgba(255, 255, 255, ${a})`,
     },
 }
 
@@ -73,6 +85,7 @@ const Layout = (props: LayoutProps) => (
                 <ThemeProvider theme={theme}>
                     <Navbar icon={data.file.publicURL} />
                     <main>{props.children}</main>
+                    <Footer icon={data.file.publicURL} />
                 </ThemeProvider>
             )
         }}

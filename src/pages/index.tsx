@@ -1,38 +1,17 @@
-import { graphql, Link } from 'gatsby'
-import Img from 'gatsby-image'
+import { graphql } from 'gatsby'
 import { RichText, RichTextBlock } from 'prismic-reactjs'
 import * as React from 'react'
-import styled, { withTheme } from 'styled-components'
+import { withTheme } from 'styled-components'
 
 import Layout from '../components/Layout'
-import Banner from '../components/pages/landing/Banner'
 import Hero from '../components/pages/landing/Hero'
-import { CallToActionSlice } from '../components/pages/landing/home-slice/CallToActionSlice'
+import CallToActionSlice from '../components/pages/landing/home-slice/CallToActionSlice'
 import HeroSlice from '../components/pages/landing/home-slice/HeroSlice'
-import { ProductsSlice } from '../components/pages/landing/home-slice/ProductsSlice'
+import ProductsSlice from '../components/pages/landing/home-slice/ProductsSlice'
 import SEO from '../components/SEO'
-import { Card } from '../components/styled-components/Card'
-import { Button } from '../components/styled-components/Link'
 
 export const query = graphql`
     query IndexPageQuery {
-        prismicLanding {
-            data {
-                primary_text {
-                    raw
-                }
-                secondary_text {
-                    raw
-                }
-                about {
-                    raw
-                }
-                background_image {
-                    url
-                }
-            }
-        }
-
         prismicHome {
             data {
                 body {
@@ -62,6 +41,9 @@ export const query = graphql`
                             subtitle {
                                 raw
                             }
+                            side_image {
+                                url
+                            }
                         }
                         items {
                             call_to_action {
@@ -79,6 +61,10 @@ export const query = graphql`
                             paragraph {
                                 raw
                             }
+                            background_image1 {
+                                alt
+                                url
+                            }
                         }
                         items {
                             color
@@ -95,11 +81,13 @@ export const query = graphql`
                 title {
                     raw
                 }
+                subtitle {
+                    raw
+                }
+                about {
+                    raw
+                }
             }
-        }
-
-        file(sourceInstanceName: { eq: "images" }, relativePath: { eq: "connexos-design-logo-light.png" }) {
-            publicURL
         }
     }
 `
@@ -140,6 +128,13 @@ interface PrimaryType {
     title1?: {
         raw: RichTextBlock[]
     }
+    background_image1?: {
+        alt?: string
+        url?: string
+    }
+    side_image?: {
+        url: string
+    }
 }
 
 export interface SliceType {
@@ -150,12 +145,12 @@ export interface SliceType {
 
 interface IndexPageProps {
     data: {
-        prismicLanding: {
+        prismicHome: {
             data: {
-                primary_text: {
+                title: {
                     raw: RichTextBlock[]
                 }
-                secondary_text: {
+                subtitle: {
                     raw: RichTextBlock[]
                 }
                 about: {
@@ -164,19 +159,8 @@ interface IndexPageProps {
                 background_image: {
                     url: string
                 }
-            }
-        }
-
-        prismicHome: {
-            data: {
-                title: {
-                    raw: RichTextBlock[]
-                }
                 body: SliceType[]
             }
-        }
-        file: {
-            publicURL: string
         }
     }
 }
@@ -186,52 +170,16 @@ const makeSlice = (sliceType: SliceType) => {
         case 'hero_section':
             return <HeroSlice key="hero_section" sliceType={sliceType} />
         case 'call_to_action':
-            return (
-                <CallToActionSlice key="call_to_action" className="call_to_action">
-                    <RichText render={sliceType.primary.title1.raw} />
-                    <RichText render={sliceType.primary.subtitle.raw} />
-                    <div className="flex flex-center">
-                        {sliceType.items?.length &&
-                            sliceType.items.map(s => (
-                                <Button key={s.page} to={s.call_to_action.url} target="_blank">
-                                    {s.page}
-                                </Button>
-                            ))}
-                    </div>
-                </CallToActionSlice>
-            )
+            return <CallToActionSlice key="call_to_action" sliceType={sliceType} />
         case 'products':
-            return (
-                <ProductsSlice key="products" className="products">
-                    <RichText render={sliceType.primary.title1.raw} />
-                    <RichText render={sliceType.primary.description.raw} />
-                    <div className="container flex flex-center">
-                        {sliceType.items?.length &&
-                            sliceType.items.map(s => (
-                                <Link
-                                    key={s.page}
-                                    to={s.product_link?.url}
-                                    target="_blank"
-                                    className="text-center"
-                                >
-                                    <Card>
-                                        <img src={s.product_image.url} alt="" />
-                                        <h3>{s.label}</h3>
-                                    </Card>
-                                </Link>
-                            ))}
-                    </div>
-                </ProductsSlice>
-            )
+            return <ProductsSlice key="products" sliceType={sliceType} />
         default:
             return <div key="no-type" />
     }
 }
 
-const IndexPage: React.FC<IndexPageProps> = ({ data: { prismicLanding, file, prismicHome } }) => {
-    const { primary_text, secondary_text, about, background_image } = prismicLanding.data
-
-    const logo = file?.publicURL && <img src={file.publicURL} alt="Logo" />
+const IndexPage: React.FC<IndexPageProps> = ({ data: { prismicHome } }) => {
+    const { title, subtitle, about, background_image } = prismicHome.data
 
     const slices = prismicHome.data.body.map(s => makeSlice(s))
 
@@ -239,13 +187,11 @@ const IndexPage: React.FC<IndexPageProps> = ({ data: { prismicLanding, file, pri
         <Layout>
             <SEO title="Home" />
             {background_image?.url && (
-                <>
-                    <Hero logo={logo} backgroundImage={background_image.url}>
-                        {secondary_text && <RichText render={secondary_text.raw} />}
-                        {primary_text && <RichText render={primary_text.raw} />}
-                        {about && <RichText render={about.raw} />}
-                    </Hero>
-                </>
+                <Hero backgroundImage={background_image.url}>
+                    {subtitle && <RichText render={subtitle.raw} />}
+                    {title && <RichText render={title.raw} />}
+                    {about && <RichText render={about.raw} />}
+                </Hero>
             )}
             {slices}
         </Layout>

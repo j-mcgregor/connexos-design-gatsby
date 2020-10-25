@@ -72,6 +72,18 @@ const Layout = (props: LayoutProps) => (
                         }
                     }
                 }
+                prismicHomeBodyProducts {
+                    id
+                    items {
+                        label
+                        product_link {
+                            link_type
+                            uid
+                            url
+                        }
+                    }
+                }
+
                 file(
                     sourceInstanceName: { eq: "images" }
                     relativePath: { eq: "connexos-design-logo-dark.png" }
@@ -81,9 +93,10 @@ const Layout = (props: LayoutProps) => (
             }
         `}
         render={data => {
+            console.log(data.prismicHomeBodyProducts.items)
             return (
                 <ThemeProvider theme={theme}>
-                    <Navbar icon={data.file.publicURL} />
+                    <Navbar icon={data.file.publicURL} products={data.prismicHomeBodyProducts.items} />
                     <main>{props.children}</main>
                     <Footer icon={data.file.publicURL} />
                 </ThemeProvider>

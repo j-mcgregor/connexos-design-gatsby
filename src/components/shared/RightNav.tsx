@@ -1,6 +1,7 @@
 import * as React from 'react'
 import styled from 'styled-components'
 import { Link } from 'gatsby'
+import { BurgerProps } from './Burger'
 
 interface UlProps {
     open: boolean
@@ -36,7 +37,8 @@ const Ul = styled.ul<UlProps>`
     }
 `
 
-const RightNav = ({ open }) => {
+const RightNav: React.FC<BurgerProps> = ({ open, products }) => {
+    console.log(products)
     return (
         <Ul open={open}>
             <li>
@@ -46,8 +48,18 @@ const RightNav = ({ open }) => {
                 <Link to="/about">About</Link>
             </li>
             <li>
+                <a href="https://www.etsy.com/shop/ConnexosDesign" target="_blank" rel="noreferrer">
+                    Etsy Shop
+                </a>
+            </li>
+            <li>
                 <Link to="/contact">Get in touch</Link>
             </li>
+            {products?.map(p => (
+                <li key={p.label}>
+                    <Link to={`/products/${p.product_link.url}`}>{p.label}</Link>
+                </li>
+            ))}
         </Ul>
     )
 }

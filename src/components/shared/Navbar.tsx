@@ -48,11 +48,20 @@ const SubNav = styled.nav<SubNavProps>`
     }
 `
 
-interface NavbarProps {
+export interface ProductLinkProps {
+    label: string
+    product_link: {
+        link_type: string
+        uid: string
+        url: string
+    }
+}
+export interface NavbarProps {
     icon?: string
+    products: ProductLinkProps[]
 }
 
-const Navbar: React.FC<NavbarProps> = () => {
+const Navbar: React.FC<NavbarProps> = ({ products }) => {
     return (
         <>
             <SubNav className="row">
@@ -73,7 +82,7 @@ const Navbar: React.FC<NavbarProps> = () => {
             </SubNav>
             <Nav>
                 <h1>Connexos Design</h1>
-                <Burger />
+                <Burger products={products} />
             </Nav>
         </>
     )

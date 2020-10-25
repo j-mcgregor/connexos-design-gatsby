@@ -1,13 +1,18 @@
 import * as React from 'react'
-import styled from 'styled-components'
-
+import styled, { StyledProps } from 'styled-components'
+import { NavbarProps } from './Navbar'
 import RightNav from './RightNav'
 
-interface BurgerProps {
+interface BurgerProps extends NavbarProps {
     open: boolean
 }
 
-const StyledBurger = styled.div<BurgerProps>`
+type StyledBurgerProps = StyledProps<{
+    open: boolean
+    bgImage?: string
+}>
+
+const StyledBurger = styled.div<StyledBurgerProps>`
     width: 2rem;
     height: 2rem;
     position: fixed;
@@ -42,7 +47,7 @@ const StyledBurger = styled.div<BurgerProps>`
     }
 `
 
-const Burger = () => {
+const Burger: React.FC<BurgerProps> = ({ products }) => {
     const [open, setOpen] = React.useState(false)
 
     return (
@@ -52,7 +57,7 @@ const Burger = () => {
                 <div />
                 <div />
             </StyledBurger>
-            <RightNav open={open} />
+            <RightNav open={open} products={products} />
         </>
     )
 }

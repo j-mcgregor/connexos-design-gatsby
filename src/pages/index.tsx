@@ -9,6 +9,7 @@ import CallToActionSlice from '../components/pages/landing/home-slice/CallToActi
 import HeroSlice from '../components/pages/landing/home-slice/HeroSlice'
 import ProductsSlice from '../components/pages/landing/home-slice/ProductsSlice'
 import SEO from '../components/SEO'
+import { ProductsPageNodeProps } from './products'
 
 export const query = graphql`
     query IndexPageQuery {
@@ -89,6 +90,23 @@ export const query = graphql`
                 }
             }
         }
+        allPrismicProduct {
+            nodes {
+                id
+                uid
+                data {
+                    title {
+                        raw
+                    }
+                    main_image {
+                        url
+                    }
+                    description {
+                        raw
+                    }
+                }
+            }
+        }
     }
 `
 
@@ -145,6 +163,9 @@ export interface SliceType {
 
 interface IndexPageProps {
     data: {
+        allPrismicProduct: {
+            nodes: ProductsPageNodeProps[]
+        }
         prismicHome: {
             data: {
                 title: {
@@ -171,15 +192,16 @@ const makeSlice = (sliceType: SliceType) => {
             return <HeroSlice key="hero_section" sliceType={sliceType} />
         case 'call_to_action':
             return <CallToActionSlice key="call_to_action" sliceType={sliceType} />
-        case 'products':
-            return <ProductsSlice key="products" sliceType={sliceType} />
+        // case 'products':
+        //     return <ProductsSlice key="products" sliceType={sliceType} />
         default:
             return <div key="no-type" />
     }
 }
 
-const IndexPage: React.FC<IndexPageProps> = ({ data: { prismicHome } }) => {
+const IndexPage: React.FC<IndexPageProps> = ({ data: { prismicHome, allPrismicProduct } }) => {
     const { title, subtitle, about, background_image } = prismicHome.data
+    const { nodes } = allPrismicProduct
 
     const slices = prismicHome.data.body.map(s => makeSlice(s))
 
@@ -194,6 +216,7 @@ const IndexPage: React.FC<IndexPageProps> = ({ data: { prismicHome } }) => {
                 </Hero>
             )}
             {slices}
+            <ProductsSlice key="products" products={nodes} />
         </Layout>
     )
 }

@@ -1,0 +1,32 @@
+{
+    "Main": {
+        "uid": {
+            "type": "UID",
+            "config": {
+                "label": "product-id"
+            }
+        },
+        "title": {
+            "type": "StructuredText",
+            "config": {
+                "single": "heading1",
+                "label": "Title"
+            }
+        },
+        "description": {
+            "type": "StructuredText",
+            "config": {
+                "multi": "paragraph",
+                "label": "Description"
+            }
+        },
+        "main_image": {
+            "type": "Image",
+            "config": {
+                "constraint": {},
+                "thumbnails": [],
+                "label": "main image"
+            }
+        }
+    }
+}

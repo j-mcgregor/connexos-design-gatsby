@@ -6,6 +6,7 @@ import Burger from './Burger'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFacebookSquare, faEtsy, faInstagram } from '@fortawesome/free-brands-svg-icons'
 import { theme } from '../Layout'
+import { ProductsPageNodeProps } from '../../pages/products'
 
 const Nav = styled.nav`
     max-width: 100%;
@@ -48,17 +49,9 @@ const SubNav = styled.nav<SubNavProps>`
     }
 `
 
-export interface ProductLinkProps {
-    label: string
-    product_link: {
-        link_type: string
-        uid: string
-        url: string
-    }
-}
 export interface NavbarProps {
     icon?: string
-    products: ProductLinkProps[]
+    products: ProductsPageNodeProps[]
 }
 
 const Navbar: React.FC<NavbarProps> = ({ products }) => {

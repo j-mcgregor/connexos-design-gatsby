@@ -4,6 +4,7 @@ import * as React from 'react'
 import styled, { withTheme } from 'styled-components'
 import { SliceType } from '../../../../pages'
 import { Card } from '../../../styled-components/Card'
+import { ProductsPageNodeProps } from '../../../../pages/products'
 
 export const StyledProductsSlice = styled.div`
     height: 60vh;
@@ -15,21 +16,17 @@ export const StyledProductsSlice = styled.div`
     font-family: 'Raleway-Light';
 `
 
-const ProductsSlice: React.FC<{ sliceType: SliceType }> = ({ sliceType }) => {
+const ProductsSlice: React.FC<{ products: ProductsPageNodeProps[] }> = ({ products }) => {
     return (
-        <StyledProductsSlice
-            key={`products ${JSON.stringify(sliceType.primary.title1.raw)}`}
-            className="products"
-        >
-            <RichText render={sliceType.primary.title1.raw} />
-            <RichText render={sliceType.primary.description.raw} />
+        <StyledProductsSlice className="products">
+            <h1>See Our Products</h1>
             <div className="container flex flex-center">
-                {sliceType.items?.length &&
-                    sliceType.items.map(s => (
-                        <Link key={s.label} to={s.product_link?.url} target="_blank" className="text-center">
+                {products?.length &&
+                    products.map(s => (
+                        <Link key={s.id} to={`/products/${s.uid}`} target="_blank" className="text-center">
                             <Card>
-                                <img src={s.product_image.url} alt="" />
-                                <h3>{s.label}</h3>
+                                <img src={s.data.main_image.url} alt="" />
+                                <h3 className="text-capitalize text-primary">{s.uid}</h3>
                             </Card>
                         </Link>
                     ))}

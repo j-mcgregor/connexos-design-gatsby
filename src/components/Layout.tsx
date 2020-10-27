@@ -83,6 +83,12 @@ const Layout = (props: LayoutProps) => (
                         }
                     }
                 }
+                allPrismicProduct {
+                    nodes {
+                        id
+                        uid
+                    }
+                }
 
                 file(
                     sourceInstanceName: { eq: "images" }
@@ -93,10 +99,9 @@ const Layout = (props: LayoutProps) => (
             }
         `}
         render={data => {
-            console.log(data.prismicHomeBodyProducts.items)
             return (
                 <ThemeProvider theme={theme}>
-                    <Navbar icon={data.file.publicURL} products={data.prismicHomeBodyProducts.items} />
+                    <Navbar icon={data.file.publicURL} products={data.allPrismicProduct.nodes} />
                     <main>{props.children}</main>
                     <Footer icon={data.file.publicURL} />
                 </ThemeProvider>

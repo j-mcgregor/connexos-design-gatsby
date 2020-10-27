@@ -55,8 +55,10 @@ const RightNav: React.FC<BurgerProps> = ({ open, products }) => {
                 <Link to="/contact">Get in touch</Link>
             </li>
             {products?.map(p => (
-                <li key={p.label}>
-                    <Link to={`/products/${p.product_link.url}`}>{p.label}</Link>
+                <li key={p.id}>
+                    <Link to={`/products/${p.uid}`} className="text-capitalize">
+                        {p.uid}
+                    </Link>
                 </li>
             ))}
         </Ul>

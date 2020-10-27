@@ -40,6 +40,14 @@ module.exports = {
         },
         {
             resolve: 'gatsby-source-prismic',
+            pages: [
+                {
+                    type: 'Product',
+                    match: '/:uid',
+                    path: '/page-preview',
+                    component: require.resolve('./src/templates/Product.tsx'),
+                },
+            ],
             options: {
                 repositoryName: 'connexosdesign',
                 schemas: {
@@ -48,6 +56,7 @@ module.exports = {
                     contact: require('./src/schemas/contact.json'),
                     gallery: require('./src/schemas/gallery.json'),
                     about: require('./src/schemas/about.json'),
+                    product: require('./src/schemas/product.json'),
                 },
             },
         },

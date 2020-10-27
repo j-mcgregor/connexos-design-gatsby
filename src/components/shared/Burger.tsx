@@ -4,7 +4,7 @@ import { NavbarProps } from './Navbar'
 import RightNav from './RightNav'
 
 export interface BurgerProps extends NavbarProps {
-    open: boolean
+    open?: boolean
 }
 
 type StyledBurgerProps = StyledProps<{

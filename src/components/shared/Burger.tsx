@@ -3,7 +3,7 @@ import styled, { StyledProps } from 'styled-components'
 import { NavbarProps } from './Navbar'
 import RightNav from './RightNav'
 
-interface BurgerProps extends NavbarProps {
+export interface BurgerProps extends NavbarProps {
     open: boolean
 }
 

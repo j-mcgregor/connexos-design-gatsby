@@ -6,8 +6,9 @@ import TextArea from '../form/TextArea'
 import TextInput from '../form/TextInput'
 import { StyledSpinner } from './Spinner'
 
-const StyledForm = styled.form`
+const S_Form = styled.form`
     width: 400px;
+    padding-top: 3em;
     button {
         margin-top: 0.5em;
         width: 100%;
@@ -73,7 +74,7 @@ const Form = () => {
     }
 
     return (
-        <StyledForm
+        <S_Form
             className="container"
             onSubmit={handleSubmit}
             name={formName}
@@ -117,7 +118,7 @@ const Form = () => {
                 Submit
             </button>
             <div className="text-center p2">{status}</div>
-        </StyledForm>
+        </S_Form>
     )
 }
 

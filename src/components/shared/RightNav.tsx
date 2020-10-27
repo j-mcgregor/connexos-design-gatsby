@@ -38,7 +38,6 @@ const Ul = styled.ul<UlProps>`
 `
 
 const RightNav: React.FC<BurgerProps> = ({ open, products }) => {
-    console.log(products)
     return (
         <Ul open={open}>
             <li>

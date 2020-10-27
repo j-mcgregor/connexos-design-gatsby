@@ -23,6 +23,14 @@
                 "placeholder": "subtitle"
             }
         },
+        "background_image": {
+            "type": "Image",
+            "config": {
+                "constraint": {},
+                "thumbnails": [],
+                "label": "background image"
+            }
+        },
         "social_links": {
             "type": "Group",
             "config": {

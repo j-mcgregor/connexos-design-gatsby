@@ -62,7 +62,7 @@ const S_Contact = styled.div`
     }
 `
 
-type StyledBannerProps = StyledProps<{ bgImage?: string }>
+export type StyledBannerProps = StyledProps<{ bgImage?: string }>
 
 const S_Banner = styled.div<StyledBannerProps>`
     background: ${({ theme }) => theme.palette.center} url(${({ bgImage }) => bgImage}) no-repeat center

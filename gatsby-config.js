@@ -57,6 +57,7 @@ module.exports = {
                     gallery: require('./src/schemas/gallery.json'),
                     about: require('./src/schemas/about.json'),
                     product: require('./src/schemas/product.json'),
+                    item: require('./src/schemas/item.json'),
                 },
             },
         },

@@ -1,0 +1,73 @@
+{
+    "Main": {
+        "uid": {
+            "type": "UID",
+            "config": {
+                "label": "item"
+            }
+        },
+        "title": {
+            "type": "StructuredText",
+            "config": {
+                "single": "heading2",
+                "label": "Title"
+            }
+        },
+        "description": {
+            "type": "StructuredText",
+            "config": {
+                "multi": "paragraph",
+                "label": "Description"
+            }
+        },
+        "product_type": {
+            "type": "Select",
+            "config": {
+                "options": ["knits", "upcycling"],
+                "label": "product type"
+            }
+        },
+        "price": {
+            "type": "Text",
+            "config": {
+                "label": "price"
+            }
+        },
+        "time_to_make": {
+            "type": "Text",
+            "config": {
+                "label": "time to make"
+            }
+        },
+        "main_image": {
+            "type": "Image",
+            "config": {
+                "constraint": {},
+                "thumbnails": [],
+                "label": "main image"
+            }
+        },
+        "images": {
+            "type": "Group",
+            "config": {
+                "fields": {
+                    "image": {
+                        "type": "Image",
+                        "config": {
+                            "constraint": {},
+                            "thumbnails": [],
+                            "label": "image"
+                        }
+                    },
+                    "caption": {
+                        "type": "Text",
+                        "config": {
+                            "label": "caption"
+                        }
+                    }
+                },
+                "label": "images"
+            }
+        }
+    }
+}

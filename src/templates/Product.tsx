@@ -1,12 +1,43 @@
-import { graphql } from 'gatsby'
-import { RichText } from 'prismic-reactjs'
+import { graphql, Link } from 'gatsby'
+import { RichText, RichTextBlock } from 'prismic-reactjs'
 import * as React from 'react'
 import styled from 'styled-components'
 import Layout from '../components/Layout'
 import { ProductsPageNodeProps } from '../pages/products'
 import { StyledBannerProps } from '../pages/contact'
+import { Card, Cards } from '../components/styled-components/Card'
+
+interface ItemPageProps {
+    uid: string
+    data: {
+        title: {
+            raw: RichTextBlock[]
+        }
+        time_to_make: string
+        product_type: 'knits' | 'upcycling'
+        price: string
+        main_image: {
+            url: string
+        }
+        images: [
+            {
+                caption: string
+                image: {
+                    url: string
+                }
+            }
+        ]
+        description: {
+            raw: RichTextBlock[]
+        }
+    }
+}
+interface ItemPageType {
+    nodes: ItemPageProps[]
+}
 interface ProductPageType {
-    data: { prismicProduct: ProductsPageNodeProps }
+    data: { prismicProduct: ProductsPageNodeProps; allPrismicItem: ItemPageType }
+    pageContext: any
 }
 
 const S_ProductPage = styled.div`
@@ -35,8 +66,9 @@ const S_ProductHeader = styled.div<StyledBannerProps>`
     }
 `
 
-const Product: React.FC<ProductPageType> = ({ data }) => {
+const Product: React.FC<ProductPageType> = ({ data, pageContext }) => {
     const { data: product } = data.prismicProduct
+    const { nodes } = data.allPrismicItem
 
     return (
         <Layout>
@@ -52,12 +84,49 @@ const Product: React.FC<ProductPageType> = ({ data }) => {
                     </S_ProductHeader>
                 </div>
             </S_ProductPage>
+            <div className="row">
+                <Cards>
+                    {nodes?.map(n => {
+                        return (
+                            <Link to={`/products/${pageContext.uid}/${n.uid}`} key={n.uid}>
+                                <Card>
+                                    <img src={n.data.main_image.url} alt="" />
+                                    <RichText render={n.data.title.raw} />
+                                    <div className="price">${n.data.price}</div>
+                                </Card>
+                            </Link>
+                        )
+                    })}
+                    {nodes?.map(n => {
+                        return (
+                            <Link to={`/products/${pageContext.uid}/${n.uid}`} key={n.uid}>
+                                <Card>
+                                    <img src={n.data.main_image.url} alt="" />
+                                    <RichText render={n.data.title.raw} />
+                                    <div className="price">${n.data.price}</div>
+                                </Card>
+                            </Link>
+                        )
+                    })}
+                    {nodes?.map(n => {
+                        return (
+                            <Link to={`/products/${pageContext.uid}/${n.uid}`} key={n.uid}>
+                                <Card>
+                                    <img src={n.data.main_image.url} alt="" />
+                                    <RichText render={n.data.title.raw} />
+                                    <div className="price">${n.data.price}</div>
+                                </Card>
+                            </Link>
+                        )
+                    })}
+                </Cards>
+            </div>
         </Layout>
     )
 }
 
 export const query = graphql`
-    query Product($id: String) {
+    query Product($id: String, $uid: String) {
         prismicProduct(id: { eq: $id }) {
             id
             data {
@@ -70,6 +139,31 @@ export const query = graphql`
                 main_image {
                     url
                     alt
+                }
+            }
+        }
+        allPrismicItem(filter: { data: { product_type: { eq: $uid } } }) {
+            nodes {
+                uid
+                data {
+                    title {
+                        raw
+                    }
+                    time_to_make
+                    product_type
+                    price
+                    main_image {
+                        url
+                    }
+                    images {
+                        caption
+                        image {
+                            url
+                        }
+                    }
+                    description {
+                        raw
+                    }
                 }
             }
         }

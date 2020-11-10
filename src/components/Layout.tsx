@@ -1,5 +1,5 @@
-import '../assets/stylesheets/main.scss'
 import 'flexboxgrid2/flexboxgrid2.css'
+import '../assets/stylesheets/main.scss'
 
 import { graphql, StaticQuery } from 'gatsby'
 import * as React from 'react'

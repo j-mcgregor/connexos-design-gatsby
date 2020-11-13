@@ -59,7 +59,7 @@ const Navbar: React.FC<NavbarProps> = ({ products }) => {
         <>
             <SubNav className="row">
                 <div className="col-md-6">
-                    <Link to="/">FAQ</Link>
+                    <Link to="/faq">FAQ</Link>
                 </div>
                 <div className="col-md-6 text-right">
                     <a href="http://facebook.com" target="_blank" rel="noopener noreferrer">

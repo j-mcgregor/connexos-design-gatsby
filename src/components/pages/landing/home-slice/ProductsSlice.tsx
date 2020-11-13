@@ -2,8 +2,7 @@ import { RichText } from 'prismic-reactjs'
 import { Link } from 'gatsby'
 import * as React from 'react'
 import styled, { withTheme } from 'styled-components'
-import { SliceType } from '../../../../pages'
-import { Card } from '../../../styled-components/Card'
+import { Card, Cards } from '../../../styled-components/Card'
 import { ProductsPageNodeProps } from '../../../../pages/products'
 
 export const StyledProductsSlice = styled.div`
@@ -14,13 +13,14 @@ export const StyledProductsSlice = styled.div`
     justify-content: center;
     flex-direction: column;
     font-family: 'Raleway-Light';
+    margin: auto;
 `
 
 const ProductsSlice: React.FC<{ products: ProductsPageNodeProps[] }> = ({ products }) => {
     return (
         <StyledProductsSlice className="products">
             <h1>See Our Products</h1>
-            <div className="container flex flex-center">
+            <Cards flex>
                 {products?.length &&
                     products.map(s => (
                         <Link key={s.id} to={`/products/${s.uid}`} target="_blank" className="text-center">
@@ -30,7 +30,7 @@ const ProductsSlice: React.FC<{ products: ProductsPageNodeProps[] }> = ({ produc
                             </Card>
                         </Link>
                     ))}
-            </div>
+            </Cards>
         </StyledProductsSlice>
     )
 }

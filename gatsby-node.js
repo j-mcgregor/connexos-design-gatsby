@@ -23,6 +23,15 @@ exports.createPages = async ({ graphql, actions }) => {
                     }
                 }
             }
+            allPrismicItem {
+                nodes {
+                    uid
+                    id
+                    data {
+                        product_type
+                    }
+                }
+            }
         }
     `)
 
@@ -34,6 +43,17 @@ exports.createPages = async ({ graphql, actions }) => {
             context: {
                 id: node.id,
                 uid: node.uid,
+            },
+        })
+    })
+    pages.data.allPrismicItem.nodes.forEach(node => {
+        createPage({
+            path: `/products/${node.data.product_type}/${node.id}`,
+            component: path.resolve(__dirname, 'src/templates/Item.tsx'),
+            context: {
+                id: node.id,
+                uid: node.uid,
+                product_type: node.data.product_type,
             },
         })
     })

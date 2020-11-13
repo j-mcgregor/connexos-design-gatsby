@@ -39,6 +39,18 @@
                 "label": "time to make"
             }
         },
+        "shipping": {
+            "type": "Text",
+            "config": {
+                "label": "shipping"
+            }
+        },
+        "etsy_link": {
+            "type": "Link",
+            "config": {
+                "label": "Etsy link"
+            }
+        },
         "main_image": {
             "type": "Image",
             "config": {

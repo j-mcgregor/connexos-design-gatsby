@@ -8,6 +8,7 @@ import { StyledBannerProps } from '../pages/contact'
 import { Card, Cards } from '../components/styled-components/Card'
 
 interface ItemPageProps {
+    id: string
     uid: string
     data: {
         title: {
@@ -32,7 +33,7 @@ interface ItemPageProps {
         }
     }
 }
-interface ItemPageType {
+export interface ItemPageType {
     nodes: ItemPageProps[]
 }
 interface ProductPageType {
@@ -85,32 +86,10 @@ const Product: React.FC<ProductPageType> = ({ data, pageContext }) => {
                 </div>
             </S_ProductPage>
             <div className="row">
-                <Cards>
+                <Cards grid>
                     {nodes?.map(n => {
                         return (
-                            <Link to={`/products/${pageContext.uid}/${n.uid}`} key={n.uid}>
-                                <Card>
-                                    <img src={n.data.main_image.url} alt="" />
-                                    <RichText render={n.data.title.raw} />
-                                    <div className="price">${n.data.price}</div>
-                                </Card>
-                            </Link>
-                        )
-                    })}
-                    {nodes?.map(n => {
-                        return (
-                            <Link to={`/products/${pageContext.uid}/${n.uid}`} key={n.uid}>
-                                <Card>
-                                    <img src={n.data.main_image.url} alt="" />
-                                    <RichText render={n.data.title.raw} />
-                                    <div className="price">${n.data.price}</div>
-                                </Card>
-                            </Link>
-                        )
-                    })}
-                    {nodes?.map(n => {
-                        return (
-                            <Link to={`/products/${pageContext.uid}/${n.uid}`} key={n.uid}>
+                            <Link to={`/products/${pageContext.uid}/${n.id}`} key={n.uid}>
                                 <Card>
                                     <img src={n.data.main_image.url} alt="" />
                                     <RichText render={n.data.title.raw} />
@@ -144,6 +123,7 @@ export const query = graphql`
         }
         allPrismicItem(filter: { data: { product_type: { eq: $uid } } }) {
             nodes {
+                id
                 uid
                 data {
                     title {

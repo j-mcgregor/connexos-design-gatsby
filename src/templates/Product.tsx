@@ -92,8 +92,10 @@ const Product: React.FC<ProductPageType> = ({ data, pageContext }) => {
                             <Link to={`/products/${pageContext.uid}/${n.id}`} key={n.uid}>
                                 <Card>
                                     <img src={n.data.main_image.url} alt="" />
-                                    <RichText render={n.data.title.raw} />
-                                    <div className="price">${n.data.price}</div>
+                                    <div className="card-footer">
+                                        <RichText render={n.data.title.raw} />
+                                        <div className="price">${n.data.price}</div>
+                                    </div>
                                 </Card>
                             </Link>
                         )

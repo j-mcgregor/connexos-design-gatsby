@@ -26,7 +26,9 @@ const ProductsSlice: React.FC<{ products: ProductsPageNodeProps[] }> = ({ produc
                         <Link key={s.id} to={`/products/${s.uid}`} target="_blank" className="text-center">
                             <Card>
                                 <img src={s.data.main_image.url} alt="" />
-                                <h3 className="text-capitalize text-primary">{s.uid}</h3>
+                                <div className="card-footer">
+                                    <h3 className="text-capitalize text-primary">{s.uid}</h3>
+                                </div>
                             </Card>
                         </Link>
                     ))}

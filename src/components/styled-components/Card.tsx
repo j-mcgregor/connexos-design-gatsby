@@ -14,6 +14,7 @@ export const setGrid = ({ flex, grid }: CardsType) => {
             grid-auto-rows: auto;
             grid-gap: 2em;
             width: calc((250px * 4) + (2em * 3));
+            overflow-x: hidden;
         `
     }
     if (flex) {
@@ -23,6 +24,7 @@ export const setGrid = ({ flex, grid }: CardsType) => {
             flex-wrap: wrap;
             justify-content: center;
             align-items: center;
+            width: 100%;
 
             > a {
                 width: 250px;
@@ -35,7 +37,6 @@ export const setGrid = ({ flex, grid }: CardsType) => {
 export const Cards = styled.div<CardsType>`
     ${({ flex, grid }) => setGrid({ flex, grid })}
     margin: 4rem auto;
-    overflow-x: hidden;
 `
 
 export const Card = styled.div`
@@ -45,7 +46,6 @@ export const Card = styled.div`
     justify-content: center;
     font-family: 'Raleway-Light';
     width: 100%;
-    /* margin: 2em 0; */
     padding: 0;
     border: 1px solid #e4e4e4;
     transition: 0.3s;

@@ -1,9 +1,9 @@
-import { RichText } from 'prismic-reactjs'
 import { Link } from 'gatsby'
 import * as React from 'react'
 import styled, { withTheme } from 'styled-components'
-import { Card, Cards } from '../../../styled-components/Card'
+
 import { ProductsPageNodeProps } from '../../../../pages/products'
+import { Card, Cards } from '../../../styled-components/Card'
 
 export const StyledProductsSlice = styled.div`
     height: 60vh;

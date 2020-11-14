@@ -58,20 +58,6 @@ const Layout = (props: LayoutProps) => (
                         }
                     }
                 }
-                prismicGallery {
-                    data {
-                        body {
-                            ... on PrismicGalleryBodyImageGallery {
-                                id
-                                primary {
-                                    album {
-                                        text
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
                 prismicHomeBodyProducts {
                     id
                     items {

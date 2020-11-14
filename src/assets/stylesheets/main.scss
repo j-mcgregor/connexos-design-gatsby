@@ -17,17 +17,12 @@
 @import 'base/margin';
 @import 'base/typography';
 
-// 4. Layout-related sections
-@import 'layout/gallery';
-
 // 5. Components
 @import 'components/button';
 @import 'components/loaders';
 @import 'components/modal';
 @import 'components/navs';
 @import 'components/notify';
-
-@import 'pages/portfolio';
 
 @font-face {
     font-family: 'Raleway-Light';

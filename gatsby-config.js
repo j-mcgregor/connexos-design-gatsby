@@ -54,7 +54,6 @@ module.exports = {
                     home: require('./src/schemas/home.json'),
                     landing: require('./src/schemas/landing.json'),
                     contact: require('./src/schemas/contact.json'),
-                    gallery: require('./src/schemas/gallery.json'),
                     about: require('./src/schemas/about.json'),
                     product: require('./src/schemas/product.json'),
                     item: require('./src/schemas/item.json'),

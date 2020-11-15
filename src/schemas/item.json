@@ -23,7 +23,7 @@
         "product_type": {
             "type": "Select",
             "config": {
-                "options": ["knits", "upcycling"],
+                "options": ["knits", "upcycling", "tricots"],
                 "label": "product type"
             }
         },

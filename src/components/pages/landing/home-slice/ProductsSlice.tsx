@@ -2,7 +2,7 @@ import { Link } from 'gatsby'
 import * as React from 'react'
 import styled, { withTheme } from 'styled-components'
 
-import { ProductsPageNodeProps } from '../../../../pages/products'
+import { ProductsPageNodeProps } from '../../../../types/enums'
 import { Card, Cards } from '../../../styled-components/Card'
 
 export const StyledProductsSlice = styled.div`

@@ -3,6 +3,7 @@ import { faClock } from '@fortawesome/free-regular-svg-icons'
 import { faShippingFast } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { graphql, Link } from 'gatsby'
+import * as moment from 'moment'
 import { RichText, RichTextBlock } from 'prismic-reactjs'
 import * as React from 'react'
 import styled from 'styled-components'
@@ -112,7 +113,7 @@ const ItemHeader = styled.div<StyledBannerProps>`
     }
 `
 
-const Item: React.FC<ProductPageType> = ({ data }) => {
+const Item: React.FC<ProductPageType> = ({ data, pageContext }) => {
     const { data: item } = data.prismicItem
     const { nodes: allItems } = data.allPrismicItem
 
@@ -134,7 +135,7 @@ const Item: React.FC<ProductPageType> = ({ data }) => {
                                 alt=""
                                 onClick={() => setMainImg(item.main_image.url)}
                             />
-                            {item.images?.length &&
+                            {!!item.images?.length &&
                                 item.images.map((img, i) => {
                                     return (
                                         img.image.url && (
@@ -163,9 +164,9 @@ const Item: React.FC<ProductPageType> = ({ data }) => {
                             </div>
                         )}
                         <RichText render={item.description.raw} />
-                        <Button size="sm" to={item.etsy_link.url}>
+                        <Button size="sm" to={item.etsy_link.url} target="_blank">
                             <FontAwesomeIcon icon={faEtsy} className="mr1" />
-                            BUY ON ETSY
+                            Acheter sur Esty
                         </Button>
                     </ItemHeader>
                 </div>
@@ -173,19 +174,29 @@ const Item: React.FC<ProductPageType> = ({ data }) => {
                     <div className="container">
                         <h2 className="p1">Related Items</h2>
                         <Cards grid>
-                            {allItems?.map(n => {
-                                return (
-                                    <Link to={`/products/${n.data.product_type}/${n.id}`} key={n.uid}>
-                                        <Card>
-                                            <img src={n.data.main_image.url} alt="" />
-                                            <div className="card-footer">
-                                                <RichText render={n.data.title.raw} />
-                                                <div className="price">CA${n.data.price}</div>
-                                            </div>
-                                        </Card>
-                                    </Link>
-                                )
-                            })}
+                            {allItems
+                                ?.sort((a, b) => {
+                                    return (
+                                        moment(b.last_publication_date).unix() -
+                                        moment(a.last_publication_date).unix()
+                                    )
+                                })
+                                .map(n => {
+                                    if (n.id === pageContext.id) {
+                                        return null
+                                    }
+                                    return (
+                                        <Link to={`/products/${n.data.product_type}/${n.id}`} key={n.uid}>
+                                            <Card>
+                                                <img src={n.data.main_image.url} alt="" />
+                                                <div className="card-footer">
+                                                    <RichText render={n.data.title.raw} />
+                                                    <div className="price">CA${n.data.price}</div>
+                                                </div>
+                                            </Card>
+                                        </Link>
+                                    )
+                                })}
                         </Cards>
                     </div>
                 </div>
@@ -228,6 +239,8 @@ export const query = graphql`
             nodes {
                 id
                 uid
+                first_publication_date(formatString: "")
+                last_publication_date(formatString: "")
                 data {
                     title {
                         raw

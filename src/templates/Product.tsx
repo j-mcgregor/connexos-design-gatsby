@@ -2,20 +2,23 @@ import { graphql, Link } from 'gatsby'
 import { RichText, RichTextBlock } from 'prismic-reactjs'
 import * as React from 'react'
 import styled from 'styled-components'
+
 import Layout from '../components/Layout'
-import { ProductsPageNodeProps } from '../pages/products'
-import { StyledBannerProps } from '../pages/contact'
 import { Card, Cards } from '../components/styled-components/Card'
+import { StyledBannerProps } from '../pages/contact'
+import { ProductsPageNodeProps } from '../types/enums'
 
 interface ItemPageProps {
     id: string
     uid: string
+    first_publication_date: string
+    last_publication_date: string
     data: {
         title: {
             raw: RichTextBlock[]
         }
         time_to_make: string
-        product_type: 'knits' | 'upcycling'
+        product_type: 'knits' | 'upcycling' | 'tricots'
         price: string
         main_image: {
             url: string
@@ -64,6 +67,11 @@ const S_ProductHeader = styled.div<StyledBannerProps>`
             font-size: 3em;
             text-transform: uppercase;
         }
+    }
+    p {
+        font-size: 1.5em;
+        padding: 3em;
+        line-height: 2em;
     }
 `
 

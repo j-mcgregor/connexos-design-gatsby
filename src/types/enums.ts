@@ -1,3 +1,5 @@
+import { RichTextBlock } from 'prismic-reactjs'
+
 export enum Breakpoints {
     xl = 1200,
     lg = 992,
@@ -50,4 +52,21 @@ export interface TextAreaInputProps {
     placeholder: string
     required: boolean
     value: string
+}
+
+export interface ProductsPageNodeProps {
+    id: string
+    uid: string
+    data: {
+        title: {
+            raw: RichTextBlock[]
+        }
+        main_image: {
+            alt: string
+            url: string
+        }
+        description: {
+            raw: RichTextBlock[]
+        }
+    }
 }

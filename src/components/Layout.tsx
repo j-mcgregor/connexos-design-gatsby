@@ -1,12 +1,16 @@
-import 'flexboxgrid2/flexboxgrid2.css'
 import '../assets/stylesheets/main.scss'
+import '@fortawesome/fontawesome-svg-core/styles.css'
+import 'flexboxgrid2/flexboxgrid2.css'
 
+import { config } from '@fortawesome/fontawesome-svg-core'
 import { graphql, StaticQuery } from 'gatsby'
 import * as React from 'react'
 import { ThemeProvider } from 'styled-components'
 
-import Navbar from './shared/Navbar'
 import Footer from './shared/Footer'
+import Navbar from './shared/Navbar'
+
+config.autoAddCss = false
 
 export const theme = {
     palette: {

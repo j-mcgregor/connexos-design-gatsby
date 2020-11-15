@@ -41,18 +41,18 @@ const RightNav: React.FC<BurgerProps> = ({ open, products }) => {
     return (
         <Ul open={open}>
             <li>
-                <Link to="/">Home</Link>
+                <Link to="/">Accueille</Link>
             </li>
             <li>
-                <Link to="/about">About</Link>
+                <Link to="/about">À propos</Link>
             </li>
             <li>
                 <a href="https://www.etsy.com/shop/ConnexosDesign" target="_blank" rel="noreferrer">
-                    Etsy Shop
+                    Etsy
                 </a>
             </li>
             <li>
-                <Link to="/contact">Get in touch</Link>
+                <Link to="/contact">Contact</Link>
             </li>
             {products?.map(p => (
                 <li key={p.id}>

@@ -1,12 +1,12 @@
+import { faEtsy, faFacebookSquare, faInstagram } from '@fortawesome/free-brands-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { Link } from 'gatsby'
 import * as React from 'react'
 import styled, { withTheme } from 'styled-components'
-import { Link } from 'gatsby'
 
-import Burger from './Burger'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faFacebookSquare, faEtsy, faInstagram } from '@fortawesome/free-brands-svg-icons'
+import { ProductsPageNodeProps } from '../../types/enums'
 import { theme } from '../Layout'
-import { ProductsPageNodeProps } from '../../pages/products'
+import Burger from './Burger'
 
 const Nav = styled.nav`
     max-width: 100%;

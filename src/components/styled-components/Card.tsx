@@ -46,7 +46,8 @@ export const Card = styled.div`
     justify-content: center;
     font-family: 'Raleway-Light';
     width: 100%;
-    padding: 0;
+    height: 100%;
+    padding: 8px 8px 0 8px;
     border: 1px solid #e4e4e4;
     transition: 0.3s;
     box-shadow: 0px 4px 7px -7px black;
@@ -58,22 +59,28 @@ export const Card = styled.div`
     }
 
     img {
-        height: 250px;
+        margin-top: 0;
+        height: 230px;
         width: 100%;
         object-fit: cover;
     }
 
     .card-footer {
         padding: 1em;
-        font-size: 14px;
+        font-size: 12px;
+        height: 110px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: space-between;
 
         h2 {
-            font-size: 1.7em;
+            font-size: 1.3em;
             color: ${theme.palette.dark_2};
         }
 
         .price {
-            font-size: 1.2em;
+            font-size: 1.4em;
             color: ${({ theme }) => theme.palette.center};
         }
     }

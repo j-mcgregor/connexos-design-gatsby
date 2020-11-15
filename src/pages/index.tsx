@@ -9,7 +9,7 @@ import CallToActionSlice from '../components/pages/landing/home-slice/CallToActi
 import HeroSlice from '../components/pages/landing/home-slice/HeroSlice'
 import ProductsSlice from '../components/pages/landing/home-slice/ProductsSlice'
 import SEO from '../components/SEO'
-import { ProductsPageNodeProps } from './products'
+import { ProductsPageNodeProps } from '../types/enums'
 
 export const query = graphql`
     query IndexPageQuery {

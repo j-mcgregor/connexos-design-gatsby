@@ -32,6 +32,12 @@ const StyledHero = styled.div<HeroProps>`
                     justify-content: center;
                     flex-direction: column;
 
+                    h1,
+                    h2,
+                    h3 {
+                        font-family: 'FiraSans-Regular';
+                    }
+
                     h1 {
                         color: ${({ theme }) => theme.palette.dark_2};
                         text-transform: uppercase;
@@ -39,13 +45,11 @@ const StyledHero = styled.div<HeroProps>`
                     }
                     h2 {
                         color: ${({ theme }) => theme.palette.center};
-                        font-family: 'FiraSans-Regular';
                         font-size: 2.1em;
                     }
 
                     h3 {
                         color: ${({ theme }) => theme.palette.dark_1};
-                        font-family: 'FiraSans-Regular';
                     }
 
                     p {

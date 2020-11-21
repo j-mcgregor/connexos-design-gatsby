@@ -20,7 +20,7 @@ const StyledBurger = styled.div<StyledBurgerProps>`
     right: 20px;
     z-index: 20;
     display: none;
-    font-family: 'Raleway-Light';
+    font-family: 'FiraSans-Regular';
 
     @media (max-width: 768px) {
         display: flex;

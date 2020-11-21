@@ -16,18 +16,20 @@ export const StyledCallToActionSlice = styled.div<CallToActionProps>`
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    font-family: 'Raleway-Light';
+    font-family: 'FiraSans-Regular';
     background: ${({ theme }) => theme.palette.light} url(${({ bgImage }) => bgImage});
     background-size: cover;
     background-repeat: no-repeat;
 
     h2 {
         width: 400px;
+        color: ${({ theme }) => theme.palette.center};
     }
 
     p {
         width: 400px;
         text-align: justify;
+        color: ${({ theme }) => theme.palette.center};
     }
 
     .btn-group {
@@ -53,20 +55,6 @@ const CallToActionSlice: React.FC<{ sliceType: SliceType }> = ({ sliceType }) =>
                     <div className="col-md-6">
                         <RichText render={sliceType.primary.title1.raw} />
                         <RichText render={sliceType.primary.subtitle.raw} />
-                        <div className="btn-group flex flex-align-center flex-justify-start">
-                            {sliceType.items?.length &&
-                                sliceType.items.map(s => (
-                                    <Button
-                                        key={s.page}
-                                        to={s.call_to_action.url}
-                                        target="_blank"
-                                        size="xs"
-                                        className="mr1"
-                                    >
-                                        {s.page}
-                                    </Button>
-                                ))}
-                        </div>
                     </div>
                     <div className="col-md-6" />
                 </div>

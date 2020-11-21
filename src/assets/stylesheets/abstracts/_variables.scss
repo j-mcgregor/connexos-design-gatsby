@@ -9,6 +9,11 @@
 // >>>>>>>>>>>>>>>>>>>> GREYSCALE
 // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
+$temp1: #39311d;
+$temp2: #7e7474;
+$temp3: #c4b6b6;
+$temp4: #ffdd93;
+
 $white: #e8e9eb;
 $grey: #e0dfd5;
 $black: #313638;
@@ -103,9 +108,9 @@ $light-color-light: lighten($light-grey-50, 20%);
 $dark-color-light: lighten($dark-indigo, 20%);
 
 // FONT STYLE AND SIZE
-$default-font: 'Raleway-Light', sans-serif;
-$secondary-font: 'Source Code Pro', Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
-$theme-font: 'Open Sans Condensed-Light', sans-serif;
+$default-font: 'FiraSans-Regular', sans-serif;
+$secondary-font: $default-font;
+$theme-font: $default-font;
 
 $font-size: 16px;
 $line-height: $font-size * 1.8;

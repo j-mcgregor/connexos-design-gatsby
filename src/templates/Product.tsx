@@ -2,6 +2,7 @@ import { graphql, Link } from 'gatsby'
 import { RichText, RichTextBlock } from 'prismic-reactjs'
 import * as React from 'react'
 import styled from 'styled-components'
+import * as moment from 'moment'
 
 import Layout from '../components/Layout'
 import { Card, Cards } from '../components/styled-components/Card'
@@ -51,12 +52,13 @@ const S_ProductPage = styled.div`
 const S_ProductHeader = styled.div<StyledBannerProps>`
     height: 60vh;
     background: url(${({ bgImage }) => bgImage}) no-repeat center center;
+    background-size: contain;
     text-align: center;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    font-family: 'Raleway-Thin';
+    font-family: 'FiraSans-Regular';
     padding: 0.7em 4em;
 
     .title-section {
@@ -66,6 +68,7 @@ const S_ProductHeader = styled.div<StyledBannerProps>`
             padding: 0.2em 2em;
             font-size: 3em;
             text-transform: uppercase;
+            color: ${({ theme }) => theme.palette.light};
         }
     }
     p {
@@ -95,19 +98,27 @@ const Product: React.FC<ProductPageType> = ({ data, pageContext }) => {
             </S_ProductPage>
             <div className="row">
                 <Cards grid>
-                    {nodes?.map(n => {
-                        return (
-                            <Link to={`/products/${pageContext.uid}/${n.id}`} key={n.uid}>
-                                <Card>
-                                    <img src={n.data.main_image.url} alt="" />
-                                    <div className="card-footer">
-                                        <RichText render={n.data.title.raw} />
-                                        <div className="price">${n.data.price}</div>
-                                    </div>
-                                </Card>
-                            </Link>
-                        )
-                    })}
+                    {nodes
+                        ?.sort((a, b) => {
+                            console.log(moment(b.last_publication_date).unix())
+                            return (
+                                moment(b.last_publication_date).unix() -
+                                moment(a.last_publication_date).unix()
+                            )
+                        })
+                        .map(n => {
+                            return (
+                                <Link to={`/products/${pageContext.uid}/${n.id}`} key={n.uid}>
+                                    <Card>
+                                        <img src={n.data.main_image.url} alt="" />
+                                        <div className="card-footer">
+                                            <RichText render={n.data.title.raw} />
+                                            <div className="price">${n.data.price}</div>
+                                        </div>
+                                    </Card>
+                                </Link>
+                            )
+                        })}
                 </Cards>
             </div>
         </Layout>

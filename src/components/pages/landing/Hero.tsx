@@ -39,13 +39,13 @@ const StyledHero = styled.div<HeroProps>`
                     }
                     h2 {
                         color: ${({ theme }) => theme.palette.center};
-                        font-family: 'CormorantGaramond-Light', Times, serif;
+                        font-family: 'FiraSans-Regular';
                         font-size: 2.1em;
                     }
 
                     h3 {
                         color: ${({ theme }) => theme.palette.dark_1};
-                        font-family: 'Raleway-Light';
+                        font-family: 'FiraSans-Regular';
                     }
 
                     p {

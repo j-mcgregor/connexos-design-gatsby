@@ -10,13 +10,13 @@ import Burger from './Burger'
 
 const Nav = styled.nav`
     max-width: 100%;
-    border-bottom: 2px solid ${({ theme }) => theme.palette.light};
+    border-bottom: 1px solid ${({ theme }) => theme.palette.light};
     padding: 0 2em;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    font-family: 'CormorantGaramond-Light', Times, serif;
+    font-family: 'FiraSans-Regular', Times, serif;
 
     h1 {
         color: black;
@@ -34,15 +34,18 @@ interface SubNavProps {
 
 const SubNav = styled.nav<SubNavProps>`
     background: ${({ theme }) => theme.palette.light};
-    color: ${({ theme }) => theme.palette.white};
+    color: ${({ theme }) => theme.palette.dark};
     width: 100%;
     border-bottom: 2px solid ${({ theme }) => theme.palette.white};
     padding: 0.6em 1em;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-family: 'Raleway-Light';
+    font-family: 'FiraSans-Regular';
 
+    a {
+        color: ${({ theme }) => theme.palette.dark_1};
+    }
     svg {
         color: black;
         margin-left: 15px;

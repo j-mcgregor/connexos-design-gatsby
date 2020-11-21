@@ -6,7 +6,7 @@ interface BannerProps {
 }
 
 const StyledBanner = styled.div`
-    font-family: 'Raleway-Thin';
+    font-family: 'FiraSans-Regular';
 
     h2 {
         text-transform: uppercase;

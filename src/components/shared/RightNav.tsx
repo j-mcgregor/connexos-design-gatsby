@@ -12,7 +12,7 @@ const Ul = styled.ul<UlProps>`
     display: flex;
     flex-flow: row nowrap;
     padding: 0;
-    font-family: 'Raleway-Light';
+    font-family: 'FiraSans-Regular';
 
     li {
         padding: 0.7em;

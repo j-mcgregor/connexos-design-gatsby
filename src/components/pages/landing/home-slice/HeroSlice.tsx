@@ -5,6 +5,7 @@ import * as React from 'react'
 import styled, { withTheme } from 'styled-components'
 
 import { SliceType } from '../../../../pages'
+import { theme } from '../../../Layout'
 import { Button } from '../../../styled-components/Link'
 
 export const StyledHeroSlice = styled.div<{ backgroundImage: string }>`
@@ -13,7 +14,7 @@ export const StyledHeroSlice = styled.div<{ backgroundImage: string }>`
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    font-family: 'Raleway-Light';
+    font-family: 'FiraSans-Regular';
     background: url(${({ backgroundImage }) => backgroundImage}) fixed;
 
     .text-block {
@@ -26,10 +27,11 @@ export const StyledHeroSlice = styled.div<{ backgroundImage: string }>`
     }
 
     h1 {
-        font-family: Georgia, 'Times New Roman', Times, serif;
+        color: ${({ theme }) => theme.palette.center};
     }
 
     p {
+        color: ${({ theme }) => theme.palette.center};
         width: 400px;
         text-align: justify;
     }
@@ -46,12 +48,7 @@ const HeroSlice: React.FC<{ sliceType: SliceType }> = ({ sliceType }) => {
                 <RichText render={sliceType.primary.title1.raw} />
                 <RichText render={sliceType.primary.paragraph.raw} />
                 {sliceType.items?.length && (
-                    <Button
-                        to={sliceType.items[0].button_link.url}
-                        target="_blank"
-                        bgColor={sliceType.items[0].color}
-                        size="md"
-                    >
+                    <Button to={sliceType.items[0].button_link.url} target="_blank" size="md">
                         <FontAwesomeIcon icon={faShoppingCart} className="mr1" />
                         {sliceType.items[0].button_label}
                     </Button>

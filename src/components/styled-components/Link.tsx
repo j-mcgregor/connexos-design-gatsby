@@ -16,15 +16,15 @@ interface LinkExtended extends GatsbyLinkProps<{}> {
 export const Button = styled(Link)<LinkExtended>`
     border-width: 1px;
     border-style: solid;
-    border-color: ${({ theme }) => theme.palette.center};
-    color: ${({ theme }) => theme.palette.center};
+    border-color: ${({ theme }) => theme.palette.dark};
+    color: ${({ theme }) => theme.palette.dark};
     text-transform: uppercase;
     padding: ${({ size }) => ButtonSizes[size]};
     border-radius: 4px;
 
     &:hover {
-        border-color: ${({ theme }) => theme.palette.center};
-        background: ${({ theme }) => theme.palette.center};
+        border-color: ${({ theme }) => theme.palette.dark};
+        background: ${({ theme }) => theme.palette.dark};
         color: ${({ theme }) => theme.palette.light};
     }
 `

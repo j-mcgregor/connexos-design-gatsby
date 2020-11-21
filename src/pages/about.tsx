@@ -56,7 +56,7 @@ const StyledAbout = styled.div<StyledAboutProps>`
 
     h1 {
         color: ${({ theme }) => theme.palette.center};
-        font-family: 'CormorantGaramond-Light', Times, serif;
+        font-family: 'FiraSans-Regular', Times, serif;
         font-size: 3em;
     }
 

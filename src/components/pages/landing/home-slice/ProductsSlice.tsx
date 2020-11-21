@@ -12,8 +12,12 @@ export const StyledProductsSlice = styled.div`
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    font-family: 'Raleway-Light';
+    font-family: 'FiraSans-Regular';
     margin: auto;
+
+    h1 {
+        color: ${({ theme }) => theme.palette.center};
+    }
 `
 
 const ProductsSlice: React.FC<{ products: ProductsPageNodeProps[] }> = ({ products }) => {
@@ -27,7 +31,7 @@ const ProductsSlice: React.FC<{ products: ProductsPageNodeProps[] }> = ({ produc
                             <Card>
                                 <img src={s.data.main_image.url} alt="" />
                                 <div className="card-footer">
-                                    <h3 className="text-capitalize text-primary">{s.uid}</h3>
+                                    <h3 className="text-capitalize">{s.uid}</h3>
                                 </div>
                             </Card>
                         </Link>

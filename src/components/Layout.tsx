@@ -15,13 +15,13 @@ config.autoAddCss = false
 export const theme = {
     palette: {
         black: 'rgb(17, 17, 17)',
-        dark: 'rgb(26, 20, 35)',
+        dark: 'rgb(57, 49, 29)', // <--
         dark_1: 'rgb(55, 37, 73)',
         dark_2: 'rgb(55, 37, 73)',
-        center: 'rgb(183, 93, 105)',
-        light_2: 'rgb(234, 205, 194)',
+        center: 'rgb(126, 116, 116)',
+        light_2: 'rgb(214, 194, 194)',
         light_1: 'rgb(255, 188, 181)',
-        light: 'rgb(245, 243, 240)',
+        light: 'rgb(255, 221, 147)',
         white: 'rgb(255, 255, 255)',
     },
     paletteOpacity: {

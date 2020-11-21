@@ -53,7 +53,7 @@ interface ProductPageType {
 const ItemLayout = styled.div`
     h2 {
         color: ${({ theme }) => theme.palette.center};
-        font-family: 'Raleway-Light', Times, serif;
+        font-family: 'FiraSans-Regular', Times, serif;
         font-size: 2.1em;
     }
 `
@@ -67,10 +67,13 @@ const ItemHeader = styled.div<StyledBannerProps>`
     justify-content: ${({ justify }) =>
         justify === 'top' ? 'flex-start' : justify === 'bottom' ? 'flex-end' : 'center'};
     flex-direction: column;
-    font-family: 'Raleway-Thin';
+    font-family: 'FiraSans-Regular';
     padding-top: 0;
+    padding-left: 3em;
+    color: ${({ theme }) => theme.palette.dark_2};
 
     h2 {
+        color: ${({ theme }) => theme.palette.dark};
         margin-top: 10px;
     }
 
@@ -103,12 +106,13 @@ const ItemHeader = styled.div<StyledBannerProps>`
     }
 
     .price {
-        font-size: 3em;
+        font-size: 1.8em;
         margin-bottom: 1em;
     }
 
     .duration,
     .shipping {
+        color: ${({ theme }) => theme.palette.center};
         margin: 5px 0;
     }
 `
@@ -150,13 +154,15 @@ const Item: React.FC<ProductPageType> = ({ data, pageContext }) => {
                                 })}
                         </div>
                     </ItemHeader>
-                    <ItemHeader className="col-md-6 p3" align="left" justify="top">
+                    <ItemHeader className="col-md-6 p3 pl3" align="left" justify="top">
                         <RichText render={item.title.raw} />
-                        <div className="price">${item.price}</div>
-                        <div className="duration">
-                            <FontAwesomeIcon icon={faClock} className="mr1" />
-                            {item.time_to_make}
-                        </div>
+                        <div className="price">{item.price}$</div>
+                        {item.time_to_make && (
+                            <div className="duration">
+                                <FontAwesomeIcon icon={faClock} className="mr1" />
+                                {item.time_to_make}
+                            </div>
+                        )}
                         {item.shipping && (
                             <div className="shipping">
                                 <FontAwesomeIcon icon={faShippingFast} className="mr1" />
@@ -172,7 +178,7 @@ const Item: React.FC<ProductPageType> = ({ data, pageContext }) => {
                 </div>
                 <div className="row">
                     <div className="container">
-                        <h2 className="p1">Related Items</h2>
+                        <h2 className="p1">Vous aimerez aussi</h2>
                         <Cards grid>
                             {allItems
                                 ?.sort((a, b) => {

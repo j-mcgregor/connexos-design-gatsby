@@ -44,7 +44,7 @@ export const Card = styled.div`
     flex-direction: column;
     align-items: flex-start;
     justify-content: center;
-    font-family: 'Raleway-Light';
+    font-family: 'FiraSans-Regular';
     width: 100%;
     height: 100%;
     padding: 8px 8px 0 8px;
@@ -76,7 +76,10 @@ export const Card = styled.div`
 
         h2 {
             font-size: 1.3em;
-            color: ${theme.palette.dark_2};
+            color: ${theme.palette.center};
+        }
+        h3 {
+            color: ${({ theme }) => theme.palette.light_2};
         }
 
         .price {

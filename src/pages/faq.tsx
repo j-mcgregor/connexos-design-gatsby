@@ -62,11 +62,11 @@ const StyledFAQ = styled.div<StyledFAQProps>`
     justify-content: flex-start;
     background: ${({ theme }) => theme.palette.white};
     min-height: 70vh;
-    font-family: 'Raleway-Thin';
+    font-family: 'FiraSans-Regular';
 
     h1 {
         color: ${({ theme }) => theme.palette.center};
-        font-family: 'CormorantGaramond-Light', Times, serif;
+        font-family: 'FiraSans-Regular', Times, serif;
         font-size: 3em;
     }
 

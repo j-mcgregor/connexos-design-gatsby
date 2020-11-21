@@ -100,7 +100,6 @@ const Product: React.FC<ProductPageType> = ({ data, pageContext }) => {
                 <Cards grid>
                     {nodes
                         ?.sort((a, b) => {
-                            console.log(moment(b.last_publication_date).unix())
                             return (
                                 moment(b.last_publication_date).unix() -
                                 moment(a.last_publication_date).unix()
@@ -146,6 +145,7 @@ export const query = graphql`
             nodes {
                 id
                 uid
+                last_publication_date
                 data {
                     title {
                         raw

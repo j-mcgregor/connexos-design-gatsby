@@ -5,25 +5,20 @@ import * as React from 'react'
 import styled, { withTheme } from 'styled-components'
 
 import { SliceType } from '../../../../pages'
+import { flexCenterColumn } from '../../../../utils/themeUtils'
 import { theme } from '../../../Layout'
 import { Button } from '../../../styled-components/Link'
 
 export const StyledHeroSlice = styled.div<{ backgroundImage: string }>`
     height: 70vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    font-family: 'FiraSans-Regular';
+    ${flexCenterColumn}
+    font-family: ${({ theme }) => theme.fonts.primaryFont};
     background: url(${({ backgroundImage }) => backgroundImage}) fixed;
 
     .text-block {
         background: ${({ theme }) => theme.paletteOpacity.light('0.7')};
         padding: 3em 6em;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
+        ${flexCenterColumn}
     }
 
     h1 {
@@ -34,6 +29,18 @@ export const StyledHeroSlice = styled.div<{ backgroundImage: string }>`
         color: ${({ theme }) => theme.palette.center};
         width: 400px;
         text-align: justify;
+    }
+
+    @media only screen and (max-width: ${({ theme }) => theme.breakpoints.sm}px) {
+        .text-block {
+            padding: 2em;
+            height: 100%;
+            font-size: 1.3em;
+        }
+
+        p {
+            width: 100%;
+        }
     }
 `
 

@@ -4,7 +4,7 @@ import styled, { withTheme } from 'styled-components'
 
 const StyledFooter = styled.footer`
     background: ${({ theme }) => theme.palette.light};
-    font-family: 'FiraSans-Regular';
+    font-family: ${({ theme }) => theme.fonts.primaryFont};
 
     .icon {
         padding: 2em;

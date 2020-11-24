@@ -56,14 +56,13 @@ const StyledAbout = styled.div<StyledAboutProps>`
 
     h1 {
         color: ${({ theme }) => theme.palette.center};
-        font-family: 'FiraSans-Regular';
+        font-family: ${({ theme }) => theme.fonts.primaryFont};
         font-size: 3em;
     }
 
     .description {
         width: 700px;
         margin: auto;
-        font-family: 'FiraSans-Regular';
 
         p {
             line-height: 2.5em;

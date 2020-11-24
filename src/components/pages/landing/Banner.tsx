@@ -6,7 +6,7 @@ interface BannerProps {
 }
 
 const StyledBanner = styled.div`
-    font-family: 'FiraSans-Regular';
+    font-family: ${({ theme }) => theme.fonts.primaryFont};
 
     h2 {
         text-transform: uppercase;
@@ -14,10 +14,6 @@ const StyledBanner = styled.div`
 
     p {
         line-height: 1.5em;
-
-        a {
-            color: red;
-        }
     }
 `
 

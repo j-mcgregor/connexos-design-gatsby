@@ -8,63 +8,61 @@ export interface HeroProps {
     logo?: JSX.Element
     theme: typeof theme
 }
+
 const StyledHero = styled.div<HeroProps>`
     background: ${({ theme }) => theme.palette.white};
-    padding: 5em 0;
+    /* padding: 5em 0; */
     display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
+    padding-left: 0;
+    padding-right: 0;
 
-    .container-fluid {
-        padding: 0 5em;
+    .row {
+        width: 100%;
 
-        .row {
-            > div {
-                height: 70vh;
-                padding: 0;
+        > div {
+            height: 80vh;
+            width: 50%;
+            padding: 0;
 
-                &.left {
-                    background: ${({ theme }) => theme.palette.light_2};
-                    padding: 0 6em;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    flex-direction: column;
+            &.left {
+                background: ${({ theme }) => theme.palette.light_2};
+                padding: 0 6em;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-direction: column;
+                font-family: ${({ theme }) => theme.fonts.primaryFont};
 
-                    h1,
-                    h2,
-                    h3 {
-                        font-family: 'FiraSans-Regular';
-                    }
-
-                    h1 {
-                        color: ${({ theme }) => theme.palette.dark_2};
-                        text-transform: uppercase;
-                        font-size: 3em;
-                    }
-                    h2 {
-                        color: ${({ theme }) => theme.palette.center};
-                        font-size: 2.1em;
-                    }
-
-                    h3 {
-                        color: ${({ theme }) => theme.palette.dark_1};
-                    }
-
-                    p {
-                        font-size: 0.9em;
-                        line-height: 2em;
-                        letter-spacing: 1.1px;
-                    }
+                h1 {
+                    color: ${({ theme }) => theme.palette.dark_2};
+                    text-transform: uppercase;
+                    font-size: 3em;
+                }
+                h2 {
+                    color: ${({ theme }) => theme.palette.center};
+                    font-size: 2.1em;
                 }
 
-                &.right {
-                    img {
-                        width: 100%;
-                        height: 100%;
-                        object-fit: contain;
-                    }
+                h3 {
+                    color: ${({ theme }) => theme.palette.dark_1};
+                }
+
+                p {
+                    font-size: 0.9em;
+                    line-height: 2em;
+                    letter-spacing: 1.1px;
+                }
+            }
+
+            &.right {
+                padding: 7em;
+                img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: contain;
                 }
             }
         }
@@ -73,13 +71,11 @@ const StyledHero = styled.div<HeroProps>`
 
 const Hero: React.FC<HeroProps> = ({ backgroundImage, children }) => {
     return (
-        <StyledHero>
-            <div className="container-fluid">
-                <div className="row">
-                    <div className="col-md-6 left text-center">{children}</div>
-                    <div className="col-md-6 right">
-                        <img src={backgroundImage} alt="" />
-                    </div>
+        <StyledHero className="container-fluid">
+            <div className="row">
+                <div className="col-md-6 left text-center">{children}</div>
+                <div className="col-md-6 right">
+                    <img src={backgroundImage} alt="" />
                 </div>
             </div>
         </StyledHero>

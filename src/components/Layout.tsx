@@ -15,7 +15,7 @@ config.autoAddCss = false
 export const theme = {
     palette: {
         black: 'rgb(17, 17, 17)',
-        dark: 'rgb(57, 49, 29)', // <--
+        dark: 'rgb(57, 49, 29)',
         dark_1: 'rgb(55, 37, 73)',
         dark_2: 'rgb(55, 37, 73)',
         center: 'rgb(126, 116, 116)',
@@ -34,6 +34,16 @@ export const theme = {
         light_1: (a: string) => `rgba(255, 188, 181, ${a})`,
         light: (a: string) => `rgba(245, 243, 240, ${a})`,
         white: (a: string) => `rgba(255, 255, 255, ${a})`,
+    },
+    breakpoints: {
+        xl: 1200,
+        lg: 992,
+        md: 768,
+        sm: 576,
+    },
+    fonts: {
+        primaryFont:
+            "'FiraSans-Regular', 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif",
     },
 }
 
@@ -89,9 +99,14 @@ const Layout = (props: LayoutProps) => (
             }
         `}
         render={data => {
+            console.log(data.prismicContact.data.social_links)
             return (
                 <ThemeProvider theme={theme}>
-                    <Navbar icon={data.file.publicURL} products={data.allPrismicProduct.nodes} />
+                    <Navbar
+                        icon={data.file.publicURL}
+                        products={data.allPrismicProduct.nodes}
+                        social={data?.prismicContact?.data?.social_links}
+                    />
                     <main>{props.children}</main>
                     <Footer icon={data.file.publicURL} />
                 </ThemeProvider>

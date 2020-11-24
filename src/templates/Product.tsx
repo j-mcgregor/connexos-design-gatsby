@@ -58,7 +58,7 @@ const S_ProductHeader = styled.div<StyledBannerProps>`
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    font-family: 'FiraSans-Regular';
+    font-family: ${({ theme }) => theme.fonts.primaryFont};
     padding: 0.7em 4em;
 
     .title-section {

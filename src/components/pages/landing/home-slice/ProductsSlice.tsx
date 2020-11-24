@@ -3,16 +3,14 @@ import * as React from 'react'
 import styled, { withTheme } from 'styled-components'
 
 import { ProductsPageNodeProps } from '../../../../types/enums'
+import { flexCenterColumn } from '../../../../utils/themeUtils'
 import { Card, Cards } from '../../../styled-components/Card'
 
 export const StyledProductsSlice = styled.div`
-    height: 60vh;
+    ${flexCenterColumn}
+    font-family: ${({ theme }) => theme.fonts.primaryFont};
+    height: auto;
     padding: 4em 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    font-family: 'FiraSans-Regular';
     margin: auto;
 
     h1 {

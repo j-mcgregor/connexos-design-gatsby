@@ -12,21 +12,22 @@ const Ul = styled.ul<UlProps>`
     display: flex;
     flex-flow: row nowrap;
     padding: 0;
-    font-family: 'FiraSans-Regular';
+    font-family: ${({ theme }) => theme.fonts.primaryFont};
 
     li {
         padding: 0.7em;
     }
 
-    @media (max-width: 768px) {
+    @media only screen and (max-width: ${({ theme }) => theme.breakpoints.md}px) {
         flex-flow: column nowrap;
-        background-color: #0d2538;
+        background-color: ${({ theme }) => theme.palette.dark_1};
         position: fixed;
         transform: ${({ open }) => (open ? 'translateX(0)' : 'translateX(100%)')};
         top: 0;
         right: 0;
-        height: 100vh;
-        width: 300px;
+        height: 100%;
+        width: 100%;
+        z-index: 1;
         padding-top: 3.5rem;
         transition: transform 0.3s ease-in-out;
         margin: 0;

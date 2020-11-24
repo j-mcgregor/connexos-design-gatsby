@@ -67,7 +67,7 @@ const ItemHeader = styled.div<StyledBannerProps>`
     justify-content: ${({ justify }) =>
         justify === 'top' ? 'flex-start' : justify === 'bottom' ? 'flex-end' : 'center'};
     flex-direction: column;
-    font-family: 'FiraSans-Regular';
+    font-family: ${({ theme }) => theme.fonts.primaryFont};
     padding-top: 0;
     padding-left: 3em;
     color: ${({ theme }) => theme.palette.dark_2};

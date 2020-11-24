@@ -20,10 +20,4 @@
 a {
     color: $primary-color;
     text-decoration: none;
-
-    @include on-event {
-        transition: 0.1s;
-        color: $dark-color;
-        text-decoration: none;
-    }
 }

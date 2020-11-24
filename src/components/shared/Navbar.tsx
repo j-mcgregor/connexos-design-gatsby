@@ -1,4 +1,5 @@
-import { faEtsy, faFacebookSquare, faInstagram } from '@fortawesome/free-brands-svg-icons'
+import { faEtsy, faFacebookSquare, faInstagram, IconDefinition } from '@fortawesome/free-brands-svg-icons'
+import { faEnvelope } from '@fortawesome/free-regular-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Link } from 'gatsby'
 import * as React from 'react'
@@ -41,40 +42,62 @@ const SubNav = styled.nav<SubNavProps>`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-family: 'FiraSans-Regular';
+    font-family: ${({ theme }) => theme.fonts.primaryFont};
+    margin-left: 0;
+    margin-right: 0;
 
     a {
         color: ${({ theme }) => theme.palette.dark_1};
     }
+
     svg {
-        color: black;
+        color: ${({ theme }) => theme.palette.dark};
         margin-left: 15px;
     }
+
+    @media only screen and (max-width: ${({ theme }) => theme.breakpoints.md}px) {
+        height: 4em;
+        .social {
+            display: none;
+        }
+    }
 `
+
+export interface SocialLinks {
+    name: string
+    url: {
+        url: string
+    }
+}
 
 export interface NavbarProps {
     icon?: string
     products: ProductsPageNodeProps[]
+    social?: SocialLinks[]
 }
 
-const Navbar: React.FC<NavbarProps> = ({ products }) => {
+const socialIcons: { [x: string]: IconDefinition } = {
+    Mail: faEnvelope,
+    Facebook: faFacebookSquare,
+    Etsy: faEtsy,
+    Instagram: faInstagram,
+}
+
+const Navbar: React.FC<NavbarProps> = ({ products, social }) => {
+    const socialLinks = social?.map(s => (
+        <a href={s.url.url} target="_blank" rel="noopener noreferrer" key={s.name}>
+            <FontAwesomeIcon icon={socialIcons[s.name]} size="lg" />
+        </a>
+    ))
     return (
         <>
             <SubNav className="row">
                 <div className="col-md-6">
-                    <Link to="/faq">FAQ</Link>
+                    <Link to="/faq" className="text-uppercase">
+                        FAQ
+                    </Link>
                 </div>
-                <div className="col-md-6 text-right">
-                    <a href="http://facebook.com" target="_blank" rel="noopener noreferrer">
-                        <FontAwesomeIcon icon={faFacebookSquare} size="lg" />
-                    </a>
-                    <a href="http://etsy.com" target="_blank" rel="noopener noreferrer">
-                        <FontAwesomeIcon icon={faEtsy} size="lg" />
-                    </a>
-                    <a href="http://instagram.com" target="_blank" rel="noopener noreferrer">
-                        <FontAwesomeIcon icon={faInstagram} size="lg" />
-                    </a>
-                </div>
+                <div className="col-md-6 text-right social">{socialLinks}</div>
             </SubNav>
             <Nav>
                 <h1>Connexos Design</h1>

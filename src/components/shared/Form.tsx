@@ -5,6 +5,7 @@ import axios from 'axios'
 import TextArea from '../form/TextArea'
 import TextInput from '../form/TextInput'
 import { StyledSpinner } from './Spinner'
+import { Button, FormButton } from '../styled-components/Link'
 
 const S_Form = styled.form`
     width: 400px;
@@ -114,9 +115,10 @@ const Form = () => {
                     onChange={e => setMessage(e.currentTarget.value)}
                 />
             </div>
-            <button className="btn btn-lg text-uppercase pt3" type="submit">
+            <FormButton size="sm" type="submit" target="_blank">
                 Submit
-            </button>
+            </FormButton>
+
             <div className="text-center p2">{status}</div>
         </S_Form>
     )

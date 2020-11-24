@@ -20,7 +20,7 @@ const StyledBurger = styled.div<StyledBurgerProps>`
     right: 20px;
     z-index: 20;
     display: none;
-    font-family: 'FiraSans-Regular';
+    font-family: ${({ theme }) => theme.fonts.primaryFont};
 
     @media (max-width: 768px) {
         display: flex;

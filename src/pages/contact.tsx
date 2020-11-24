@@ -78,7 +78,7 @@ const S_Banner = styled.div<StyledBannerProps>`
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    font-family: 'FiraSans-Regular';
+    font-family: ${({ theme }) => theme.fonts.primaryFont};
 
     .title-section {
         width: 700px;

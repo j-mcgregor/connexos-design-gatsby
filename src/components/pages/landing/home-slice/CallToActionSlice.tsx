@@ -16,7 +16,7 @@ export const StyledCallToActionSlice = styled.div<CallToActionProps>`
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    font-family: 'FiraSans-Regular';
+    font-family: ${({ theme }) => theme.fonts.primaryFont};
     background: ${({ theme }) => theme.palette.light} url(${({ bgImage }) => bgImage});
     background-size: cover;
     background-repeat: no-repeat;
@@ -41,6 +41,17 @@ export const StyledCallToActionSlice = styled.div<CallToActionProps>`
         text-align: center;
         width: 100%;
     }
+
+    @media only screen and (max-width: ${({ theme }) => theme.breakpoints.sm}px) {
+        width: 100%;
+        font-size: 1.2em;
+        padding: 1em;
+
+        h2,
+        p {
+            max-width: 100%;
+        }
+    }
 `
 
 const CallToActionSlice: React.FC<{ sliceType: SliceType }> = ({ sliceType }) => {
@@ -52,7 +63,7 @@ const CallToActionSlice: React.FC<{ sliceType: SliceType }> = ({ sliceType }) =>
         >
             <div className="container">
                 <div className="row">
-                    <div className="col-md-6">
+                    <div className="col-md-6 col-sm-12">
                         <RichText render={sliceType.primary.title1.raw} />
                         <RichText render={sliceType.primary.subtitle.raw} />
                     </div>

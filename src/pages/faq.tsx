@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { graphql } from 'gatsby'
 import { RichText, RichTextBlock } from 'prismic-reactjs'
 import * as React from 'react'
-import styled, { withTheme } from 'styled-components'
+import styled, { css, withTheme } from 'styled-components'
 
 import Layout, { theme } from '../components/Layout'
 import SEO from '../components/SEO'
@@ -56,17 +56,16 @@ interface StyledFAQProps {
 }
 
 const StyledFAQ = styled.div<StyledFAQProps>`
+    background: ${({ theme }) => theme.palette.white};
+    font-family: ${({ theme }) => theme.fonts.primaryFont};
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    background: ${({ theme }) => theme.palette.white};
     min-height: 70vh;
-    font-family: 'FiraSans-Regular';
 
     h1 {
         color: ${({ theme }) => theme.palette.center};
-        font-family: 'FiraSans-Regular', Times, serif;
         font-size: 3em;
     }
 
@@ -88,22 +87,30 @@ const StyledFAQ = styled.div<StyledFAQProps>`
     }
 `
 
-const StyledCollapsible = styled.div<{ open: boolean }>`
-    background: ${({ open }) => (open ? '#ddd' : '#eee')};
+const StyledCollapsible = styled.div<{ open: boolean; isFirst: boolean }>`
+    background: ${({ open, theme }) => (open ? theme.palette.center : 'none')};
+    /* background: none; */
+    border: 1px solid ${({ theme }) => theme.palette.light_2};
+    ${({ isFirst = false }) =>
+        isFirst &&
+        css`
+            border-bottom: none;
+        `}
     width: 700px;
     text-align: left;
 
     h2 {
-        color: #555;
+        color: ${({ open, theme }) => (open ? theme.palette.light : theme.palette.center)};
         display: flex;
         flex-direction: row;
         justify-content: space-between;
         padding: 0.5em;
         margin: 0;
         transition: 0.2s;
+
         &:hover {
             cursor: pointer;
-            background: #ddd;
+            background: ${({ theme }) => theme.palette.light_2};
         }
     }
     .answer {
@@ -113,11 +120,11 @@ const StyledCollapsible = styled.div<{ open: boolean }>`
     }
 `
 
-const Collapsible: React.FC<QuestionAnswerProps> = ({ question, answer }) => {
+const Collapsible: React.FC<QuestionAnswerProps & { isFirst: boolean }> = ({ question, answer, isFirst }) => {
     const [open, setOpen] = React.useState(false)
 
     return (
-        <StyledCollapsible className="accordion" open={open}>
+        <StyledCollapsible className="accordion" open={open} isFirst={isFirst}>
             <h2 onClick={() => setOpen(!open)}>
                 {question}
                 <FontAwesomeIcon icon={open ? faChevronDown : faChevronRight} size="xs" />
@@ -143,7 +150,7 @@ const FAQPage: React.FC<FAQPageProps> = ({ data }) => {
                     </div>
                 )}
                 {questionanswer?.map((props, i) => (
-                    <Collapsible {...props} key={i} />
+                    <Collapsible {...props} key={i} isFirst={i === 0 && questionanswer.length > 0} />
                 ))}
             </StyledFAQ>
         </Layout>

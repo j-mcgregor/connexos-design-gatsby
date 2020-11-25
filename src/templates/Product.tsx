@@ -47,6 +47,10 @@ interface ProductPageType {
 
 const S_ProductPage = styled.div`
     height: 60vh;
+
+    @media only screen and (max-width: ${({ theme }) => theme.breakpoints.md}px) {
+        height: auto;
+    }
 `
 
 const S_ProductHeader = styled.div<StyledBannerProps>`
@@ -75,6 +79,17 @@ const S_ProductHeader = styled.div<StyledBannerProps>`
         font-size: 1.5em;
         padding: 3em;
         line-height: 2em;
+    }
+
+    @media only screen and (max-width: ${({ theme }) => theme.breakpoints.md}px) {
+        height: auto;
+        background-size: cover;
+
+        p {
+            font-size: 1em;
+            padding: 1.5em;
+            line-height: 2em;
+        }
     }
 `
 

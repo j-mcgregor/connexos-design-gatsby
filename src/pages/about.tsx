@@ -72,6 +72,14 @@ const StyledAbout = styled.div<StyledAboutProps>`
             width: 100%;
         }
     }
+
+    @media only screen and (max-width: ${({ theme }) => theme.breakpoints.md}px) {
+        width: 100%;
+        padding: 2em;
+        .description {
+            width: 100%;
+        }
+    }
 `
 
 const AboutPage: React.FC<AboutPageProps> = ({ data }) => {

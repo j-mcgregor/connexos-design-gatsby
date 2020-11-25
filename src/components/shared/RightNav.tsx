@@ -31,9 +31,14 @@ const Ul = styled.ul<UlProps>`
         padding-top: 3.5rem;
         transition: transform 0.3s ease-in-out;
         margin: 0;
+        font-size: 2em;
 
         li {
-            color: #fff;
+            color: ${({ theme }) => theme.palette.white};
+
+            a:hover {
+                color: ${({ theme }) => theme.palette.white};
+            }
         }
     }
 `

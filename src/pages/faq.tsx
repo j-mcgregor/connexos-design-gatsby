@@ -7,6 +7,7 @@ import styled, { css, withTheme } from 'styled-components'
 
 import Layout, { theme } from '../components/Layout'
 import SEO from '../components/SEO'
+import { flexStartColumn } from '../utils/themeUtils'
 
 export const query = graphql`
     {
@@ -56,12 +57,9 @@ interface StyledFAQProps {
 }
 
 const StyledFAQ = styled.div<StyledFAQProps>`
+    ${flexStartColumn};
     background: ${({ theme }) => theme.palette.white};
     font-family: ${({ theme }) => theme.fonts.primaryFont};
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
     min-height: 70vh;
 
     h1 {
@@ -85,11 +83,18 @@ const StyledFAQ = styled.div<StyledFAQProps>`
     .collapsibles {
         margin: auto;
     }
+
+    @media only screen and (max-width: ${({ theme }) => theme.breakpoints.md}px) {
+        height: auto;
+        h1 {
+            font-size: 1.8em;
+        }
+        width: 100%;
+    }
 `
 
 const StyledCollapsible = styled.div<{ open: boolean; isFirst: boolean }>`
     background: ${({ open, theme }) => (open ? theme.palette.center : 'none')};
-    /* background: none; */
     border: 1px solid ${({ theme }) => theme.palette.light_2};
     ${({ isFirst = false }) =>
         isFirst &&
@@ -117,6 +122,9 @@ const StyledCollapsible = styled.div<{ open: boolean; isFirst: boolean }>`
         padding: 0.5em 1em;
         display: ${({ open }) => (open ? 'block' : 'none')};
         background: #eee;
+    }
+    @media only screen and (max-width: ${({ theme }) => theme.breakpoints.md}px) {
+        width: 100%;
     }
 `
 

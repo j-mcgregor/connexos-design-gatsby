@@ -115,6 +115,21 @@ const ItemHeader = styled.div<StyledBannerProps>`
         color: ${({ theme }) => theme.palette.center};
         margin: 5px 0;
     }
+
+    @media only screen and (max-width: ${({ theme }) => theme.breakpoints.md}px) {
+        height: auto;
+        width: 100%;
+        margin: 0;
+        padding: 1em;
+
+        img {
+            width: 100%;
+        }
+
+        .img-thumbs {
+            width: 100%;
+        }
+    }
 `
 
 const Item: React.FC<ProductPageType> = ({ data, pageContext }) => {

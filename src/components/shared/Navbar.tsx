@@ -17,7 +17,7 @@ const Nav = styled.nav`
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    font-family: 'FiraSans-Regular', Times, serif;
+    font-family: ${({ theme }) => theme.fonts.secondaryFont};
 
     h1 {
         color: black;

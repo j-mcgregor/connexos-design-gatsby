@@ -78,7 +78,7 @@ const S_Banner = styled.div<StyledBannerProps>`
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    font-family: ${({ theme }) => theme.fonts.primaryFont};
+    font-family: ${({ theme }) => theme.fonts.secondaryFont};
 
     .title-section {
         width: 700px;

@@ -45,7 +45,7 @@ interface ProductPageType {
     pageContext: any
 }
 
-const S_ProductPage = styled.div`
+const ProductPage = styled.div`
     height: 60vh;
 
     @media only screen and (max-width: ${({ theme }) => theme.breakpoints.md}px) {
@@ -53,7 +53,7 @@ const S_ProductPage = styled.div`
     }
 `
 
-const S_ProductHeader = styled.div<StyledBannerProps>`
+const ProductHeader = styled.div<StyledBannerProps>`
     height: 60vh;
     background: url(${({ bgImage }) => bgImage}) no-repeat center center;
     background-size: contain;
@@ -62,7 +62,7 @@ const S_ProductHeader = styled.div<StyledBannerProps>`
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    font-family: ${({ theme }) => theme.fonts.primaryFont};
+    font-family: ${({ theme }) => theme.fonts.secondaryFont};
     padding: 0.7em 4em;
 
     .title-section {
@@ -99,18 +99,18 @@ const Product: React.FC<ProductPageType> = ({ data, pageContext }) => {
 
     return (
         <Layout>
-            <S_ProductPage className="container-fluid">
+            <ProductPage className="container-fluid">
                 <div className="row">
-                    <S_ProductHeader className="col-md-6" bgImage={product.main_image.url}>
+                    <ProductHeader className="col-md-6" bgImage={product.main_image.url}>
                         <div className="title-section">
                             {product.title && <RichText render={product.title.raw} />}
                         </div>
-                    </S_ProductHeader>
-                    <S_ProductHeader className="col-md-6 p3">
+                    </ProductHeader>
+                    <ProductHeader className="col-md-6 p3">
                         {product.description && <RichText render={product.description.raw} />}
-                    </S_ProductHeader>
+                    </ProductHeader>
                 </div>
-            </S_ProductPage>
+            </ProductPage>
             <div className="row">
                 <Cards grid>
                     {nodes

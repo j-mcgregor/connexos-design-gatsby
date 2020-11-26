@@ -4,7 +4,6 @@ import * as React from 'react'
 import styled, { StyledProps, withTheme } from 'styled-components'
 
 import { SliceType } from '../../../../pages'
-import { Button } from '../../../styled-components/Link'
 
 type CallToActionProps = StyledProps<{
     bgImage?: string
@@ -16,10 +15,11 @@ export const StyledCallToActionSlice = styled.div<CallToActionProps>`
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    font-family: ${({ theme }) => theme.fonts.primaryFont};
+    font-family: ${({ theme }) => theme.fonts.secondaryFont};
     background: ${({ theme }) => theme.palette.light} url(${({ bgImage }) => bgImage});
     background-size: cover;
     background-repeat: no-repeat;
+    font-size: 1.2em;
 
     h2 {
         width: 400px;

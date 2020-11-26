@@ -44,6 +44,8 @@ export const theme = {
     fonts: {
         primaryFont:
             "'FiraSans-Regular', 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif",
+        secondaryFont:
+            "'Aleo-Light', 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif",
     },
 }
 
@@ -99,7 +101,6 @@ const Layout = (props: LayoutProps) => (
             }
         `}
         render={data => {
-            console.log(data.prismicContact.data.social_links)
             return (
                 <ThemeProvider theme={theme}>
                     <Navbar

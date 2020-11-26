@@ -53,10 +53,10 @@ interface StyledAboutProps {
 }
 const StyledAbout = styled.div<StyledAboutProps>`
     background: ${({ theme }) => theme.palette.white};
+    font-family: ${({ theme }) => theme.fonts.secondaryFont};
 
     h1 {
         color: ${({ theme }) => theme.palette.center};
-        font-family: ${({ theme }) => theme.fonts.primaryFont};
         font-size: 3em;
     }
 

@@ -22,7 +22,7 @@ interface ItemPageProps {
         }
         time_to_make: string
         shipping: string
-        product_type: 'knits' | 'upcycling'
+        product_type: 'knits' | 'upcycling' | 'tricots'
         price: string
         main_image: {
             url: string
@@ -53,7 +53,7 @@ interface ProductPageType {
 const ItemLayout = styled.div`
     h2 {
         color: ${({ theme }) => theme.palette.center};
-        font-family: 'FiraSans-Regular', Times, serif;
+        font-family: ${({ theme }) => theme.fonts.secondaryFont};
         font-size: 2.1em;
     }
 `
@@ -67,7 +67,7 @@ const ItemHeader = styled.div<StyledBannerProps>`
     justify-content: ${({ justify }) =>
         justify === 'top' ? 'flex-start' : justify === 'bottom' ? 'flex-end' : 'center'};
     flex-direction: column;
-    font-family: ${({ theme }) => theme.fonts.primaryFont};
+    font-family: ${({ theme }) => theme.fonts.secondaryFont};
     padding-top: 0;
     padding-left: 3em;
     color: ${({ theme }) => theme.palette.dark_2};

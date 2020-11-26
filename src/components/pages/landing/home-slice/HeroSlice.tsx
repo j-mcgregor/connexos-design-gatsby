@@ -12,8 +12,9 @@ import { Button } from '../../../styled-components/Link'
 export const StyledHeroSlice = styled.div<{ backgroundImage: string }>`
     height: 70vh;
     ${flexCenterColumn}
-    font-family: ${({ theme }) => theme.fonts.primaryFont};
+    font-family: ${({ theme }) => theme.fonts.secondaryFont};
     background: url(${({ backgroundImage }) => backgroundImage}) fixed;
+    font-size: 1.2em;
 
     .text-block {
         background: ${({ theme }) => theme.paletteOpacity.light('0.7')};

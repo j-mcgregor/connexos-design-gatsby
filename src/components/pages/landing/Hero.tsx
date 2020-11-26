@@ -34,7 +34,7 @@ const StyledHero = styled.div<HeroProps>`
                 align-items: center;
                 justify-content: center;
                 flex-direction: column;
-                font-family: ${({ theme }) => theme.fonts.primaryFont};
+                font-family: ${({ theme }) => theme.fonts.secondaryFont};
 
                 h1 {
                     color: ${({ theme }) => theme.palette.dark_2};

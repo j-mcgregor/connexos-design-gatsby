@@ -8,7 +8,7 @@ import { Card, Cards } from '../../../styled-components/Card'
 
 export const StyledProductsSlice = styled.div`
     ${flexCenterColumn}
-    font-family: ${({ theme }) => theme.fonts.primaryFont};
+    font-family: ${({ theme }) => theme.fonts.secondaryFont};
     height: auto;
     padding: 4em 0;
     margin: auto;
@@ -25,7 +25,12 @@ const ProductsSlice: React.FC<{ products: ProductsPageNodeProps[] }> = ({ produc
             <Cards flex>
                 {products?.length &&
                     products.map(s => (
-                        <Link key={s.id} to={`/products/${s.uid}`} target="_blank" className="text-center">
+                        <Link
+                            key={s.id}
+                            to={`/products/${s.uid}`}
+                            target="_blank"
+                            className="text-center product-link"
+                        >
                             <Card>
                                 <img src={s.data.main_image.url} alt="" />
                                 <div className="card-footer">

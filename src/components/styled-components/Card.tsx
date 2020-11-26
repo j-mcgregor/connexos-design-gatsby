@@ -38,6 +38,10 @@ export const Cards = styled.div<CardsType>`
     ${({ flex, grid }) => setGrid({ flex, grid })}
     margin: 4rem auto;
 
+    > .product-link {
+        margin: 0 1em;
+    }
+
     @media only screen and (max-width: ${({ theme }) => theme.breakpoints.md}px) {
         height: auto;
         width: 100%;

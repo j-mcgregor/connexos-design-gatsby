@@ -59,7 +59,7 @@ interface StyledFAQProps {
 const StyledFAQ = styled.div<StyledFAQProps>`
     ${flexStartColumn};
     background: ${({ theme }) => theme.palette.white};
-    font-family: ${({ theme }) => theme.fonts.primaryFont};
+    font-family: ${({ theme }) => theme.fonts.secondaryFont};
     min-height: 70vh;
 
     h1 {

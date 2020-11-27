@@ -14,6 +14,9 @@ const S_Form = styled.form`
         margin-top: 0.5em;
         width: 100%;
     }
+    @media only screen and (max-width: ${({ theme }) => theme.breakpoints.sm}px) {
+        width: 100%;
+    }
 `
 
 const StyledLoadingOverlay = styled.div`

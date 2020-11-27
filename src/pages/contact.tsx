@@ -105,6 +105,7 @@ const Banner = styled.div<StyledBannerProps>`
         .title-section {
             width: 100%;
 
+            h1,
             h3,
             h6,
             .description {

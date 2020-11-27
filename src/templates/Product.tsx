@@ -40,6 +40,7 @@ interface ItemPageProps {
 export interface ItemPageType {
     nodes: ItemPageProps[]
 }
+
 interface ProductPageType {
     data: { prismicProduct: ProductsPageNodeProps; allPrismicItem: ItemPageType }
     pageContext: any
@@ -50,10 +51,17 @@ const ProductPage = styled.div`
 
     @media only screen and (max-width: ${({ theme }) => theme.breakpoints.md}px) {
         height: auto;
+
+        &.container-fluid {
+            padding-left: 0;
+            padding-right: 0;
+        }
     }
 `
 
 const ProductHeader = styled.div<StyledBannerProps>`
+    box-sizing: border-box;
+    width: 100%;
     height: 60vh;
     background: url(${({ bgImage }) => bgImage}) no-repeat center center;
     background-size: contain;
@@ -89,6 +97,29 @@ const ProductHeader = styled.div<StyledBannerProps>`
             font-size: 1em;
             padding: 1.5em;
             line-height: 2em;
+        }
+    }
+
+    @media only screen and (max-width: ${({ theme }) => theme.breakpoints.sm}px) {
+        width: 100%;
+        box-sizing: border-box;
+        padding: 0;
+
+        .title-section {
+            width: 100%;
+
+            h3,
+            h6,
+            .description {
+                padding: 0;
+                width: 100%;
+            }
+
+            .description {
+                font-size: 1em;
+                padding: 1em;
+                text-align: justify;
+            }
         }
     }
 `

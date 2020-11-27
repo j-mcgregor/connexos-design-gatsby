@@ -16,7 +16,7 @@ const StyledFooter = styled.footer`
         padding: 2em;
         .row {
             ${flexCenterColumn};
-            width: 400px;
+            width: 100%;
             margin: auto;
         }
         .icon {

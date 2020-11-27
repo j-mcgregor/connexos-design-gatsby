@@ -58,7 +58,7 @@ const StyledHero = styled.div<HeroProps>`
             }
 
             &.right {
-                padding: 7em;
+                padding: 2em;
                 img {
                     width: 100%;
                     height: 100%;

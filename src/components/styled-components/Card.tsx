@@ -42,7 +42,7 @@ export const Cards = styled.div<CardsType>`
         margin: 0 1em;
     }
 
-    @media only screen and (max-width: ${({ theme }) => theme.breakpoints.md}px) {
+    @media only screen and (max-width: ${({ theme }) => theme.breakpoints.sm}px) {
         height: auto;
         width: 100%;
         margin: 0;

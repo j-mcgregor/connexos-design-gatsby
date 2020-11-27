@@ -20,6 +20,7 @@ export const StyledCallToActionSlice = styled.div<CallToActionProps>`
     background-size: cover;
     background-repeat: no-repeat;
     font-size: 1.2em;
+    box-sizing: border-box;
 
     h2 {
         width: 400px;
@@ -49,7 +50,7 @@ export const StyledCallToActionSlice = styled.div<CallToActionProps>`
 
         h2,
         p {
-            max-width: 100%;
+            width: 100%;
         }
     }
 `

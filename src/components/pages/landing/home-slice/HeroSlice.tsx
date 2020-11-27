@@ -15,6 +15,7 @@ export const StyledHeroSlice = styled.div<{ backgroundImage: string }>`
     font-family: ${({ theme }) => theme.fonts.secondaryFont};
     background: url(${({ backgroundImage }) => backgroundImage}) fixed;
     font-size: 1.2em;
+    box-sizing: border-box;
 
     .text-block {
         background: ${({ theme }) => theme.paletteOpacity.light('0.7')};
@@ -33,6 +34,7 @@ export const StyledHeroSlice = styled.div<{ backgroundImage: string }>`
     }
 
     @media only screen and (max-width: ${({ theme }) => theme.breakpoints.sm}px) {
+        width: 100%;
         .text-block {
             padding: 2em;
             height: 100%;

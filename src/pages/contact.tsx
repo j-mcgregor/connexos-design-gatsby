@@ -43,7 +43,7 @@ interface ContactPageProps {
     }
 }
 
-const S_Contact = styled.div`
+const StyledContactPage = styled.div`
     background: ${({ theme }) => theme.palette.white};
 
     h3,
@@ -68,7 +68,7 @@ export type StyledBannerProps = StyledProps<{
     justify?: 'top' | 'center' | 'bottom'
 }>
 
-const S_Banner = styled.div<StyledBannerProps>`
+const Banner = styled.div<StyledBannerProps>`
     background: ${({ theme }) => theme.palette.center} url(${({ bgImage }) => bgImage}) no-repeat center
         center;
     background-size: cover;
@@ -97,6 +97,28 @@ const S_Banner = styled.div<StyledBannerProps>`
             color: ${({ theme }) => theme.palette.white};
         }
     }
+    @media only screen and (max-width: ${({ theme }) => theme.breakpoints.sm}px) {
+        width: 100%;
+        box-sizing: border-box;
+        padding: 0;
+
+        .title-section {
+            width: 100%;
+
+            h3,
+            h6,
+            .description {
+                padding: 0;
+                width: 100%;
+            }
+
+            .description {
+                font-size: 1em;
+                padding: 1em;
+                text-align: justify;
+            }
+        }
+    }
 `
 
 const ContactPage: React.FC<ContactPageProps> = ({ data }) => {
@@ -105,8 +127,8 @@ const ContactPage: React.FC<ContactPageProps> = ({ data }) => {
     return (
         <Layout>
             <SEO title="Contact" />
-            <S_Contact className="contact flex flex-column">
-                <S_Banner className="jumbotron" bgImage={background_image.url}>
+            <StyledContactPage className="contact flex flex-column">
+                <Banner className="jumbotron" bgImage={background_image.url}>
                     <div className="title-section">
                         {title?.raw && <RichText render={title.raw} />}
                         {subtitle?.raw && (
@@ -115,9 +137,9 @@ const ContactPage: React.FC<ContactPageProps> = ({ data }) => {
                             </div>
                         )}
                     </div>
-                </S_Banner>
+                </Banner>
                 <Form />
-            </S_Contact>
+            </StyledContactPage>
         </Layout>
     )
 }

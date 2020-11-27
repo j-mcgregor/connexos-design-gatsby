@@ -63,6 +63,7 @@ export const Card = styled.div`
     transition: 0.3s;
     box-shadow: 0px 4px 7px -7px black;
     text-align: left;
+    box-sizing: border-box;
 
     :hover {
         cursor: pointer;

@@ -16,6 +16,11 @@ export const StyledProductsSlice = styled.div`
     h1 {
         color: ${({ theme }) => theme.palette.center};
     }
+
+    @media only screen and (max-width: ${({ theme }) => theme.breakpoints.sm}px) {
+        width: 100%;
+        height: auto;
+    }
 `
 
 const ProductsSlice: React.FC<{ products: ProductsPageNodeProps[] }> = ({ products }) => {

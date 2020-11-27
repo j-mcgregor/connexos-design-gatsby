@@ -35,14 +35,15 @@ export const StyledHeroSlice = styled.div<{ backgroundImage: string }>`
 
     @media only screen and (max-width: ${({ theme }) => theme.breakpoints.sm}px) {
         width: 100%;
-        .text-block {
-            padding: 2em;
-            height: 100%;
-            font-size: 1.3em;
-        }
+        height: auto;
 
-        p {
+        .text-block {
             width: 100%;
+            padding: 2em 15px;
+
+            p {
+                width: 100%;
+            }
         }
     }
 `

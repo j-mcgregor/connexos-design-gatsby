@@ -48,6 +48,10 @@ interface ProductPageType {
 
 const ProductPage = styled.div`
     height: 60vh;
+    .row {
+        margin-right: 0;
+        margin-left: 0;
+    }
 
     @media only screen and (max-width: ${({ theme }) => theme.breakpoints.md}px) {
         height: auto;
@@ -102,6 +106,7 @@ const ProductHeader = styled.div<StyledBannerProps>`
 
     @media only screen and (max-width: ${({ theme }) => theme.breakpoints.sm}px) {
         width: 100%;
+        height: auto;
         box-sizing: border-box;
         padding: 0;
 

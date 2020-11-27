@@ -10,7 +10,8 @@ import { theme } from '../Layout'
 import Burger from './Burger'
 
 const Nav = styled.nav`
-    max-width: 100%;
+    width: 100%;
+    box-sizing: border-box;
     border-bottom: 1px solid ${({ theme }) => theme.palette.light};
     padding: 0 2em;
     display: flex;
@@ -45,6 +46,7 @@ const SubNav = styled.nav<SubNavProps>`
     font-family: ${({ theme }) => theme.fonts.primaryFont};
     margin-left: 0;
     margin-right: 0;
+    box-sizing: border-box;
 
     a {
         color: ${({ theme }) => theme.palette.dark_1};

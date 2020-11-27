@@ -45,6 +45,7 @@ export const StyledCallToActionSlice = styled.div<CallToActionProps>`
 
     @media only screen and (max-width: ${({ theme }) => theme.breakpoints.sm}px) {
         width: 100%;
+        height: auto;
         font-size: 1.2em;
         padding: 1em;
 

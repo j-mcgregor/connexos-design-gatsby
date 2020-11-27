@@ -112,18 +112,14 @@ const ProductHeader = styled.div<StyledBannerProps>`
 
         .title-section {
             width: 100%;
+            box-sizing: border-box;
 
+            h1,
             h3,
             h6,
             .description {
                 padding: 0;
                 width: 100%;
-            }
-
-            .description {
-                font-size: 1em;
-                padding: 1em;
-                text-align: justify;
             }
         }
     }

@@ -47,6 +47,7 @@ export const Cards = styled.div<CardsType>`
         width: 100%;
         margin: 0;
         padding: 1em;
+        box-sizing: border-box;
     }
 `
 

@@ -6,6 +6,7 @@ import { flexCenterColumn, flexStartColumn } from '../../utils/themeUtils'
 const StyledFooter = styled.footer`
     background: ${({ theme }) => theme.palette.light};
     font-family: ${({ theme }) => theme.fonts.primaryFont};
+    box-sizing: border-box;
 
     .icon {
         padding: 2em;

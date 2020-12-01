@@ -32,6 +32,11 @@ exports.createPages = async ({ graphql, actions }) => {
                     }
                 }
             }
+            allPrismicGeneralInfo {
+                nodes {
+                    uid
+                }
+            }
         }
     `)
 
@@ -54,6 +59,17 @@ exports.createPages = async ({ graphql, actions }) => {
                 id: node.id,
                 uid: node.uid,
                 product_type: node.data.product_type,
+            },
+        })
+    })
+    pages.data.allPrismicGeneralInfo.nodes.forEach(node => {
+        console.log(node)
+        createPage({
+            path: `/${node.uid}`,
+            component: path.resolve(__dirname, 'src/templates/GeneralInfo.tsx'),
+            context: {
+                id: node.id,
+                uid: node.uid,
             },
         })
     })

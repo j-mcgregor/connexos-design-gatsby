@@ -58,6 +58,7 @@ module.exports = {
                     product: require('./src/schemas/product.json'),
                     item: require('./src/schemas/item.json'),
                     faq: require('./src/schemas/faq.json'),
+                    generalInfo: require('./src/schemas/generalInfo.json'),
                 },
             },
         },

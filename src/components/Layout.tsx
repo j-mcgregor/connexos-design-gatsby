@@ -109,7 +109,7 @@ const Layout = (props: LayoutProps) => (
                         social={data?.prismicContact?.data?.social_links}
                     />
                     <main>{props.children}</main>
-                    <Footer icon={data.file.publicURL} />
+                    <Footer icon={data.file.publicURL} social={data?.prismicContact?.data?.social_links} />
                 </ThemeProvider>
             )
         }}

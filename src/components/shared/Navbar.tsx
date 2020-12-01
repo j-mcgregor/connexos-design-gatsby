@@ -78,7 +78,7 @@ export interface NavbarProps {
     social?: SocialLinks[]
 }
 
-const socialIcons: { [x: string]: IconDefinition } = {
+export const socialIcons: { [x: string]: IconDefinition } = {
     Mail: faEnvelope,
     Facebook: faFacebookSquare,
     Etsy: faEtsy,

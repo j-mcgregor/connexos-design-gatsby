@@ -79,6 +79,9 @@ export const query = graphql`
                 background_image {
                     url
                 }
+                secondary_image {
+                    url
+                }
                 title {
                     raw
                 }
@@ -180,6 +183,9 @@ interface IndexPageProps {
                 background_image: {
                     url: string
                 }
+                secondary_image: {
+                    url: string
+                }
                 body: SliceType[]
             }
         }
@@ -198,7 +204,7 @@ const makeSlice = (sliceType: SliceType) => {
 }
 
 const IndexPage: React.FC<IndexPageProps> = ({ data: { prismicHome, allPrismicProduct } }) => {
-    const { title, subtitle, about, background_image } = prismicHome.data
+    const { title, subtitle, about, background_image, secondary_image } = prismicHome.data
     const { nodes } = allPrismicProduct
 
     const slices = prismicHome.data.body.map(s => makeSlice(s))
@@ -207,10 +213,12 @@ const IndexPage: React.FC<IndexPageProps> = ({ data: { prismicHome, allPrismicPr
         <Layout>
             <SEO title="Home" />
             {background_image?.url && (
-                <Hero backgroundImage={background_image.url}>
-                    {subtitle && <RichText render={subtitle.raw} />}
-                    {title && <RichText render={title.raw} />}
-                    {about && <RichText render={about.raw} />}
+                <Hero backgroundImage={background_image.url} secondaryImage={secondary_image.url}>
+                    <div className="text-block">
+                        {subtitle && <RichText render={subtitle.raw} />}
+                        {title && <RichText render={title.raw} />}
+                        {about && <RichText render={about.raw} />}
+                    </div>
                 </Hero>
             )}
             {slices}

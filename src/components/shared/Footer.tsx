@@ -111,7 +111,7 @@ const Footer: React.FC<FooterProps> = ({ icon, social }) => {
                     <div className="col-md-3 col-sm-12">
                         <StyledListGroup className="list-group">
                             <li className="list-group-item">
-                                <Link to="/pour-nous-joindre">Pour nous joindre</Link>
+                                <Link to="/contact">Pour nous joindre</Link>
                             </li>
                             <li className="list-group-item">
                                 <Link to="/termes-et-conditions">Termes & Conditions</Link>

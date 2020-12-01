@@ -54,7 +54,7 @@ const RightNav: React.FC<BurgerProps> = ({ open, products }) => {
             </li>
             <li>
                 <a href="https://www.etsy.com/shop/ConnexosDesign" target="_blank" rel="noreferrer">
-                    Etsy
+                    Boutique Etsy
                 </a>
             </li>
             <li>

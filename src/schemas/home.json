@@ -36,6 +36,14 @@
                 "label": "background image"
             }
         },
+        "secondary_image": {
+            "type": "Image",
+            "config": {
+                "constraint": {},
+                "thumbnails": [],
+                "label": "secondary image"
+            }
+        },
         "body": {
             "type": "Slices",
             "fieldset": "Slice zone",

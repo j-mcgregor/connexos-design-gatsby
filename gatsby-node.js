@@ -63,7 +63,6 @@ exports.createPages = async ({ graphql, actions }) => {
         })
     })
     pages.data.allPrismicGeneralInfo.nodes.forEach(node => {
-        console.log(node)
         createPage({
             path: `/${node.uid}`,
             component: path.resolve(__dirname, 'src/templates/GeneralInfo.tsx'),

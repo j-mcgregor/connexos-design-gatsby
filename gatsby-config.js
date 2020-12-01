@@ -2,8 +2,8 @@
 module.exports = {
     siteMetadata: {
         title: `Connexos Design`,
-        description: `Real people. Real photos.`,
-        author: `@jmcgregor`,
+        description: `Slow Fashion`,
+        author: `connexosdesign`,
         siteUrl: 'https://connexos-design.netlify.app/',
     },
     plugins: [
@@ -38,6 +38,24 @@ module.exports = {
                 icon: `src/images/connexos-design-logo-dark.png`, // This path is relative to the root of the site.
             },
         },
+        'gatsby-plugin-sitemap',
+        'gatsby-plugin-robots-txt',
+        // {
+        //     resolve: 'gatsby-plugin-robots-txt',
+        //     options: {
+        //         // host: 'https://connexos-design.netlify.app/',
+        //         // sitemap: 'https://connexos-design.netlify.app/sitemap.xml',
+        //         resolveEnv: () => process.env.GATSBY_ENV,
+        //         env: {
+        //             development: {
+        //                 policy: [{ userAgent: '*', disallow: ['/'] }],
+        //             },
+        //             production: {
+        //                 policy: [{ userAgent: '*', allow: '/' }],
+        //             },
+        //         },
+        //     },
+        // },
         {
             resolve: 'gatsby-source-prismic',
             pages: [
@@ -62,7 +80,6 @@ module.exports = {
                 },
             },
         },
-
         `gatsby-plugin-typescript`,
         `gatsby-plugin-netlify`,
         // this (optional) plugin enables Progressive Web App + Offline functionality

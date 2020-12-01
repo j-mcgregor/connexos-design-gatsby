@@ -24,6 +24,7 @@ function SEO(props: SEOProps) {
         `
     )
 
+    const metaTitle = props.title || site.siteMetadata.title
     const metaDescription = props.description || site.siteMetadata.description
 
     return (
@@ -35,18 +36,24 @@ function SEO(props: SEOProps) {
                     name: `description`,
                     content: metaDescription,
                 },
+                // OPEN GRAPH
                 {
                     property: `og:title`,
-                    content: props.title,
+                    content: metaTitle,
                 },
                 {
                     property: `og:description`,
                     content: metaDescription,
                 },
                 {
+                    property: `og:image`,
+                    content: props.imageUrl,
+                },
+                {
                     property: `og:type`,
                     content: `website`,
                 },
+                // TWITTER
                 {
                     name: `twitter:card`,
                     content: `summary`,
@@ -57,10 +64,27 @@ function SEO(props: SEOProps) {
                 },
                 {
                     name: `twitter:title`,
-                    content: props.title,
+                    content: metaTitle,
                 },
                 {
                     name: `twitter:description`,
+                    content: metaDescription,
+                },
+                // INSTAGRAM
+                {
+                    name: `instagram:card`,
+                    content: `summary`,
+                },
+                {
+                    name: `instagram:creator`,
+                    content: site.siteMetadata.author,
+                },
+                {
+                    name: `instagram:title`,
+                    content: metaTitle,
+                },
+                {
+                    name: `instagram:description`,
                     content: metaDescription,
                 },
             ].concat(props.meta)}
@@ -71,26 +95,28 @@ function SEO(props: SEOProps) {
 }
 
 SEO.defaultProps = {
+    description: ``,
+    imageUrl: ``,
     lang: `en`,
     meta: [],
-    description: ``,
 }
 
 interface SEOProps {
     description?: string
+    imageUrl?: string
     lang?: string
     meta?: MetaWithProperty[] | MetaWithName[]
     title: string
 }
 
 interface MetaWithProperty {
-    property: string
     content: string
+    property: string
 }
 
 interface MetaWithName {
-    name: string
     content: string
+    name: string
 }
 
 export default SEO

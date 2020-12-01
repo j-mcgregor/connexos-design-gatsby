@@ -211,7 +211,7 @@ const IndexPage: React.FC<IndexPageProps> = ({ data: { prismicHome, allPrismicPr
 
     return (
         <Layout>
-            <SEO title="Home" />
+            <SEO title="Home" imageUrl={background_image.url} />
             {background_image?.url && (
                 <Hero backgroundImage={background_image.url} secondaryImage={secondary_image.url}>
                     <div className="text-block">

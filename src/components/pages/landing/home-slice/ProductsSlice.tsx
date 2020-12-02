@@ -1,6 +1,7 @@
 import { Link } from 'gatsby'
 import * as React from 'react'
 import styled, { withTheme } from 'styled-components'
+import Img from 'gatsby-image'
 
 import { ProductsPageNodeProps } from '../../../../types/enums'
 import { flexCenterColumn } from '../../../../utils/themeUtils'
@@ -37,7 +38,7 @@ const ProductsSlice: React.FC<{ products: ProductsPageNodeProps[] }> = ({ produc
                             className="text-center product-link"
                         >
                             <Card>
-                                <img src={s.data.main_image.url} alt="" />
+                                <Img fixed={s.data.main_image.fixed} alt="" />
                                 <div className="card-footer">
                                     <h3 className="text-capitalize">{s.uid}</h3>
                                 </div>

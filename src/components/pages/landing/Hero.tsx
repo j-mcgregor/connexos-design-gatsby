@@ -4,13 +4,11 @@ import * as React from 'react'
 import styled from 'styled-components'
 
 import { flexCenterColumn } from '../../../utils/themeUtils'
-import { theme } from '../../Layout'
 
 export interface HeroProps {
     backgroundImage?: FluidObject
     secondaryImage?: FluidObject
     logo?: JSX.Element
-    theme: typeof theme
 }
 
 const StyledHero = styled.div`

@@ -1,15 +1,12 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import BackgroundImage from 'gatsby-background-image'
 import { RichText } from 'prismic-reactjs'
 import * as React from 'react'
-import styled, { StyledProps, withTheme } from 'styled-components'
+import styled from 'styled-components'
 
 import { SliceType } from '../../../../pages'
 
-type CallToActionProps = StyledProps<{
-    bgImage?: string
-}>
-
-export const StyledCallToActionSlice = styled.div<CallToActionProps>`
+export const StyledCallToActionSlice = styled(BackgroundImage)`
     height: 90vh;
     display: flex;
     align-items: center;
@@ -61,7 +58,7 @@ const CallToActionSlice: React.FC<{ sliceType: SliceType }> = ({ sliceType }) =>
         <StyledCallToActionSlice
             key="call_to_action"
             className="call_to_action"
-            bgImage={sliceType.primary.side_image.url}
+            fluid={sliceType.primary.side_image.fluid}
         >
             <div className="container">
                 <div className="row">
@@ -77,4 +74,4 @@ const CallToActionSlice: React.FC<{ sliceType: SliceType }> = ({ sliceType }) =>
 }
 
 // @ts-ignore
-export default withTheme(CallToActionSlice)
+export default CallToActionSlice

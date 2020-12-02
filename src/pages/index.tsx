@@ -1,5 +1,5 @@
 import { graphql } from 'gatsby'
-import { FluidObject } from 'gatsby-image'
+import { FixedObject, FluidObject } from 'gatsby-image'
 import { RichText, RichTextBlock } from 'prismic-reactjs'
 import * as React from 'react'
 import { withTheme } from 'styled-components'
@@ -72,6 +72,12 @@ export const query = graphql`
                             }
                             side_image {
                                 url
+                                fluid {
+                                    src
+                                    srcSet
+                                    aspectRatio
+                                    sizes
+                                }
                             }
                         }
                         items {
@@ -93,6 +99,12 @@ export const query = graphql`
                             background_image1 {
                                 alt
                                 url
+                                fluid {
+                                    src
+                                    srcSet
+                                    aspectRatio
+                                    sizes
+                                }
                             }
                         }
                         items {
@@ -116,6 +128,13 @@ export const query = graphql`
                     }
                     main_image {
                         url
+                        fixed(width: 230, height: 230) {
+                            src
+                            srcSet
+                            width
+                            height
+                            base64
+                        }
                     }
                     description {
                         raw
@@ -140,6 +159,7 @@ interface ItemType {
     }
     product_image?: {
         url?: string
+        fixed: FixedObject
     }
     button_link?: {
         url?: string
@@ -165,9 +185,11 @@ interface PrimaryType {
     background_image1?: {
         alt?: string
         url?: string
+        fluid: FluidObject
     }
     side_image?: {
         url: string
+        fluid: FluidObject
     }
 }
 

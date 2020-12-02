@@ -65,6 +65,7 @@ export const Card = styled.div`
     box-shadow: 0px 4px 7px -7px black;
     text-align: left;
     box-sizing: border-box;
+    overflow: hidden;
 
     :hover {
         cursor: pointer;
@@ -75,7 +76,7 @@ export const Card = styled.div`
         margin-top: 0;
         height: 230px;
         width: 100%;
-        object-fit: cover;
+        object-fit: contain;
     }
 
     .card-footer {

@@ -1,19 +1,18 @@
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import BackgroundImage from 'gatsby-background-image'
 import { RichText } from 'prismic-reactjs'
 import * as React from 'react'
 import styled, { withTheme } from 'styled-components'
 
 import { SliceType } from '../../../../pages'
 import { flexCenterColumn } from '../../../../utils/themeUtils'
-import { theme } from '../../../Layout'
 import { Button } from '../../../styled-components/Link'
 
-export const StyledHeroSlice = styled.div<{ backgroundImage: string }>`
+export const StyledHeroSlice = styled(BackgroundImage)`
     height: 70vh;
     ${flexCenterColumn}
     font-family: ${({ theme }) => theme.fonts.secondaryFont};
-    background: url(${({ backgroundImage }) => backgroundImage}) fixed;
     font-size: 1.2em;
     box-sizing: border-box;
 
@@ -31,6 +30,7 @@ export const StyledHeroSlice = styled.div<{ backgroundImage: string }>`
         color: ${({ theme }) => theme.palette.center};
         width: 400px;
         text-align: justify;
+        
     }
 
     @media only screen and (max-width: ${({ theme }) => theme.breakpoints.sm}px) {
@@ -53,7 +53,8 @@ const HeroSlice: React.FC<{ sliceType: SliceType }> = ({ sliceType }) => {
         <StyledHeroSlice
             key="hero_section"
             className="hero_section"
-            backgroundImage={sliceType.primary.background_image1.url}
+            fluid={sliceType.primary.background_image1.fluid}
+            fadeIn
         >
             <div className="text-block">
                 <RichText render={sliceType.primary.title1.raw} />

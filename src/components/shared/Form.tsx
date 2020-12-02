@@ -1,11 +1,11 @@
+import axios from 'axios'
 import * as React from 'react'
 import styled, { withTheme } from 'styled-components'
-import axios from 'axios'
 
 import TextArea from '../form/TextArea'
 import TextInput from '../form/TextInput'
+import { FormButton } from '../styled-components/Link'
 import { StyledSpinner } from './Spinner'
-import { Button, FormButton } from '../styled-components/Link'
 
 const S_Form = styled.form`
     width: 400px;

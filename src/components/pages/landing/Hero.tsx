@@ -69,10 +69,28 @@ const StyledHero = styled.div`
 
             &.right {
                 padding: 2em;
-                img {
-                    width: 100%;
-                    height: 100%;
-                    object-fit: contain;
+                ${flexCenterColumn};
+                .gatsby-image-wrapper {
+                    width: 500px;
+                    height: 500px;
+                    object-fit: cover;
+                }
+            }
+        }
+    }
+
+    @media only screen and (max-width: ${({ theme }) => theme.breakpoints.xl}px) {
+        .right {
+            padding: 0 !important;
+            overflow: auto !important;
+            .gatsby-image-wrapper {
+                    width: 70% !important;
+                    height: 70% !important;
+
+                    picture img {
+                        object-fit: contain !important;
+                        /* width: 100% !important; */
+                    }
                 }
             }
         }

@@ -1,13 +1,13 @@
 import { graphql } from 'gatsby'
+import BackgroundImage from 'gatsby-background-image'
+import Img, { FluidObject } from 'gatsby-image'
 import { RichText, RichTextBlock } from 'prismic-reactjs'
 import * as React from 'react'
-import Form from '../components/shared/Form'
 import styled, { StyledProps } from 'styled-components'
-import Img, { FluidObject } from 'gatsby-image'
 
 import Layout from '../components/Layout'
 import SEO from '../components/SEO'
-import BackgroundImage from 'gatsby-background-image'
+import Form from '../components/shared/Form'
 
 export const query = graphql`
     {

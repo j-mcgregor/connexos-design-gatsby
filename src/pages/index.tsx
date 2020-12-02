@@ -1,4 +1,5 @@
 import { graphql } from 'gatsby'
+import { FluidObject } from 'gatsby-image'
 import { RichText, RichTextBlock } from 'prismic-reactjs'
 import * as React from 'react'
 import { withTheme } from 'styled-components'
@@ -15,6 +16,33 @@ export const query = graphql`
     query IndexPageQuery {
         prismicHome {
             data {
+                background_image {
+                    url
+                    fluid {
+                        src
+                        srcSet
+                        aspectRatio
+                        sizes
+                    }
+                }
+                secondary_image {
+                    url
+                    fluid {
+                        src
+                        srcSet
+                        aspectRatio
+                        sizes
+                    }
+                }
+                title {
+                    raw
+                }
+                subtitle {
+                    raw
+                }
+                about {
+                    raw
+                }
                 body {
                     ... on PrismicHomeBodyProducts {
                         primary {
@@ -75,21 +103,6 @@ export const query = graphql`
                             button_label
                         }
                     }
-                }
-                background_image {
-                    url
-                }
-                secondary_image {
-                    url
-                }
-                title {
-                    raw
-                }
-                subtitle {
-                    raw
-                }
-                about {
-                    raw
                 }
             }
         }
@@ -182,9 +195,11 @@ interface IndexPageProps {
                 }
                 background_image: {
                     url: string
+                    fluid: FluidObject
                 }
                 secondary_image: {
                     url: string
+                    fluid: FluidObject
                 }
                 body: SliceType[]
             }
@@ -213,7 +228,7 @@ const IndexPage: React.FC<IndexPageProps> = ({ data: { prismicHome, allPrismicPr
         <Layout>
             <SEO title="Home" imageUrl={background_image.url} />
             {background_image?.url && (
-                <Hero backgroundImage={background_image.url} secondaryImage={secondary_image.url}>
+                <Hero backgroundImage={background_image.fluid} secondaryImage={secondary_image.fluid}>
                     <div className="text-block">
                         {subtitle && <RichText render={subtitle.raw} />}
                         {title && <RichText render={title.raw} />}

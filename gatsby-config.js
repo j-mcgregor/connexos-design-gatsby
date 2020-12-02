@@ -40,22 +40,6 @@ module.exports = {
         },
         'gatsby-plugin-sitemap',
         'gatsby-plugin-robots-txt',
-        // {
-        //     resolve: 'gatsby-plugin-robots-txt',
-        //     options: {
-        //         // host: 'https://connexos-design.netlify.app/',
-        //         // sitemap: 'https://connexos-design.netlify.app/sitemap.xml',
-        //         resolveEnv: () => process.env.GATSBY_ENV,
-        //         env: {
-        //             development: {
-        //                 policy: [{ userAgent: '*', disallow: ['/'] }],
-        //             },
-        //             production: {
-        //                 policy: [{ userAgent: '*', allow: '/' }],
-        //             },
-        //         },
-        //     },
-        // },
         {
             resolve: 'gatsby-source-prismic',
             pages: [

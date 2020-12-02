@@ -1,17 +1,19 @@
+import BackgroundImage from 'gatsby-background-image'
+import Img, { FluidObject } from 'gatsby-image'
 import * as React from 'react'
-import styled, { withTheme } from 'styled-components'
-import { flexCenterColumn } from '../../../utils/themeUtils'
+import styled from 'styled-components'
 
+import { flexCenterColumn } from '../../../utils/themeUtils'
 import { theme } from '../../Layout'
 
 export interface HeroProps {
-    backgroundImage?: string
-    secondaryImage?: string
+    backgroundImage?: FluidObject
+    secondaryImage?: FluidObject
     logo?: JSX.Element
     theme: typeof theme
 }
 
-const StyledHero = styled.div<HeroProps>`
+const StyledHero = styled.div`
     background: ${({ theme }) => theme.palette.white};
     display: flex;
     align-items: center;
@@ -23,7 +25,7 @@ const StyledHero = styled.div<HeroProps>`
     .text-block {
         background: ${({ theme }) => theme.paletteOpacity.light('0.4')};
         padding: 3em 6em;
-        ${flexCenterColumn}
+        ${flexCenterColumn};
     }
 
     .row {
@@ -35,8 +37,7 @@ const StyledHero = styled.div<HeroProps>`
             padding: 0;
 
             &.left {
-                background: ${({ theme, backgroundImage }) =>
-                    `${theme.palette.light_2} url('${backgroundImage}')`};
+                background: ${({ theme }) => theme.palette.light_2};
                 background-size: cover;
                 background-repeat: no-repeat;
                 background-position: left center;
@@ -82,11 +83,13 @@ const StyledHero = styled.div<HeroProps>`
 
 const Hero: React.FC<HeroProps> = ({ backgroundImage, secondaryImage, children }) => {
     return (
-        <StyledHero className="container-fluid" backgroundImage={secondaryImage}>
+        <StyledHero className="container-fluid">
             <div className="row">
-                <div className="col-md-6 left text-center">{children}</div>
+                <BackgroundImage fluid={secondaryImage} className="col-md-6 left text-center" fadeIn>
+                    {children}
+                </BackgroundImage>
                 <div className="col-md-6 right">
-                    <img src={backgroundImage} alt="" />
+                    <Img fluid={backgroundImage} alt="" />
                 </div>
             </div>
         </StyledHero>
@@ -94,4 +97,4 @@ const Hero: React.FC<HeroProps> = ({ backgroundImage, secondaryImage, children }
 }
 
 // @ts-ignore
-export default withTheme(Hero)
+export default Hero

@@ -27,7 +27,7 @@ export const StyledProductsSlice = styled.div`
 const ProductsSlice: React.FC<{ products: ProductsPageNodeProps[] }> = ({ products }) => {
     return (
         <StyledProductsSlice className="products">
-            <h1>See Our Products</h1>
+            <h1>Allez voir!</h1>
             <Cards flex>
                 {products?.length &&
                     products.map(s => (

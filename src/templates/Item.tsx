@@ -3,6 +3,7 @@ import { faClock } from '@fortawesome/free-regular-svg-icons'
 import { faShippingFast } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { graphql, Link } from 'gatsby'
+import Img, { FixedObject } from 'gatsby-image'
 import * as moment from 'moment'
 import { RichText, RichTextBlock } from 'prismic-reactjs'
 import * as React from 'react'
@@ -26,12 +27,14 @@ interface ItemPageProps {
         price: string
         main_image: {
             url: string
+            fixed: FixedObject
         }
         images: [
             {
                 caption: string
                 image: {
                     url: string
+                    fixed: FixedObject
                 }
             }
         ]
@@ -74,7 +77,7 @@ const ItemHeader = styled.div<StyledBannerProps>`
 
     h2 {
         color: ${({ theme }) => theme.palette.dark};
-        margin-top: 10px;
+        margin-top: 0;
     }
 
     img {
@@ -209,7 +212,7 @@ const Item: React.FC<ProductPageType> = ({ data, pageContext }) => {
                                     return (
                                         <Link to={`/products/${n.data.product_type}/${n.id}`} key={n.uid}>
                                             <Card>
-                                                <img src={n.data.main_image.url} alt="" />
+                                                <Img fixed={n.data.main_image.fixed} alt="" fadeIn />
                                                 <div className="card-footer">
                                                     <RichText render={n.data.title.raw} />
                                                     <div className="price">CA${n.data.price}</div>
@@ -239,6 +242,13 @@ export const query = graphql`
                 price
                 main_image {
                     url
+                    fixed(width: 400, height: 400) {
+                        src
+                        srcSet
+                        width
+                        height
+                        base64
+                    }
                 }
                 images {
                     caption
@@ -271,6 +281,13 @@ export const query = graphql`
                     price
                     main_image {
                         url
+                        fixed(width: 230, height: 230) {
+                            src
+                            srcSet
+                            width
+                            height
+                            base64
+                        }
                     }
                     images {
                         caption

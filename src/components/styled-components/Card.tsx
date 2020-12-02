@@ -15,6 +15,16 @@ export const setGrid = ({ flex, grid }: CardsType) => {
             grid-gap: 2em;
             width: calc((250px * 4) + (2em * 3));
             overflow-x: hidden;
+
+            @media only screen and (max-width: ${({ theme }) => theme.breakpoints.xl}px) {
+                width: 100%;
+                grid-gap: 1em;
+                grid-template-columns: 250px repeat(auto-fill, 250px);
+            }
+
+            @media only screen and (max-width: ${({ theme }) => theme.breakpoints.md}px) {
+                grid-template-columns: auto;
+            }
         `
     }
     if (flex) {
@@ -99,6 +109,16 @@ export const Card = styled.div`
         .price {
             font-size: 1.4em;
             color: ${({ theme }) => theme.palette.center};
+        }
+    }
+
+    @media only screen and (max-width: ${({ theme }) => theme.breakpoints.md}px) {
+        height: auto;
+        width: auto !important;
+        overflow: auto;
+        .gatsby-image-wrapper {
+            width: 100% !important;
+            object-fit: cover;
         }
     }
 `

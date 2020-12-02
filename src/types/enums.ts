@@ -1,4 +1,4 @@
-import { FixedObject } from 'gatsby-image'
+import { FixedObject, FluidObject } from 'gatsby-image'
 import { RichTextBlock } from 'prismic-reactjs'
 
 export enum Breakpoints {
@@ -66,6 +66,7 @@ export interface ProductsPageNodeProps {
             alt: string
             url: string
             fixed: FixedObject
+            fluid: FluidObject
         }
         description: {
             raw: RichTextBlock[]

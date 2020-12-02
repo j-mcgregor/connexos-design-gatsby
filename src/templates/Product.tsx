@@ -1,12 +1,13 @@
 import { graphql, Link } from 'gatsby'
+import BackgroundImage from 'gatsby-background-image'
+import Img, { FixedObject } from 'gatsby-image'
+import * as moment from 'moment'
 import { RichText, RichTextBlock } from 'prismic-reactjs'
 import * as React from 'react'
-import styled from 'styled-components'
-import * as moment from 'moment'
+import styled, { css } from 'styled-components'
 
 import Layout from '../components/Layout'
 import { Card, Cards } from '../components/styled-components/Card'
-import { StyledBannerProps } from '../pages/contact'
 import { ProductsPageNodeProps } from '../types/enums'
 
 interface ItemPageProps {
@@ -23,6 +24,7 @@ interface ItemPageProps {
         price: string
         main_image: {
             url: string
+            fixed: FixedObject
         }
         images: [
             {
@@ -63,11 +65,10 @@ const ProductPage = styled.div`
     }
 `
 
-const ProductHeader = styled.div<StyledBannerProps>`
+const shared = css`
     box-sizing: border-box;
     width: 100%;
     height: 60vh;
-    background: url(${({ bgImage }) => bgImage}) no-repeat center center;
     background-size: contain;
     text-align: center;
     display: flex;
@@ -87,6 +88,7 @@ const ProductHeader = styled.div<StyledBannerProps>`
             color: ${({ theme }) => theme.palette.light};
         }
     }
+
     p {
         font-size: 1.5em;
         padding: 3em;
@@ -125,6 +127,14 @@ const ProductHeader = styled.div<StyledBannerProps>`
     }
 `
 
+const ProductHeader = styled.div`
+    ${shared}
+`
+
+const ProductHeaderWithImage = styled(BackgroundImage)`
+    ${shared}
+`
+
 const Product: React.FC<ProductPageType> = ({ data, pageContext }) => {
     const { data: product } = data.prismicProduct
     const { nodes } = data.allPrismicItem
@@ -133,11 +143,11 @@ const Product: React.FC<ProductPageType> = ({ data, pageContext }) => {
         <Layout>
             <ProductPage className="container-fluid">
                 <div className="row">
-                    <ProductHeader className="col-md-6" bgImage={product.main_image.url}>
+                    <ProductHeaderWithImage className="col-md-6" fluid={product.main_image.fluid}>
                         <div className="title-section">
                             {product.title && <RichText render={product.title.raw} />}
                         </div>
-                    </ProductHeader>
+                    </ProductHeaderWithImage>
                     <ProductHeader className="col-md-6 p3">
                         {product.description && <RichText render={product.description.raw} />}
                     </ProductHeader>
@@ -156,7 +166,7 @@ const Product: React.FC<ProductPageType> = ({ data, pageContext }) => {
                             return (
                                 <Link to={`/products/${pageContext.uid}/${n.id}`} key={n.uid}>
                                     <Card>
-                                        <img src={n.data.main_image.url} alt="" />
+                                        <Img fixed={n.data.main_image.fixed} alt="" />
                                         <div className="card-footer">
                                             <RichText render={n.data.title.raw} />
                                             <div className="price">${n.data.price}</div>
@@ -185,6 +195,12 @@ export const query = graphql`
                 main_image {
                     url
                     alt
+                    fluid {
+                        src
+                        srcSet
+                        aspectRatio
+                        base64
+                    }
                 }
             }
         }
@@ -202,6 +218,13 @@ export const query = graphql`
                     price
                     main_image {
                         url
+                        fixed(width: 230, height: 230) {
+                            src
+                            srcSet
+                            width
+                            height
+                            base64
+                        }
                     }
                     images {
                         caption

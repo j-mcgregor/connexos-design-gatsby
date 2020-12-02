@@ -93,7 +93,7 @@ const Form = () => {
             )}
             <div className="mb2">
                 <TextInput
-                    label="Name"
+                    label="Nom"
                     placeholder="Your name"
                     type="text"
                     name="Name"
@@ -103,7 +103,7 @@ const Form = () => {
                 />
                 <TextInput
                     label="Email"
-                    placeholder="Your email"
+                    placeholder="Votre email"
                     type="email"
                     name="Email"
                     value={email}

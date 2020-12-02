@@ -1,4 +1,5 @@
 import { graphql } from 'gatsby'
+import Img, { FluidObject } from 'gatsby-image'
 import { RichText, RichTextBlock } from 'prismic-reactjs'
 import * as React from 'react'
 import styled, { withTheme } from 'styled-components'
@@ -20,6 +21,12 @@ export const query = graphql`
                         width
                         height
                     }
+                    fluid {
+                        src
+                        srcSet
+                        aspectRatio
+                        sizes
+                    }
                 }
                 description {
                     raw
@@ -39,6 +46,7 @@ interface AboutPageProps {
                 main_image: {
                     alt: string
                     url: string
+                    fluid: FluidObject
                 }
                 description: {
                     raw: RichTextBlock[]
@@ -93,7 +101,7 @@ const AboutPage: React.FC<AboutPageProps> = ({ data }) => {
                 {description?.raw && (
                     <div className="description text-justify my3">
                         <RichText render={description.raw} />
-                        {main_image && <img src={main_image.url} alt="Logo" className="my3" />}
+                        {main_image && <Img fluid={main_image.fluid} alt="moi" className="my3" />}
                     </div>
                 )}
             </StyledAbout>

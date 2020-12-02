@@ -3,9 +3,11 @@ import { RichText, RichTextBlock } from 'prismic-reactjs'
 import * as React from 'react'
 import Form from '../components/shared/Form'
 import styled, { StyledProps } from 'styled-components'
+import Img, { FluidObject } from 'gatsby-image'
 
 import Layout from '../components/Layout'
 import SEO from '../components/SEO'
+import BackgroundImage from 'gatsby-background-image'
 
 export const query = graphql`
     {
@@ -19,6 +21,12 @@ export const query = graphql`
                 }
                 background_image {
                     url
+                    fluid {
+                        src
+                        srcSet
+                        aspectRatio
+                        sizes
+                    }
                 }
             }
         }
@@ -37,6 +45,7 @@ interface ContactPageProps {
                 }
                 background_image: {
                     url: string
+                    fluid: FluidObject
                 }
             }
         }
@@ -68,10 +77,11 @@ export type StyledBannerProps = StyledProps<{
     justify?: 'top' | 'center' | 'bottom'
 }>
 
-const Banner = styled.div<StyledBannerProps>`
-    background: ${({ theme }) => theme.palette.center} url(${({ bgImage }) => bgImage}) no-repeat center
-        center;
+const Banner = styled(BackgroundImage)<StyledBannerProps>`
+    background: ${({ theme }) => theme.palette.center};
     background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
     padding: 7em;
     text-align: center;
     display: flex;
@@ -91,6 +101,7 @@ const Banner = styled.div<StyledBannerProps>`
         h6 {
             padding: 0 0 1.7em;
             font-size: 1.4em;
+            line-height: 1.5em;
         }
         h3,
         h6 {
@@ -129,7 +140,7 @@ const ContactPage: React.FC<ContactPageProps> = ({ data }) => {
         <Layout>
             <SEO title="Contact" />
             <StyledContactPage className="contact flex flex-column">
-                <Banner className="jumbotron" bgImage={background_image.url}>
+                <Banner className="jumbotron" fluid={background_image.fluid} fadeIn>
                     <div className="title-section">
                         {title?.raw && <RichText render={title.raw} />}
                         {subtitle?.raw && (

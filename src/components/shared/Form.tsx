@@ -67,6 +67,9 @@ const Form = () => {
                 setTimeout(() => {
                     setStatus('Merci, nous vous répondrons dans les plus brefs délais')
                     setLoading(false)
+                    setName('')
+                    setEmail('')
+                    setMessage('')
                 }, 1000)
             } else {
                 throw new Error("quelque chose s'est mal passé")
@@ -100,6 +103,8 @@ const Form = () => {
                     value={name}
                     onChange={e => setName(e.currentTarget.value)}
                     classNames={['my2']}
+                    autoComplete="true"
+                    required
                 />
                 <TextInput
                     label="Email"
@@ -109,6 +114,8 @@ const Form = () => {
                     value={email}
                     onChange={e => setEmail(e.currentTarget.value)}
                     classNames={['my2']}
+                    autoComplete="true"
+                    required
                 />
                 <TextArea
                     label="Message"
@@ -116,6 +123,7 @@ const Form = () => {
                     name="Message"
                     value={message}
                     onChange={e => setMessage(e.currentTarget.value)}
+                    required
                 />
             </div>
             <FormButton size="sm" type="submit" target="_blank">

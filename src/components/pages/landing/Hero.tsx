@@ -84,15 +84,26 @@ const StyledHero = styled.div`
             padding: 0 !important;
             overflow: auto !important;
             .gatsby-image-wrapper {
-                    width: 70% !important;
-                    height: 70% !important;
+                width: 70% !important;
+                height: 70% !important;
 
-                    picture img {
-                        object-fit: contain !important;
-                        /* width: 100% !important; */
-                    }
+                picture img {
+                    object-fit: contain !important;
+                    /* width: 100% !important; */
                 }
             }
+        }
+    }
+
+    @media only screen and (max-width: ${({ theme }) => theme.breakpoints.sm}px) {
+        width: 100%;
+
+        .text-block {
+            padding: 0;
+        }
+
+        .row > div {
+            height: auto;
         }
     }
 `

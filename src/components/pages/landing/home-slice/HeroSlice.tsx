@@ -36,6 +36,7 @@ export const StyledHeroSlice = styled(BackgroundImage)`
     @media only screen and (max-width: ${({ theme }) => theme.breakpoints.sm}px) {
         width: 100%;
         height: auto;
+        text-align: center !important;
 
         .text-block {
             width: 100%;

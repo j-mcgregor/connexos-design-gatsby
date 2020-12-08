@@ -13,11 +13,13 @@ export const StyledCallToActionSlice = styled(BackgroundImage)`
     justify-content: center;
     flex-direction: column;
     font-family: ${({ theme }) => theme.fonts.secondaryFont};
-    background: ${({ theme }) => theme.palette.light} url(${({ bgImage }) => bgImage});
+    background: ${({ theme }) => theme.palette.light};
     background-size: cover;
     background-repeat: no-repeat;
+    background-position: center center;
     font-size: 1.2em;
     box-sizing: border-box;
+    color: ${({ theme }) => theme.palette.light};
 
     h2 {
         width: 400px;
@@ -61,13 +63,8 @@ const CallToActionSlice: React.FC<{ sliceType: SliceType }> = ({ sliceType }) =>
             fluid={sliceType.primary.side_image.fluid}
         >
             <div className="container">
-                <div className="row">
-                    <div className="col-md-6 col-sm-12">
-                        <RichText render={sliceType.primary.title1.raw} />
-                        <RichText render={sliceType.primary.subtitle.raw} />
-                    </div>
-                    <div className="col-md-6" />
-                </div>
+                <RichText render={sliceType.primary.title1.raw} />
+                <RichText render={sliceType.primary.subtitle.raw} />
             </div>
         </StyledCallToActionSlice>
     )

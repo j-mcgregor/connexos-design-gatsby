@@ -104,7 +104,7 @@ const Form = () => {
                     label="Nom"
                     placeholder="Your name"
                     type="text"
-                    name="Name"
+                    name="name"
                     value={name}
                     onChange={e => setName(e.currentTarget.value)}
                     classNames={['my2']}
@@ -115,7 +115,7 @@ const Form = () => {
                     label="Email"
                     placeholder="Votre email"
                     type="email"
-                    name="Email"
+                    name="email"
                     value={email}
                     onChange={e => setEmail(e.currentTarget.value)}
                     classNames={['my2']}
@@ -125,7 +125,7 @@ const Form = () => {
                 <TextArea
                     label="Message"
                     placeholder="Message"
-                    name="Message"
+                    name="message"
                     value={message}
                     onChange={e => setMessage(e.currentTarget.value)}
                     required

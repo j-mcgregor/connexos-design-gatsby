@@ -129,7 +129,7 @@ const Form = () => {
                     value={message}
                     onChange={e => setMessage(e.currentTarget.value)}
                     required
-                />
+                ></TextArea>
             </div>
             <FormButton size="sm" type="submit" target="_blank">
                 Submit

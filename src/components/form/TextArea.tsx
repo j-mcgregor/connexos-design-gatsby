@@ -80,14 +80,14 @@ const TextArea: React.FC<TextAreaProps & React.TextareaHTMLAttributes<HTMLTextAr
                 className="form-control"
                 name={name}
                 required={required}
-                {...(value && onChange ? { value } : value && !onChange && { defaultValue: '' })}
+                value={value}
                 onChange={onChange}
                 data-testid={name}
                 aria-label={name}
                 autoComplete={autoComplete}
                 disabled={disabled}
                 rows={rows}
-            />
+            ></StyledFormControlTextArea>
             {label && <StyledFormLabel htmlFor={name}>{label}</StyledFormLabel>}
             {subText && <small className="form-text text-muted">{subText}</small>}
             {validate?.message && <div className={validateClass}>{validate.message}</div>}

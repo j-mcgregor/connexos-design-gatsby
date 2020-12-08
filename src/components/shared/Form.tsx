@@ -52,7 +52,12 @@ const Form = () => {
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         setLoading(true)
-        const data = { 'form-name': formName, Name: name, Email: email, Message: message }
+        const data = {
+            'form-name': formName,
+            name,
+            email,
+            message,
+        }
         const headers = { 'Content-Type': 'application/x-www-form-urlencoded' }
 
         try {

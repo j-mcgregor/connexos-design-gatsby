@@ -58,18 +58,18 @@ const Form = () => {
         try {
             const res = await axios({
                 method: 'POST',
-                url: 'https://connexos-design.netlify.app/',
+                url: 'https://www.connexosdesign.com/',
                 data: encode(data),
                 headers,
             })
 
             if (res.status >= 200 || res.status < 300) {
                 setTimeout(() => {
-                    setStatus('Form Submission Successful!!')
+                    setStatus('Merci, nous vous répondrons dans les plus brefs délais')
                     setLoading(false)
                 }, 1000)
             } else {
-                throw new Error('Form Submission Failed!')
+                throw new Error("quelque chose s'est mal passé")
             }
         } catch (error) {
             setStatus(error.message)

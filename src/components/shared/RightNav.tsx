@@ -47,7 +47,7 @@ const RightNav: React.FC<BurgerProps> = ({ open, products }) => {
     return (
         <Ul open={open}>
             <li>
-                <Link to="/">Accueille</Link>
+                <Link to="/">Accueil</Link>
             </li>
             <li>
                 <Link to="/about">À propos</Link>

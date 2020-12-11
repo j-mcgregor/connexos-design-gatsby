@@ -29,14 +29,13 @@ export const StyledHeroSlice = styled(BackgroundImage)`
     p {
         color: ${({ theme }) => theme.palette.center};
         width: 400px;
-        text-align: justify;
-        
+        text-align: center;        
     }
 
     @media only screen and (max-width: ${({ theme }) => theme.breakpoints.sm}px) {
         width: 100%;
         height: auto;
-        text-align: center !important;
+        text-align: center;
 
         .text-block {
             width: 100%;

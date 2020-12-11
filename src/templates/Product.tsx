@@ -1,12 +1,12 @@
 import { graphql, Link } from 'gatsby'
 import BackgroundImage from 'gatsby-background-image'
-import Img, { FixedObject } from 'gatsby-image'
+import Img, { FixedObject, FluidObject } from 'gatsby-image'
 import * as moment from 'moment'
 import { RichText, RichTextBlock } from 'prismic-reactjs'
 import * as React from 'react'
 import styled, { css } from 'styled-components'
 
-import Layout from '../components/Layout'
+import Layout, { theme } from '../components/Layout'
 import { Card, Cards } from '../components/styled-components/Card'
 import { ProductsPageNodeProps } from '../types/enums'
 
@@ -25,6 +25,7 @@ interface ItemPageProps {
         main_image: {
             url: string
             fixed: FixedObject
+            fluid: FluidObject
         }
         images: [
             {
@@ -139,6 +140,21 @@ const Product: React.FC<ProductPageType> = ({ data, pageContext }) => {
     const { data: product } = data.prismicProduct
     const { nodes } = data.allPrismicItem
 
+    const [width, setWidth] = React.useState<number>()
+    const [loaded, setLoaded] = React.useState<boolean>(false)
+
+    React.useEffect(() => {
+        if (typeof window === 'undefined') return
+
+        const handleResize = () => setWidth(window.innerWidth)
+        window.addEventListener('resize', handleResize)
+        setWidth(window.innerWidth)
+        setLoaded(true)
+        return () => {
+            window.removeEventListener('resize', handleResize)
+        }
+    }, [])
+
     return (
         <Layout>
             <ProductPage className="container-fluid">
@@ -166,7 +182,12 @@ const Product: React.FC<ProductPageType> = ({ data, pageContext }) => {
                             return (
                                 <Link to={`/products/${pageContext.uid}/${n.id}`} key={n.uid}>
                                     <Card>
-                                        <Img fixed={n.data.main_image.fixed} alt="" />
+                                        {loaded && width && width < theme.breakpoints.sm ? (
+                                            <Img fluid={n.data.main_image.fluid} alt="" />
+                                        ) : (
+                                            <Img fixed={n.data.main_image.fixed} alt="" />
+                                        )}
+
                                         <div className="card-footer">
                                             <RichText render={n.data.title.raw} />
                                             <div className="price">${n.data.price}</div>
@@ -223,6 +244,12 @@ export const query = graphql`
                             srcSet
                             width
                             height
+                            base64
+                        }
+                        fluid {
+                            src
+                            srcSet
+                            aspectRatio
                             base64
                         }
                     }

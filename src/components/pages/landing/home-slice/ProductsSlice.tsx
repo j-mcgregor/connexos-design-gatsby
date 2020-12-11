@@ -6,6 +6,7 @@ import Img from 'gatsby-image'
 import { ProductsPageNodeProps } from '../../../../types/enums'
 import { flexCenterColumn } from '../../../../utils/themeUtils'
 import { Card, Cards } from '../../../styled-components/Card'
+import { theme } from '../../../Layout'
 
 export const StyledProductsSlice = styled.div`
     ${flexCenterColumn}
@@ -25,6 +26,21 @@ export const StyledProductsSlice = styled.div`
 `
 
 const ProductsSlice: React.FC<{ products: ProductsPageNodeProps[] }> = ({ products }) => {
+    const [width, setWidth] = React.useState<number>()
+    const [loaded, setLoaded] = React.useState<boolean>(false)
+
+    React.useEffect(() => {
+        if (typeof window === 'undefined') return
+
+        const handleResize = () => setWidth(window.innerWidth)
+        window.addEventListener('resize', handleResize)
+        setWidth(window.innerWidth)
+        setLoaded(true)
+        return () => {
+            window.removeEventListener('resize', handleResize)
+        }
+    }, [])
+
     return (
         <StyledProductsSlice className="products">
             <h1>Allez voir!</h1>
@@ -38,7 +54,12 @@ const ProductsSlice: React.FC<{ products: ProductsPageNodeProps[] }> = ({ produc
                             className="text-center product-link"
                         >
                             <Card>
-                                <Img fixed={s.data.main_image.fixed} alt="" />
+                                {loaded && width && width < theme.breakpoints.sm ? (
+                                    <Img fluid={s.data.main_image.fluid} alt="" />
+                                ) : (
+                                    <Img fixed={s.data.main_image.fixed} alt="" />
+                                )}
+
                                 <div className="card-footer">
                                     <h3 className="text-capitalize">{s.uid}</h3>
                                 </div>
@@ -51,4 +72,4 @@ const ProductsSlice: React.FC<{ products: ProductsPageNodeProps[] }> = ({ produc
 }
 
 // @ts-ignore
-export default withTheme(ProductsSlice)
+export default ProductsSlice

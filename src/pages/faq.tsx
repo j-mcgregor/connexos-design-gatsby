@@ -123,8 +123,20 @@ const StyledCollapsible = styled.div<{ open: boolean; isFirst: boolean }>`
         display: ${({ open }) => (open ? 'block' : 'none')};
         background: #eee;
     }
+
     @media only screen and (max-width: ${({ theme }) => theme.breakpoints.md}px) {
         width: 100%;
+        h2 {
+            padding: 0.8em;
+            font-size: 1.4em;
+        }
+    }
+
+    @media only screen and (max-width: ${({ theme }) => theme.breakpoints.sm}px) {
+        h2 {
+            padding: 0.6em;
+            font-size: 1.2em;
+        }
     }
 `
 

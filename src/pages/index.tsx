@@ -135,6 +135,12 @@ export const query = graphql`
                             height
                             base64
                         }
+                        fluid {
+                            src
+                            srcSet
+                            aspectRatio
+                            sizes
+                        }
                     }
                     description {
                         raw

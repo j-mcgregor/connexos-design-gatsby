@@ -1,12 +1,12 @@
 import { Link } from 'gatsby'
-import * as React from 'react'
-import styled, { withTheme } from 'styled-components'
 import Img from 'gatsby-image'
+import * as React from 'react'
+import styled from 'styled-components'
 
 import { ProductsPageNodeProps } from '../../../../types/enums'
 import { flexCenterColumn } from '../../../../utils/themeUtils'
-import { Card, Cards } from '../../../styled-components/Card'
 import { theme } from '../../../Layout'
+import { Card, Cards } from '../../../styled-components/Card'
 
 export const StyledProductsSlice = styled.div`
     ${flexCenterColumn}

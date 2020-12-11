@@ -303,6 +303,12 @@ export const query = graphql`
                             height
                             base64
                         }
+                        fluid {
+                            src
+                            srcSet
+                            aspectRatio
+                            base64
+                        }
                     }
                     images {
                         caption

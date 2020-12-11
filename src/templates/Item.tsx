@@ -9,7 +9,7 @@ import { RichText, RichTextBlock } from 'prismic-reactjs'
 import * as React from 'react'
 import styled from 'styled-components'
 
-import Layout from '../components/Layout'
+import Layout, { theme } from '../components/Layout'
 import { Card, Cards } from '../components/styled-components/Card'
 import { Button } from '../components/styled-components/Link'
 import { StyledBannerProps } from '../pages/contact'
@@ -140,9 +140,20 @@ const Item: React.FC<ProductPageType> = ({ data, pageContext }) => {
     const { nodes: allItems } = data.allPrismicItem
 
     const [mainImg, setMainImg] = React.useState('')
+    const [width, setWidth] = React.useState<number>()
+    const [loaded, setLoaded] = React.useState<boolean>(false)
 
     React.useEffect(() => {
         setMainImg(item.main_image.url)
+        if (typeof window === 'undefined') return
+
+        const handleResize = () => setWidth(window.innerWidth)
+        window.addEventListener('resize', handleResize)
+        setWidth(window.innerWidth)
+        setLoaded(true)
+        return () => {
+            window.removeEventListener('resize', handleResize)
+        }
     }, [])
 
     return (
@@ -212,7 +223,11 @@ const Item: React.FC<ProductPageType> = ({ data, pageContext }) => {
                                     return (
                                         <Link to={`/products/${n.data.product_type}/${n.id}`} key={n.uid}>
                                             <Card>
-                                                <Img fixed={n.data.main_image.fixed} alt="" fadeIn />
+                                                {loaded && width && width < theme.breakpoints.sm ? (
+                                                    <Img fluid={n.data.main_image.fluid} alt="" />
+                                                ) : (
+                                                    <Img fixed={n.data.main_image.fixed} alt="" />
+                                                )}{' '}
                                                 <div className="card-footer">
                                                     <RichText render={n.data.title.raw} />
                                                     <div className="price">CA${n.data.price}</div>

@@ -104,7 +104,7 @@ const Footer: React.FC<FooterProps> = ({ icon, social }) => {
                                 <Link to="/faq">FAQ</Link>
                             </li>
                             <li className="list-group-item">
-                                <Link to="/returns">Retours, Réparations & Échanges</Link>
+                                <Link to="/returns">Retours, réparations & échanges</Link>
                             </li>
                         </StyledListGroup>
                     </div>
@@ -114,7 +114,7 @@ const Footer: React.FC<FooterProps> = ({ icon, social }) => {
                                 <Link to="/contact">Pour nous joindre</Link>
                             </li>
                             <li className="list-group-item">
-                                <Link to="/termes-et-conditions">Termes & Conditions</Link>
+                                <Link to="/termes-et-conditions">Termes & conditions</Link>
                             </li>
                         </StyledListGroup>
                     </div>

@@ -41,7 +41,7 @@ const GeneralHeader = styled.div<StyledBannerProps>`
     /* height: 60vh; */
     background: url(${({ bgImage }) => bgImage}) no-repeat center center;
     background-size: contain;
-    text-align: center;
+    text-align: left;
     display: flex;
     align-items: center;
     justify-content: center;

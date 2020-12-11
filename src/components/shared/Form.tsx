@@ -132,7 +132,7 @@ const Form = () => {
                 ></TextArea>
             </div>
             <FormButton size="sm" type="submit" target="_blank">
-                Submit
+                Envoyé
             </FormButton>
 
             <div className="text-center p2">{status}</div>

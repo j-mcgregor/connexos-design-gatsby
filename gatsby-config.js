@@ -4,7 +4,7 @@ module.exports = {
         title: `Connexos Design`,
         description: `Slow Fashion`,
         author: `connexosdesign`,
-        siteUrl: 'https://connexos-design.netlify.app/',
+        siteUrl: 'https://www.connexosdesign.com/',
     },
     plugins: [
         {
@@ -25,6 +25,15 @@ module.exports = {
                 // Defers execution of google analytics script after page load
                 defer: false,
                 name: 'Connexos Design',
+            },
+        },
+        {
+            resolve: `gatsby-plugin-google-gtag`,
+            options: {
+                // You can add multiple tracking ids and a pageview event will be fired for all of them.
+                trackingIds: [
+                    'G-078RRXMVEY', // Google Analytics / GA
+                ],
             },
         },
         `gatsby-plugin-react-helmet`,

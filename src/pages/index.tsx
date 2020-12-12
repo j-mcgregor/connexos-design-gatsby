@@ -2,11 +2,9 @@ import { graphql } from 'gatsby'
 import { FixedObject, FluidObject } from 'gatsby-image'
 import { RichText, RichTextBlock } from 'prismic-reactjs'
 import * as React from 'react'
-import { withTheme } from 'styled-components'
 
 import Layout from '../components/Layout'
 import Hero from '../components/pages/landing/Hero'
-import CallToActionSlice from '../components/pages/landing/home-slice/CallToActionSlice'
 import HeroSlice from '../components/pages/landing/home-slice/HeroSlice'
 import ProductsSlice from '../components/pages/landing/home-slice/ProductsSlice'
 import SEO from '../components/SEO'
@@ -271,4 +269,4 @@ const IndexPage: React.FC<IndexPageProps> = ({ data: { prismicHome, allPrismicPr
 }
 
 // @ts-ignore
-export default withTheme(IndexPage)
+export default IndexPage

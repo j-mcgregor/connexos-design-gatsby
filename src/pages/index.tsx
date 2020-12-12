@@ -239,8 +239,8 @@ const makeSlice = (sliceType: SliceType) => {
     switch (sliceType.slice_type) {
         case 'hero_section':
             return <HeroSlice key="hero_section" sliceType={sliceType} />
-        case 'call_to_action':
-            return <CallToActionSlice key="call_to_action" sliceType={sliceType} />
+        // case 'call_to_action':
+        //     return <CallToActionSlice key="call_to_action" sliceType={sliceType} />
         default:
             return <div key="no-type" />
     }

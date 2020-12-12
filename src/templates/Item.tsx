@@ -10,6 +10,7 @@ import * as React from 'react'
 import styled from 'styled-components'
 
 import Layout, { theme } from '../components/Layout'
+import SEO from '../components/SEO'
 import { Card, Cards } from '../components/styled-components/Card'
 import { Button } from '../components/styled-components/Link'
 import { StyledBannerProps } from '../pages/contact'
@@ -156,8 +157,12 @@ const Item: React.FC<ProductPageType> = ({ data, pageContext }) => {
         }
     }, [])
 
+    const title: string = pageContext.uid.toString()
+
     return (
         <Layout>
+            <SEO title={`${pageContext.product_type} - ${title}`} />
+
             <ItemLayout className="container-fluid">
                 <div className="row py4">
                     <ItemHeader className="col-md-6" align="right" justify="top">

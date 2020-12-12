@@ -7,6 +7,7 @@ import * as React from 'react'
 import styled, { css } from 'styled-components'
 
 import Layout, { theme } from '../components/Layout'
+import SEO from '../components/SEO'
 import { Card, Cards } from '../components/styled-components/Card'
 import { ProductsPageNodeProps } from '../types/enums'
 
@@ -155,8 +156,13 @@ const Product: React.FC<ProductPageType> = ({ data, pageContext }) => {
         }
     }, [])
 
+    const title: string = pageContext.uid.toString()
+    const firstLetter = title.charAt(0)
+    const newTitle = title.replace(firstLetter, firstLetter.toLocaleUpperCase())
+
     return (
         <Layout>
+            <SEO title={newTitle} />
             <ProductPage className="container-fluid">
                 <div className="row">
                     <ProductHeaderWithImage className="col-md-6" fluid={product.main_image.fluid}>

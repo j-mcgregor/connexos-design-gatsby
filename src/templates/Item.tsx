@@ -168,24 +168,26 @@ const Item: React.FC<ProductPageType> = ({ data, pageContext }) => {
                     <ItemHeader className="col-md-6" align="right" justify="top">
                         <img src={mainImg} alt="" />
                         <div className="img-thumbs">
-                            <img
-                                src={item.main_image.url}
-                                alt=""
-                                onClick={() => setMainImg(item.main_image.url)}
-                            />
-                            {!!item.images?.length &&
-                                item.images.map((img, i) => {
-                                    return (
-                                        img.image.url && (
-                                            <img
-                                                key={i}
-                                                src={img.image.url}
-                                                alt=""
-                                                onClick={() => setMainImg(img.image.url)}
-                                            />
+                            <div className="flex flex-row flex-wrap space-evenly">
+                                <img
+                                    src={item.main_image.url}
+                                    alt=""
+                                    onClick={() => setMainImg(item.main_image.url)}
+                                />
+                                {!!item.images?.length &&
+                                    item.images.map((img, i) => {
+                                        return (
+                                            img.image.url && (
+                                                <img
+                                                    key={i}
+                                                    src={img.image.url}
+                                                    alt=""
+                                                    onClick={() => setMainImg(img.image.url)}
+                                                />
+                                            )
                                         )
-                                    )
-                                })}
+                                    })}
+                            </div>
                         </div>
                     </ItemHeader>
                     <ItemHeader className="col-md-6 p3 pl3" align="left" justify="top">

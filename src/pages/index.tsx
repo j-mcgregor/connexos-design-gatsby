@@ -234,13 +234,15 @@ interface IndexPageProps {
 }
 
 const makeSlice = (sliceType: SliceType) => {
-    switch (sliceType.slice_type) {
-        case 'hero_section':
-            return <HeroSlice key="hero_section" sliceType={sliceType} />
-        // case 'call_to_action':
-        //     return <CallToActionSlice key="call_to_action" sliceType={sliceType} />
-        default:
-            return <div key="no-type" />
+    if (sliceType) {
+        switch (sliceType.slice_type) {
+            case 'hero_section':
+                return <HeroSlice key="hero_section" sliceType={sliceType} />
+            // case 'call_to_action':
+            //     return <CallToActionSlice key="call_to_action" sliceType={sliceType} />
+            default:
+                return <div key="no-type" />
+        }
     }
 }
 
@@ -248,7 +250,7 @@ const IndexPage: React.FC<IndexPageProps> = ({ data: { prismicHome, allPrismicPr
     const { title, subtitle, about, background_image, secondary_image } = prismicHome.data
     const { nodes } = allPrismicProduct
 
-    const slices = prismicHome.data.body.map(s => makeSlice(s))
+    const slices = prismicHome.data?.body?.map(s => makeSlice(s)) ?? []
 
     return (
         <Layout>

@@ -51,7 +51,20 @@
                 "labels": {
                     "hero_section": [],
                     "call_to_action": [],
-                    "products": []
+                    "products": [],
+                    "banner_section": [
+                        {
+                            "name": "banner_section",
+                            "display": "banner section"
+                        }
+                    ],
+                    "key_points": [],
+                    "hero_carousel": [
+                        {
+                            "name": "header_carousel",
+                            "display": "header_carousel"
+                        }
+                    ]
                 },
                 "choices": {
                     "hero_section": {
@@ -239,6 +252,114 @@
                                 "type": "Link",
                                 "config": {
                                     "label": "product link"
+                                }
+                            }
+                        }
+                    },
+                    "banner_section": {
+                        "type": "Slice",
+                        "fieldset": "Banner Section",
+                        "description": "colorful banner section ",
+                        "icon": "border_all",
+                        "display": "list",
+                        "non-repeat": {},
+                        "repeat": {
+                            "background": {
+                                "type": "Image",
+                                "config": {
+                                    "constraint": {},
+                                    "thumbnails": [],
+                                    "label": "background"
+                                }
+                            },
+                            "banner_title": {
+                                "type": "StructuredText",
+                                "config": {
+                                    "single": "heading1, heading2, heading3, heading4, heading5, heading6",
+                                    "label": "banner title"
+                                }
+                            },
+                            "banner_label": {
+                                "type": "Text",
+                                "config": {
+                                    "label": "banner label"
+                                }
+                            },
+                            "banner_link": {
+                                "type": "Text",
+                                "config": {
+                                    "label": "banner link"
+                                }
+                            }
+                        }
+                    },
+                    "key_points": {
+                        "type": "Slice",
+                        "fieldset": "Key points",
+                        "description": "key points",
+                        "icon": "broken_image",
+                        "display": "list",
+                        "non-repeat": {},
+                        "repeat": {
+                            "icon": {
+                                "type": "Image",
+                                "config": {
+                                    "constraint": {},
+                                    "thumbnails": [],
+                                    "label": "icon"
+                                }
+                            },
+                            "title1": {
+                                "type": "StructuredText",
+                                "config": {
+                                    "single": "heading1, heading2, heading3, heading4, heading5, heading6",
+                                    "label": "title"
+                                }
+                            },
+                            "subtitle1": {
+                                "type": "StructuredText",
+                                "config": {
+                                    "single": "heading1, heading2, heading3, heading4, heading5, heading6",
+                                    "label": "subtitle"
+                                }
+                            }
+                        }
+                    },
+                    "hero_carousel": {
+                        "type": "Slice",
+                        "fieldset": "Hero Carousel",
+                        "description": "Main carousel at the top of the Homepage",
+                        "icon": "view_column",
+                        "display": "list",
+                        "non-repeat": {},
+                        "repeat": {
+                            "background": {
+                                "type": "Image",
+                                "config": {
+                                    "constraint": {},
+                                    "thumbnails": [],
+                                    "label": "background"
+                                }
+                            },
+                            "title1": {
+                                "type": "StructuredText",
+                                "config": {
+                                    "single": "heading1, heading2, heading3, heading4, heading5, heading6",
+                                    "label": "title"
+                                }
+                            },
+                            "subtitle1": {
+                                "type": "StructuredText",
+                                "config": {
+                                    "single": "heading1, heading2, heading3, heading4, heading5, heading6",
+                                    "label": "subtitle"
+                                }
+                            },
+                            "link": {
+                                "type": "Link",
+                                "config": {
+                                    "select": "media",
+                                    "label": "link"
                                 }
                             }
                         }

@@ -11,7 +11,7 @@ import { flexStartColumn } from '../utils/themeUtils'
 
 export const query = graphql`
     {
-        prismicFaq {
+        prismicFaq(lang: { eq: "fr-ca" }) {
             data {
                 title {
                     raw

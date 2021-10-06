@@ -138,6 +138,14 @@ const ProductHeaderWithImage = styled(BackgroundImage)`
 `
 
 const Product: React.FC<ProductPageType> = ({ data, pageContext }) => {
+    console.log(data)
+    if (!data?.prismicProduct?.data) {
+        return (
+            <Layout>
+                <ProductPage className="container-fluid text-center">Item not found</ProductPage>
+            </Layout>
+        )
+    }
     const { data: product } = data.prismicProduct
     const { nodes } = data.allPrismicItem
 
@@ -209,8 +217,8 @@ const Product: React.FC<ProductPageType> = ({ data, pageContext }) => {
 }
 
 export const query = graphql`
-    query Product($id: String, $uid: String) {
-        prismicProduct(id: { eq: $id }) {
+    query Product($uid: String) {
+        prismicProduct(uid: { eq: $uid }, lang: { eq: "fr-ca" }) {
             id
             data {
                 title {
@@ -231,7 +239,7 @@ export const query = graphql`
                 }
             }
         }
-        allPrismicItem(filter: { data: { product_type: { eq: $uid } } }) {
+        allPrismicItem(filter: { lang: { eq: "fr-ca" }, data: { product_type: { eq: $uid } } }) {
             nodes {
                 id
                 uid

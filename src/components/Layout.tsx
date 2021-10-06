@@ -58,7 +58,7 @@ const Layout = (props: LayoutProps) => (
                         title
                     }
                 }
-                prismicContact {
+                prismicContact(lang: { eq: "fr-ca" }) {
                     data {
                         title {
                             raw
@@ -85,7 +85,7 @@ const Layout = (props: LayoutProps) => (
                         }
                     }
                 }
-                allPrismicProduct {
+                allPrismicProduct(filter: { lang: { eq: "fr-ca" } }) {
                     nodes {
                         id
                         uid

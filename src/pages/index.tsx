@@ -12,7 +12,7 @@ import { ProductsPageNodeProps } from '../types/enums'
 
 export const query = graphql`
     query IndexPageQuery {
-        prismicHome {
+        prismicHome(lang: { eq: "fr-ca" }) {
             data {
                 background_image {
                     url
@@ -116,7 +116,7 @@ export const query = graphql`
                 }
             }
         }
-        allPrismicProduct {
+        allPrismicProduct(filter: { lang: { eq: "fr-ca" } }) {
             nodes {
                 id
                 uid

@@ -55,6 +55,7 @@ interface ProductPageType {
 }
 
 const ItemLayout = styled.div`
+    min-height: 500px;
     h2 {
         color: ${({ theme }) => theme.palette.center};
         font-family: ${({ theme }) => theme.fonts.secondaryFont};
@@ -137,6 +138,13 @@ const ItemHeader = styled.div<StyledBannerProps>`
 `
 
 const Item: React.FC<ProductPageType> = ({ data, pageContext }) => {
+    if (!data?.prismicItem?.data) {
+        return (
+            <Layout>
+                <ItemLayout className="container-fluid text-center">Item not found</ItemLayout>
+            </Layout>
+        )
+    }
     const { data: item } = data.prismicItem
     const { nodes: allItems } = data.allPrismicItem
 
@@ -253,7 +261,7 @@ const Item: React.FC<ProductPageType> = ({ data, pageContext }) => {
 
 export const query = graphql`
     query Item($id: String, $product_type: String) {
-        prismicItem(id: { eq: $id }) {
+        prismicItem(lang: { eq: "fr-ca" }, id: { eq: $id }) {
             uid
             data {
                 title {
@@ -288,7 +296,7 @@ export const query = graphql`
                 }
             }
         }
-        allPrismicItem(filter: { data: { product_type: { eq: $product_type } } }) {
+        allPrismicItem(filter: { lang: { eq: "fr-ca" }, data: { product_type: { eq: $product_type } } }) {
             nodes {
                 id
                 uid

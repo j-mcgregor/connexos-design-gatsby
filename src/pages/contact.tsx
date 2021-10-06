@@ -11,7 +11,7 @@ import Form from '../components/shared/Form'
 
 export const query = graphql`
     {
-        prismicContact {
+        prismicContact(lang: { eq: "fr-ca" }) {
             data {
                 title {
                     raw
